@@ -8,6 +8,9 @@
     <!-- Welcome -->
     <string name="welcomeTxtView">"Bem vindo à aplicação de Monitoracao!\n\nEssa aplicação foi feita durante o trabalho final &apos; do curso de Especializacao em ASD &apos;"</string>
     <string name="welcomeBtnOk">Continuar</string>
-    
+
+    <!-- Listar Erros -->
+    <string name="listarErroBtnVoltar">Voltar</string>
+    <string name="listarErroBtnAtualizar">Atualizar</string>
     
 </resources>
