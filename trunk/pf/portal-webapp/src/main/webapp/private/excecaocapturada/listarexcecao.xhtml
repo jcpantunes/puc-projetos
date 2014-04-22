@@ -1,0 +1,43 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui" xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets" template="/template/main.xhtml">
+
+	<ui:define name="body">
+		<h:form>
+
+			<p:dataTable id="list" var="bean" value="#{listarExcecaoCapturadaMB.resultList}">
+				<f:facet name="header">#{messages['excecao.list.table.title']}</f:facet>
+				<p:column style="width:5%;">
+					<h:selectBooleanCheckbox value="#{listarExcecaoCapturadaMB.selection[bean.id]}" />
+				</p:column>
+				
+<!-- 				<p:column style="width:5%;" sortBy="#{bean.id}"> -->
+<!-- 					<f:facet name="header">#{messages['excecao.label.id']}</f:facet> -->
+<!-- 					<h:outputText value="#{bean.id}" /> -->
+<!-- 				</p:column> -->
+				
+				<p:column sortBy="#{bean.dataExcecao}">
+					<f:facet name="header">#{messages['excecao.label.dataExcecao']}</f:facet>
+					<h:outputText value="#{bean.dataExcecao}" />
+				</p:column>
+				
+				<p:column sortBy="#{bean.tipoExcecao}">
+					<f:facet name="header">#{messages['excecao.label.tipoExcecao']}</f:facet>
+					<h:outputText value="#{bean.tipoExcecao}" />
+				</p:column>
+				
+<!-- 				<p:column sortBy="#{bean.stacktrace}"> -->
+<!-- 					<f:facet name="header">#{messages['excecao.label.stacktrace']}</f:facet> -->
+<!-- 					<h:outputText value="#{bean.stacktrace}" /> -->
+<!-- 				</p:column> -->
+				
+				<p:column sortBy="#{bean.ticket}">
+					<f:facet name="header">#{messages['excecao.label.ticket']}</f:facet>
+					<h:outputText value="#{bean.ticket}" />
+				</p:column>
+				
+			</p:dataTable>
+
+		</h:form>
+	</ui:define>
+</ui:composition>

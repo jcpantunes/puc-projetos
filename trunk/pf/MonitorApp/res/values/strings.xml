@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<!-- Padrao -->
+    <string name="app_name">MonitorApp</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+
+    <!-- Welcome -->
+    <string name="welcomeTxtView">"Bem vindo à aplicação de Monitoracao!\n\nEssa aplicação foi feita durante o trabalho final &apos; do curso de Especializacao em ASD &apos;"</string>
+    <string name="welcomeBtnOk">Continuar</string>
+    
+    
+</resources>
