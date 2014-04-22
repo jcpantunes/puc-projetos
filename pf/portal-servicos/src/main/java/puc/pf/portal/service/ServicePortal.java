@@ -15,7 +15,6 @@ import com.sun.xml.ws.developer.SchemaValidation;
 @SchemaValidation
 @WebService(endpointInterface="puc.pf.portal.IServicePortal", portName="IServicePortalPort",  serviceName="IServicePortal")
 public class ServicePortal implements IServicePortal {
-	// http://localhost:8080/portal-servicos/IServicePortal?wsdl
 	
 	public List<AlunoDTO> consultarListaAluno() {
     	AlunoBC bc = new AlunoBC();

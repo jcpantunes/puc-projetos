@@ -11,8 +11,9 @@ import puc.pf.portal.business.AlunoBC;
 import puc.pf.portal.business.ExcecaoCapturadaBC;
 import puc.pf.portal.dto.AlunoDTO;
 import puc.pf.portal.dto.ExcecaoCapturadaDTO;
+import puc.pf.portal.util.Constantes;
 
-@Path("serviceportalrest")
+@Path(Constantes.CONTEXTO_REST)
 @Produces(MediaType.APPLICATION_XML)
 public class RestServicePortal {
 	//http://localhost:8080/portal-servicos/serviceportalrest/
@@ -23,15 +24,13 @@ public class RestServicePortal {
 	public String principal() {
     	return "Web Services desenvolvido para seminario sobre JAX-RS " +
     			"Consultas Disponiveis: " +
-    			"http://localhost:8080/portal-servicos/serviceportalrest/consultarListaAluno/" +
-    			"http://localhost:8080/portal-servicos/serviceportalrest/consultarAluno/100" +
-    			"http://localhost:8080/portal-servicos/serviceportalrest/consultarListaTarefa/" +
-    			"http://localhost:8080/portal-servicos/serviceportalrest/consultarTarefa/100" +
-    			"http://localhost:8080/portal-servicos/serviceportalrest/consultarTarefasAluno/";
+    			Constantes.URI + "/" + Constantes.CONTEXTO + "/" + Constantes.CONTEXTO_REST + "/consultarListaAluno/" +
+    			Constantes.URI + "/" + Constantes.CONTEXTO + "/" + Constantes.CONTEXTO_REST + "/consultarAluno/100" +
+    			Constantes.URI + "/" + Constantes.CONTEXTO + "/" + Constantes.CONTEXTO_REST + "/consultarListaExcecao";
     }
     
 	@GET
-	@Path("consultarListaAluno/")
+	@Path(Constantes.OPERACAO_CONSULTAR_LISTA_ALUNO + "/")
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<AlunoDTO> consultarListaAluno() {
     	AlunoBC bc = new AlunoBC();
@@ -39,7 +38,7 @@ public class RestServicePortal {
     }
 	
 	@GET
-	@Path("consultarListaExcecao/")
+	@Path(Constantes.OPERACAO_CONSULTAR_LISTA_EXCECAO + "/")
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<ExcecaoCapturadaDTO> consultarListaExcecao() {
 		ExcecaoCapturadaBC bc = new ExcecaoCapturadaBC();

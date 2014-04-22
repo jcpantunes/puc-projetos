@@ -9,19 +9,27 @@ import javax.jws.soap.SOAPBinding;
 
 import puc.pf.portal.dto.AlunoDTO;
 import puc.pf.portal.dto.ExcecaoCapturadaDTO;
+import puc.pf.portal.util.Constantes;
 
-@WebService(name="iserviceportal", targetNamespace="http://localhost:8080/jaxws")
+@WebService(name="iserviceportal", targetNamespace=Constantes.NAMESPACE)
 @SOAPBinding(style=SOAPBinding.Style.DOCUMENT,use=SOAPBinding.Use.LITERAL,parameterStyle=SOAPBinding.ParameterStyle.WRAPPED)
 public interface IServicePortal { 
-	//http://localhost:8080/portal-servicos/IServicePortal?wsdl
 
-	@WebMethod(operationName="ConsultarListaAluno", action="http://localhost:8080/jaxws/consultarListaAluno")
-	@WebResult(name="ListaAluno", targetNamespace="http://localhost:8080/jaxws/dominio/Aluno")
+	@WebMethod(operationName=Constantes.OPERACAO_CONSULTAR_LISTA_ALUNO,
+			action=Constantes.NAMESPACE + "/" + Constantes.OPERACAO_CONSULTAR_LISTA_ALUNO)
+	@WebResult(name="ListaAluno", targetNamespace=Constantes.NAMESPACE + Constantes.DOMINIO_ALUNO)
 	public List<AlunoDTO> consultarListaAluno();
 
-	@WebMethod(operationName="ConsultarListaExcecao", action="http://localhost:8080/jaxws/consultarListaExcecao")
-	@WebResult(name="ExcecaoCapturada", targetNamespace="http://localhost:8080/jaxws/dominio/ExcecaoCapturada")
+	@WebMethod(operationName=Constantes.OPERACAO_CONSULTAR_LISTA_EXCECAO, 
+			action=Constantes.NAMESPACE + "/" + Constantes.OPERACAO_CONSULTAR_LISTA_EXCECAO)
+	@WebResult(name="ListaExcecaoCapturada", targetNamespace=Constantes.NAMESPACE + Constantes.DOMINIO_EXCECAO_CAPTURADA)
 	public List<ExcecaoCapturadaDTO> consultarListaExcecao();
+	
+	
+	
+	
+	
+	
 
 //	@WebMethod(operationName="ConsultarListaTarefa", action="http://localhost:8080/jaxws/ConsultarListaTarefa")
 //    @WebResult(name="ListaTarefa", targetNamespace="http://localhost:8080/jaxws/dominio/Tarefa")
