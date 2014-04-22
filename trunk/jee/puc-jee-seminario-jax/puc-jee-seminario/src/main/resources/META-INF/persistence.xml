@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
+	version="2.0">
+	<persistence-unit name="postgres-ds">
+	    
+	    <provider>org.hibernate.ejb.HibernatePersistence</provider>
+		<jta-data-source>java:jboss/datasources/postgres-ds</jta-data-source>
+		
+	    
+	    <class>com.puc.dominio.BaseBean</class>
+	    <class>com.puc.dominio.Funcionario</class>
+	    <class>com.puc.dominio.Tarefa</class>
+	    
+		<properties>
+			<property name="hibernate.hbm2ddl.auto" value="update"/>
+			<property name="hibernate.transaction.jta.platform" value="org.hibernate.service.jta.platform.internal.JBossAppServerJtaPlatform" />
+			
+			 <property name="hibernate.connection.driver_class" value="org.postgresql.Driver"/>
+      		 <property name="hibernate.connection.username" value="puc"/>
+			 <property name="hibernate.connection.password" value="puc"/>
+      		 <property name="hibernate.connection.url" value="jdbc:postgresql://localhost:5432/puc-jee"/>
+      		 <property name="hibernate.connection.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/>
+			
+			<!-- JDBC connection pool (use the built-in) -->
+			<property name="connection.pool_size" value="5" />
+
+			<!-- Echo all executed SQL to stdout -->
+			<property name="show_sql" value="true" />
+
+		</properties>
+		
+	</persistence-unit>
+	
+</persistence>
