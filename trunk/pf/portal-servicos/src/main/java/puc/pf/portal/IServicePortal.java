@@ -8,6 +8,7 @@ import javax.jws.WebService;
 import javax.jws.soap.SOAPBinding;
 
 import puc.pf.portal.dto.AlunoDTO;
+import puc.pf.portal.dto.ExcecaoCapturadaDTO;
 
 @WebService(name="iserviceportal", targetNamespace="http://localhost:8080/jaxws")
 @SOAPBinding(style=SOAPBinding.Style.DOCUMENT,use=SOAPBinding.Use.LITERAL,parameterStyle=SOAPBinding.ParameterStyle.WRAPPED)
@@ -18,10 +19,10 @@ public interface IServicePortal {
 	@WebResult(name="ListaAluno", targetNamespace="http://localhost:8080/jaxws/dominio/Aluno")
 	public List<AlunoDTO> consultarListaAluno();
 
-//	@WebMethod(operationName="ConsultarAluno", action="http://localhost:8080/jaxws/consultarFuncioanrio")
-//	@WebResult(name="Aluno", targetNamespace="http://localhost:8080/jaxws/dominio/Aluno")
-//	public AlunoDTO consultarAluno(Integer codigoAluno);
-//
+	@WebMethod(operationName="ConsultarListaExcecao", action="http://localhost:8080/jaxws/consultarListaExcecao")
+	@WebResult(name="ExcecaoCapturada", targetNamespace="http://localhost:8080/jaxws/dominio/ExcecaoCapturada")
+	public List<ExcecaoCapturadaDTO> consultarListaExcecao();
+
 //	@WebMethod(operationName="ConsultarListaTarefa", action="http://localhost:8080/jaxws/ConsultarListaTarefa")
 //    @WebResult(name="ListaTarefa", targetNamespace="http://localhost:8080/jaxws/dominio/Tarefa")
 //    public List<TarefaDTO> consultarListaTarefa();

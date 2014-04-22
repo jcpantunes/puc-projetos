@@ -8,11 +8,14 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 import puc.pf.portal.business.AlunoBC;
+import puc.pf.portal.business.ExcecaoCapturadaBC;
 import puc.pf.portal.dto.AlunoDTO;
+import puc.pf.portal.dto.ExcecaoCapturadaDTO;
 
 @Path("serviceportalrest")
 @Produces(MediaType.APPLICATION_XML)
 public class RestServicePortal {
+	//http://localhost:8080/portal-servicos/serviceportalrest/
 	
 	@GET
 	@Path("/")
@@ -33,6 +36,14 @@ public class RestServicePortal {
 	public List<AlunoDTO> consultarListaAluno() {
     	AlunoBC bc = new AlunoBC();
     	return AlunoDTO.parserFromAluno(bc.findAll());
+    }
+	
+	@GET
+	@Path("consultarListaExcecao/")
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<ExcecaoCapturadaDTO> consultarListaExcecao() {
+		ExcecaoCapturadaBC bc = new ExcecaoCapturadaBC();
+    	return ExcecaoCapturadaDTO.parserFromExcecao(bc.findAll());
     }
     
 //    @GET
