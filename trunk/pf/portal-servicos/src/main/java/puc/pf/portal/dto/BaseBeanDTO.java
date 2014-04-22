@@ -7,7 +7,9 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
-@XmlRootElement(name="BaseBean", namespace="http://localhost:8080/dominio/basebean")
+import puc.pf.portal.util.Constantes;
+
+@XmlRootElement(name=Constantes.BASEBEAN, namespace=Constantes.NAMESPACE + Constantes.DOMINIO_BASEBEAN)
 @XmlAccessorType(XmlAccessType.FIELD)
 public class BaseBeanDTO implements Serializable {
 	

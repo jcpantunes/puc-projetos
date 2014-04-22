@@ -10,10 +10,11 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
 import puc.pf.portal.domain.Aluno;
+import puc.pf.portal.util.Constantes;
 
-@XmlRootElement(name = "Aluno", namespace = "http://localhost:8080/jaxws/dominio/Aluno")
+@XmlRootElement(name=Constantes.ALUNO, namespace=Constantes.NAMESPACE + Constantes.DOMINIO_ALUNO)
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name="Aluno", namespace = "http://localhost:8080/jaxws/dominio/Aluno")
+@XmlType(name=Constantes.ALUNO, namespace=Constantes.NAMESPACE + Constantes.DOMINIO_ALUNO)
 public class AlunoDTO extends BaseBeanDTO {
 	
 	private static final long serialVersionUID = 1L;
