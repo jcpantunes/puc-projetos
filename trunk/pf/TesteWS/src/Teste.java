@@ -15,16 +15,16 @@ import javax.xml.transform.stream.StreamResult;
 
 public class Teste {
 	
-	private static final String URL = "http://localhost:8080/portal-servicos/IServicePortal?wsdl";
-	private static final String SERVER_URI = "http://localhost:8080/jaxws";
+	public static final String URI = "http://10.200.108.167:8080";
+	// public static final String URI = "http://localhost:8080";
+	
+	private static final String URL = URI + "/portal-servicos/IServicePortal?wsdl";
+	private static final String NAMESPACE = URI + "/jaxws";
 	private static final String PREFIX = "jax";
-	private static final String OPERATION = "ConsultarListaExcecao";
-	private static final String SOAP_ACTION = SERVER_URI  + "/consultarListaExcecao";
+	private static final String OPERATION = "consultarListaExcecao";
+	private static final String SOAP_ACTION = NAMESPACE + "/" + OPERATION;
 	
-	
-	
-
-	 public static void main(String args[]) {
+	public static void main(String args[]) {
 	        try {
 	            // Create SOAP Connection
 	            SOAPConnectionFactory soapConnectionFactory = SOAPConnectionFactory.newInstance();
@@ -50,7 +50,7 @@ public class Teste {
 
 	        // SOAP Envelope
 	        SOAPEnvelope envelope = soapPart.getEnvelope();
-	        envelope.addNamespaceDeclaration(PREFIX, SERVER_URI);
+	        envelope.addNamespaceDeclaration(PREFIX, NAMESPACE);
 
 	        /*
 	        Constructed SOAP Request Message:
