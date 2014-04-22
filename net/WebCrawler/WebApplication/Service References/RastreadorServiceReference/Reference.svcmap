@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="da5aada3-d1c8-427f-a222-df0b53495f84" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:58562/RastreadorWS.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="RastreadorWS.xsd" MetadataType="Schema" ID="30880aac-4011-4573-b648-609858bd2327" SourceId="1" SourceUrl="http://localhost:58562/RastreadorWS.svc?xsd=xsd1" />
+    <MetadataFile FileName="RastreadorWS.wsdl" MetadataType="Wsdl" ID="e5f0ea6f-0916-4d25-a7e8-f7fbe00c1f8b" SourceId="1" SourceUrl="http://localhost:58562/RastreadorWS.svc?wsdl" />
+    <MetadataFile FileName="RastreadorWS1.xsd" MetadataType="Schema" ID="c8d2be0f-89c7-46ff-a0c1-e90846d65740" SourceId="1" SourceUrl="http://localhost:58562/RastreadorWS.svc?xsd=xsd0" />
+    <MetadataFile FileName="RastreadorWS.disco" MetadataType="Disco" ID="0bbf9805-e5b9-4057-89c8-c5d1aa212ac0" SourceId="1" SourceUrl="http://localhost:58562/RastreadorWS.svc?disco" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

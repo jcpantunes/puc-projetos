@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"
+	version="2.4">
+
+	<display-name>PUC - Arquitetura JEE</display-name>
+	<description>Aplicacao para seminario JAXWS e JAXRS</description>
+
+	<!-- responsável por ler o arquivo sun-jaxws.xml com a especificação da implementação do serviço. Crie o arquivo WEB-INF\sun-jaxws.xml -->
+	<listener>
+		<listener-class>com.sun.xml.ws.transport.http.servlet.WSServletContextListener</listener-class>
+	</listener>
+	
+	<!-- Responsavel por inicializar os componentes do Resteasy -->
+	<listener>
+		<listener-class>org.jboss.resteasy.plugins.server.servlet.ResteasyBootstrap</listener-class>
+	</listener>
+	
+	<!-- Servlet responsável por publicar o servico SOAP -->
+	<servlet>
+		<servlet-name>PUCJeeJAXWS</servlet-name>
+		<servlet-class>com.sun.xml.ws.transport.http.servlet.WSServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>PUCJeeJAXWS</servlet-name>
+		<url-pattern>/pucjeeservice</url-pattern>
+	</servlet-mapping>
+	
+	<!-- Servlet responsável por publicar o servico Rest -->
+	<servlet>
+		<servlet-name>Resteasy</servlet-name>
+		<servlet-class>org.jboss.resteasy.plugins.server.servlet.HttpServletDispatcher</servlet-class>
+
+		<init-param>
+			<param-name>javax.ws.rs.Application</param-name>
+			<param-value>com.puc.rest.RestApplication</param-value>
+		</init-param>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Resteasy</servlet-name>
+		<url-pattern>/*</url-pattern>
+	</servlet-mapping>
+	
+	
+	<session-config>
+		<session-timeout>120</session-timeout>
+	</session-config>
+</web-app>

@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Configures the Camel Context-->
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:amq="http://activemq.apache.org/schema/core"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd
+       http://activemq.apache.org/schema/core http://activemq.apache.org/schema/core/activemq-core.xsd">
+
+	<!-- This creates an embedded ActiveMQ Broker -->
+	<broker xmlns="http://activemq.apache.org/schema/core" useJmx="true"
+		persistent="false">
+		<transportConnectors>
+			<transportConnector uri="tcp://localhost:61616" />
+		</transportConnectors>
+	</broker>
+
+	<!-- Lets connect the Camel ActiveMQ component to the embedded broker. See 
+		http://camel.apache.org/activemq.html for more information. -->
+	<bean id="activemq" class="org.apache.activemq.camel.component.ActiveMQComponent">
+		<property name="brokerURL" value="failover:tcp://localhost:61616" />
+	</bean>
+
+	<!-- Here is a sample which processes the input files (leaving them in place 
+		- see the 'noop' flag), and sends them on a JMS queue. This queue is watched 
+		by another route which then performs content based routing on the messages 
+		using XPath. -->
+	<!-- <camelContext xmlns="http://camel.apache.org/schema/spring"> -->
+	<!-- <route> -->
+	<!-- <from uri="file:src/data?noop=true"/> -->
+	<!-- <to uri="activemq:personnel.records"/> -->
+	<!-- </route> -->
+	<!-- <route> -->
+	<!-- <from uri="activemq:personnel.records"/> -->
+	<!-- <choice> -->
+	<!-- <when> -->
+	<!-- <xpath>/person/city = 'London'</xpath> -->
+	<!-- <to uri="file:target/messages/uk"/> -->
+	<!-- </when> -->
+	<!-- <otherwise> -->
+	<!-- <to uri="file:target/messages/others"/> -->
+	<!-- </otherwise> -->
+	<!-- </choice> -->
+	<!-- </route> -->
+	<!-- </camelContext> -->
+
+
+	<bean class="foo.ObtemListaProdutosTeste" id="obtemListaProdutosTeste" />
+
+	<bean class="foo.VerificarMarcaAutomovel" id="verificarMarcaAutomovel" />
+
+	<bean id="aggregatorStrategy"
+		class="org.apache.camel.processor.aggregate.UseLatestAggregationStrategy" />
+
+	<bean class="foo.AutomovelFiat" id="autoFiat" />
+	<bean class="foo.AutomovelFord" id="autoFord" />
+	<bean class="foo.AutomovelHonda" id="autoHonda" />
+	<bean class="foo.AutomovelChevrolet" id="autoChevrolet" />
+	<bean class="foo.AutomovelPegeout" id="autoPegeout" />
+
+	<camelContext xmlns="http://camel.apache.org/schema/spring">
+
+		<route>
+			<from uri="timer://foo?fixedRate=true&amp;period=30000" />
+			<process ref="obtemListaProdutosTeste" />
+			<log message="(1) Conteúdo para arquivo texto - ${body}" />
+			<to uri="activemq:gerar_arquivo_produtos" />
+		</route>
+		
+		<route>
+			<from uri="activemq:gerar_arquivo_produtos" />
+			<to uri="file:src/data/?fileName=automoveis-$simple{date:now:yyyyMMddHHmmssSSS}.txt" />
+			<log message="(2) Fim - Arquivo Gerado com Todos Automoveis" />
+		</route>
+
+		<route>
+			<from uri="file:src/data?noop=true" />
+			<!-- <log message="(3) Novos Automoveis - ${body}"/> -->
+			<to uri="activemq:automoveis_novos" />
+		</route>
+
+		<route>
+			<from uri="activemq:automoveis_novos" />
+			<!-- <log message="(4) Novos Automoveis - ${body}"/> -->
+
+			<setHeader headerName="AUTOMOVEL_CORRELATION_ID">
+				<simple>1</simple>
+			</setHeader>
+
+			<split>
+				<tokenize token="\n" />
+				<setHeader headerName="AUTOMOVEL_SIZE">
+					<property>CamelSplitSize</property>
+				</setHeader>
+				<!-- <log message="(5) Automovel - ${body}"/> -->
+				<to uri="activemq:automovel" />
+			</split>
+		</route>
+
+		<!-- <route> -->
+		<!-- <from uri="activemq:automovel"/> -->
+		<!-- <log message="(6) Automovel - ${body}"/> -->
+		<!-- <choice> -->
+		<!-- <when> -->
+		<!-- <simple>${body} = 'Fiat'</simple> -->
+		<!-- <to uri="activemq:automovel_fiat"/> -->
+		<!-- </when> -->
+		<!-- <otherwise> -->
+		<!-- <to uri="activemq:automovel_marca"/> -->
+		<!-- </otherwise> -->
+		<!-- </choice> -->
+		<!-- </route> -->
+
+		<route>
+			<from uri="activemq:automovel" />
+			<filter>
+				<method ref="verificarMarcaAutomovel" method="isAutomovelFiat" />
+				<to uri="activemq:automovel_fiat" />
+			</filter>
+			<filter>
+				<method ref="verificarMarcaAutomovel" method="isAutomovelFord" />
+				<to uri="activemq:automovel_ford" />
+			</filter>
+			<filter>
+				<method ref="verificarMarcaAutomovel" method="isAutomovelHonda" />
+				<to uri="activemq:automovel_honda" />
+			</filter>
+			<filter>
+				<method ref="verificarMarcaAutomovel" method="isAutomovelPegeout" />
+				<to uri="activemq:automovel_pegeout" />
+			</filter>
+			<filter>
+				<method ref="verificarMarcaAutomovel" method="isAutomovelChevrolet" />
+				<to uri="activemq:automovel_chevrolet" />
+			</filter>
+			<filter>
+				<method ref="verificarMarcaAutomovel" method="isAutomovelOutro" />
+				<to uri="activemq:automovel_outros" />
+			</filter>
+		</route>
+
+		<!-- <route> -->
+		<!-- <from uri="activemq:automovel_fiat"/> -->
+		<!-- <to uri="file:src/out/?fileName=automovel_fiat.txt"/> -->
+		<!-- </route> -->
+
+		<!-- <route> -->
+		<!-- <from uri="activemq:automovel_ford"/> -->
+		<!-- <to uri="file:src/out/?fileName=automovel_ford-$simple{date:now:yyyyMMddHHmmssSSS}.txt"/> -->
+		<!-- </route> -->
+
+		<route>
+			<from uri="activemq:automovel_fiat?concurrentConsumers=2" />
+			<!-- <log message="Fiat - ${body}"/> -->
+			<process ref="autoFiat" />
+			<to uri="activemq:automoveis_processados" />
+		</route>
+
+		<route>
+			<from uri="activemq:automovel_ford?concurrentConsumers=2" />
+			<!-- <log message="Fiat - ${body}"/> -->
+			<process ref="autoFord" />
+			<to uri="activemq:automoveis_processados" />
+		</route>
+
+		<route>
+			<from uri="activemq:automovel_honda?concurrentConsumers=2" />
+			<!-- <log message="Fiat - ${body}"/> -->
+			<process ref="autoHonda" />
+			<to uri="activemq:automoveis_processados" />
+		</route>
+
+		<route>
+			<from uri="activemq:automovel_chevrolet?concurrentConsumers=2" />
+			<!-- <log message="Fiat - ${body}"/> -->
+			<process ref="autoChevrolet" />
+			<to uri="activemq:automoveis_processados" />
+		</route>
+
+		<route>
+			<from uri="activemq:automovel_pegeoutfiat?concurrentConsumers=2" />
+			<!-- <log message="Fiat - ${body}"/> -->
+			<process ref="autoPegeout" />
+			<to uri="activemq:automoveis_processados" />
+		</route>
+
+		<route>
+			<from uri="activemq:automoveis_processados" />
+			<log message="(8) Automoveis Processados - ${body}" />
+
+			<!-- <log message="(82) AUTOMOVEL_SIZE - ${AUTOMOVEL_SIZE}"/> -->
+
+			<aggregate strategyRef="aggregatorStrategy">
+				<correlationExpression>
+					<header>AUTOMOVEL_CORRELATION_ID</header>
+				</correlationExpression>
+				<completionSize>
+					<header>AUTOMOVEL_SIZE</header>
+				</completionSize>
+				<to uri="activemq:automoveis_agregados" />
+			</aggregate>
+		</route>
+
+		<route>
+			<from uri="activemq:automoveis_agregados" />
+			<log message="(9) Automoveis Agregados - ${body}" />
+			<to uri="file:src/out/?fileName=automoveis-$simple{date:now:yyyyMMddHHmmssSSS}.txt" />
+		</route>
+
+	</camelContext>
+
+</beans>
+	

@@ -1,0 +1,343 @@
+﻿Aston;Martin
+Aston;Martin DB9
+Aston;Martin DBS
+Aston;Martin V8 Vantage
+Audi;A1
+Audi;A3
+Audi;A4
+Audi;A4 Avant
+Audi;A5
+Audi;A6
+Audi;A6 Avant
+Audi;A7
+Audi;A8
+Audi;Q5
+Audi;Q7
+Audi;R8
+Audi;RS5
+Audi;RS6
+Audi;RS6 Avant
+Audi;S3
+Audi;S6
+Audi;S6 Avant
+Audi;TT
+Audi;TTS
+Bentley;Continental Flying Spur
+Bentley;Continental GT
+Bentley;Continental GTC 
+Bentley;Continental Supersports
+Bmw;M1 Coupe
+Bmw;M3 Sedan
+Bmw;M5
+Bmw;Série 1
+Bmw;Série 1 Cabrio
+Bmw;Série 3
+Bmw;Série 5
+Bmw;Série 7
+Bmw;X1
+Bmw;X3
+Bmw;X5
+Bmw;X6
+Bmw;Z4
+Chana;Alsvin
+Chana;Benni
+Chana;Benni Mini 
+Chana;Cargo
+Chana;Family
+Chana;Utility
+Chery;Cielo Hatch 
+Chery;Cielo Sedan 
+Chery;Face
+Chery;QQ
+Chery;Tiggo
+Chevrolet;Agile
+Chevrolet;Astra Hatch
+Chevrolet;Astra Sedan
+Chevrolet;Blazer
+Chevrolet;Camaro
+Chevrolet;Captiva
+Chevrolet;Celta
+Chevrolet;Chevette
+Chevrolet;Classic
+Chevrolet;Corsa Hatch
+Chevrolet;Corsa Sedan
+Chevrolet;Kadett
+Chevrolet;Malibu
+Chevrolet;Maverick
+Chevrolet;Meriva
+Chevrolet;Montana
+Chevrolet;Monza
+Chevrolet;Omega
+Chevrolet;Opala
+Chevrolet;Prisma
+Chevrolet;S10
+Chevrolet;Tracker
+Chevrolet;Vectra
+Chevrolet;Vectra GT
+Chevrolet;Zafira
+Chrysler;300C
+Chrysler;300C Touring
+Chrysler;PT Cruiser
+Chrysler;Town & Country
+Citroen;Aircross
+Citroen;C3
+Citroen;C3 Picasso
+Citroen;C3 XTR 
+Citroen;C4
+Citroen;C4 Pallas
+Citroen;C4 Picasso
+Citroen;C5
+Citroen;C5 Tourer 
+Citroen;Grand C4 Picasso
+Citroen;Jumper
+Citroen;Jumper Furgão
+Citroen;Jumper Mini Bus
+Citroen;Jumper Vetrato
+Citroen;Xsara Picasso
+Dodge;Journey
+Dodge;Ram pickup
+Effa;Hafei Zhingyi Furgão
+Effa;Hafei Zhingyi Picape
+Effa;Hafei Zhingyi Van
+Effa;M100
+Effa;Plutus
+Ferrari;599
+Ferrari;612
+Ferrari;458 Italia
+Ferrari;612 Scaglietti
+Ferrari;California
+Ferrari;F355
+Ferrari;F360 Modena
+Ferrari;F430
+Fiat;500
+Fiat;Bravo
+Fiat;Doblo
+Fiat;Doblo Cargo
+Fiat;Ducato
+Fiat;Fiorino Furgão
+Fiat;Idea
+Fiat;Linea
+Fiat;Palio
+Fiat;Palio Adventure
+Fiat;Palio Weekend
+Fiat;Punto
+Fiat;Siena
+Fiat;Stilo
+Fiat;Strada
+Fiat;Uno
+Fiat;Uno Furgão
+Fiat;Uno Mille
+Ford;Courier
+Ford;Courier Van 
+Ford;Ecosport
+Ford;Edge
+Ford;F0250
+Ford;F0350
+Ford;F04000
+Ford;Fiesta
+Ford;Fiesta Sedan 
+Ford;Focus
+Ford;Focus Sedan 
+Ford;Fusion
+Ford;Ka
+Ford;New Fiesta 
+Ford;Ranger
+Hafei;Towner Furgão
+Hafei;Towner Passageiro
+Hafei;Towner Pick0Up
+Honda;Accord
+Honda;City
+Honda;Civic
+Honda;Civic Si 
+Honda;CR0V
+Honda;Fit
+Hyundai;Azera
+Hyundai;HR
+Hyundai;i30
+Hyundai;i30CW
+Hyundai;ix35
+Hyundai;Santa Fe 
+Hyundai;Sonata
+Hyundai;Tucson
+Hyundai;Veracruz
+Iveco;Daily
+Iveco;Strallis
+Jac;Motors J3
+Jac;Motors J3 Turin
+Jac;Motors J5
+Jac;Motors J6
+Jaguar;X0Type
+Jaguar;XF
+Jaguar;XJ5
+Jaguar;XJ6
+Jaguar;XK Series 
+Jeep;Cherokee
+Jeep;Grand Cherokee
+Jeep;Jeep
+Kia;Bongo
+Kia;Cadenza
+Kia;Carens
+Kia;Carnival
+Kia;Cerato
+Kia;K2500
+Kia;Magnetis
+Kia;Mohave
+Kia;Picanto
+Kia;Sorento
+Kia;Soul Sportage
+Lamborghini;Gallardo
+Lamborghini;Gallardo Spyder
+Land;Rover Defender
+Land;Rover Discovery
+Land;Rover Freelander
+Land;Rover Range Rover
+Mahindra;Mahindra Chassi
+Mahindra;Mahindra Pick0up
+Mahindra;Mahindra SUV
+Maserati;Coupé
+Maserati;Grancabrio
+Maserati;GranSport
+Maserati;GranTurismo
+Maserati;Quattroporte
+Mercedes;C200
+Mercedes;Calsse SLK
+Mercedes;Classe B
+Mercedes;Classe C
+Mercedes;Classe C Touring
+Mercedes;Classe CL
+Mercedes;Classe CLC
+Mercedes;Classe CLS
+Mercedes;Classe E
+Mercedes;Classe E Cabrio
+Mercedes;Classe E Coupé
+Mercedes;Classe E Touring
+Mercedes;Classe G
+Mercedes;Classe GL
+Mercedes;Classe GLK
+Mercedes;Classe M
+Mercedes;Classe R
+Mercedes;Classe S
+Mercedes;Classe SL
+Mercedes;CLK
+Mercedes;Sprinter
+Mini;Cabrio
+Mini;Cooper
+Mini;Cooper Clubman
+Mini;Countryman
+Mitsubishi;Air Track
+Mitsubishi;Asx
+Mitsubishi;L200
+Mitsubishi;L200 GL
+Mitsubishi;L200 Outdoor
+Mitsubishi;L200 Savana
+Mitsubishi;L200 Triton
+Mitsubishi;L200 Triton RS
+Mitsubishi;Lancer Evolution
+Mitsubishi;Outlander
+Mitsubishi;Pajero Dakar
+Mitsubishi;Pajero Full
+Mitsubishi;Pajero Full 3D
+Mitsubishi;Pajero HD
+Mitsubishi;Pajero Sport
+Mitsubishi;Pajero TR4
+Nissan;350z
+Nissan;Frontier
+Nissan;Grand Livina
+Nissan;Livina
+Nissan;March
+Nissan;Sentra
+Nissan;Tiida
+Nissan;XTRAIL
+Peugeot;207
+Peugeot;307
+Peugeot;407
+Peugeot;408
+Peugeot;3008
+Peugeot;207 Passion
+Peugeot;207 SW
+Peugeot;307 CC
+Peugeot;307 Sedan
+Peugeot;407 SW
+Peugeot;Boxer
+Peugeot;Hoggar
+Peugeot;Partner
+Porsche;911
+Porsche;911 Cabrio
+Porsche;911 Carrera
+Porsche;911 Turbo
+Porsche;Boxster
+Porsche;Cayenne
+Porsche;Cayman
+Porsche;Panamera
+Renault;Clio Htach
+Renault;Fluence
+Renault;Grand Scenic
+Renault;Kangoo
+Renault;Kangoo Express
+Renault;Logan
+Renault;Master
+Renault;Megane Grand Tour
+Renault;Megane Sedan
+Renault;Sandero
+Renault;Scenic
+Renault;Symbol
+Smart;Fortwo
+Ssangyong;Actyon
+Ssangyong;Actyon Sports
+Ssangyong;C200
+Ssangyong;Kyron
+Ssangyong;Rexton
+Ssangyong;Ssangyong
+Subaru;Forester
+Subaru;Impreza
+Subaru;Impreza Sedan
+Subaru;Impreza WRX
+Subaru;Impreza WRX STI
+Subaru;Legacy
+Subaru;Outback
+Subaru;Tribeca
+Suzuki;Grand Vitara
+Suzuki;Jimny
+Suzuki;SX4
+Toyota;Camry
+Toyota;Corolla
+Toyota;Corolla Fielder 
+Toyota;Hilux Cabine Dupla
+Toyota;Hilux Cabine Simples
+Toyota;Hilux SW4
+Toyota;Land Cruiser Prado
+Toyota;RAV4
+Troller;T4
+Volkswagen;Amarok
+Volkswagen;Bora
+Volkswagen;Crossfox
+Volkswagen;Eos
+Volkswagen;Fox
+Volkswagen;Fusca
+Volkswagen;Gol
+Volkswagen;Golf
+Volkswagen;Jetta
+Volkswagen;Jetta Variant
+Volkswagen;Kombi
+Volkswagen;Kombi Furgão
+Volkswagen;New Beetle
+Volkswagen;Parati
+Volkswagen;Passar Variant
+Volkswagen;Passat
+Volkswagen;Passat CC
+Volkswagen;Polo Hatch
+Volkswagen;Polo Sedan
+Volkswagen;Saveiro
+Volkswagen;SpaceFox
+Volkswagen;Tiguan
+Volkswagen;Touareg
+Volkswagen;Voyage
+Volvo;C30
+Volvo;C70
+Volvo;S40
+Volvo;S60
+Volvo;S80
+Volvo;V50
+Volvo;XC60
+Volvo;XC70
+Volvo;XC90
