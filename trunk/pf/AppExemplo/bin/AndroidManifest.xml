@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest android:versionCode="1" android:versionName="1.0"
+    package="com.example.appexemplo" xmlns:android="http://schemas.android.com/apk/res/android">
+    <uses-sdk android:minSdkVersion="8" android:targetSdkVersion="19"/>
+    <application android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name" android:theme="@style/AppTheme">
+        <activity android:label="@string/app_name" android:name="com.example.appexemplo.MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <!--created by 05163217658 at 2014-04-17 15:04:59-->
+        <activity android:name=".WelcomeActivity"/>
+        <!--created by 05163217658 at 2014-04-17 15:26:49-->
+        <provider android:authorities="com.example.appexemplo.provider.quicknotesprovider" android:name=".provider.QuickNotesProvider"/>
+    </application>
+</manifest>

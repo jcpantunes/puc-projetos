@@ -14,8 +14,9 @@
         style="border: 1dp"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:background="#FFFF00"
-        android:fitsSystemWindows="false"
+        android:background="#F7F7F7"
+        android:divider="#A0A0A0"
+        android:dividerHeight="2sp"
         android:padding="4dp" >
     </ListView>
 
