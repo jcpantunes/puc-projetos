@@ -14,7 +14,6 @@ import android.widget.ListAdapter;
 import android.widget.SimpleCursorAdapter;
 
 import com.example.monitorapp.provider.MonitorProvider;
-import com.example.monitorapp.service.WebServiceCallAsync;
 
 /**
  * @author 05163217658
@@ -42,7 +41,6 @@ public class ListarErroActivity extends ListActivity {
 		btnAtualizar.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				Log.i("ListarErros", "Atualizando Lista ...");
-				listarerros();
 				bindListaErros();
 			}
 		});
@@ -61,19 +59,10 @@ public class ListarErroActivity extends ListActivity {
 		setListAdapter(adapter);		
 	}
 	
-	private void listarerros() {
-//		StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
-//		StrictMode.setThreadPolicy(policy);
-//		WebServiceCall ws = new WebServiceCall();
-//		ws.recuperarObjetoWS();
-
-		WebServiceCallAsync ws = new WebServiceCallAsync(this.getContentResolver());
-		ws.execute("");
-	}
-	
 	private void iniciarWelcomeActivity() {
-		Intent i = new Intent(this, WelcomeActivity.class);
+		Intent i = new Intent(this, MainActivity.class);
 		startActivity(i);
+		finish();
 	}
 	
 }
