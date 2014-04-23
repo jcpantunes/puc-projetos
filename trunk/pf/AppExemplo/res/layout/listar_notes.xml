@@ -9,6 +9,12 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.appexemplo.MainActivity$PlaceholderFragment" >
     
+    <Button
+            android:id="@+id/voltar_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Voltar" />
+    
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
