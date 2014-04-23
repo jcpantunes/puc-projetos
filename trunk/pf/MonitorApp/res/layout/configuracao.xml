@@ -9,34 +9,33 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.appexemplo.MainActivity$PlaceholderFragment" >
     
+	<Button
+	    android:id="@+id/btnConfiguracaoVoltar"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:text="@string/btnVoltar"
+	    android:paddingBottom="8dp"
+    	android:paddingLeft="2dp"
+    	android:paddingRight="2dp"
+    	android:paddingTop="2dp" />
+    
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal" >
 
         <Button
-            android:id="@+id/listarErroBtnVoltar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/btnVoltar" />
-
+            android:id="@+id/configuracaoBtnIniciarServico"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:text="@string/configuracaoBtnIniciarServico" />
+        
         <Button
-            android:id="@+id/listarErroBtnAtualizar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/listarErroBtnAtualizar" />
+            android:id="@+id/configuracaoBtnPararServico"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:text="@string/configuracaoBtnPararServico" />
 
     </LinearLayout>
-    
-    <ListView
-        android:id="@android:id/list"
-        style="border: 1dp"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:background="#F7F7F7"
-        android:divider="#A0A0A0"
-        android:dividerHeight="2sp"
-        android:padding="4dp" >
-    </ListView>
 
 </LinearLayout>

@@ -16,13 +16,21 @@ public class MainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.welcome);
 		
-		executaThreadListarErro();
+		// executaThreadListarErro();
 		
-		final Button button = (Button) findViewById(R.id.welcomeBtnOk);
-		button.setOnClickListener(new View.OnClickListener() {
+		final Button btnModo1 = (Button) findViewById(R.id.welcomeBtnListarModo1);
+		btnModo1.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
-				Log.i("Welcome", "Encerrando tela Welcome ...");
+				Log.i("Welcome", "Acessando Listar Erro - Modo 1 ...");
 				iniciarListarErroActivity();
+			}
+		});
+		
+		final Button btnModo2 = (Button) findViewById(R.id.welcomeBtnListarModo2);
+		btnModo2.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+				Log.i("Welcome", "Acessando Listar Erro - Modo 2 ...");
+				iniciarListarErro2Activity();
 			}
 		});
 	}
@@ -30,7 +38,13 @@ public class MainActivity extends Activity {
 	private void iniciarListarErroActivity() {
 		Intent i = new Intent(this, ListarErroActivity.class);
 		startActivity(i);
-		// finish();
+		finish();
+	}
+	
+	private void iniciarListarErro2Activity() {
+		Intent i = new Intent(this, ConfiguracaoActivity.class);
+		startActivity(i);
+		finish();
 	}
 	
 	private void executaThreadListarErro() {

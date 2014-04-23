@@ -6,14 +6,26 @@
     <TextView
         android:id="@+id/welcomeTxtView"
         android:layout_width="fill_parent"
-        android:layout_height="300dip"
+        android:layout_height="200dip"
         android:gravity="center"
         android:text="@string/welcomeTxtView" />
 
     <Button
-        android:id="@+id/welcomeBtnOk"
+        android:id="@+id/welcomeBtnListarModo1"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="@string/welcomeBtnOk" />
+        android:text="@string/welcomeBtnListarModo1" />
+    
+    <Button
+        android:id="@+id/welcomeBtnListarModo2"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/welcomeBtnListarModo2" />
+    
+    <Button
+        android:id="@+id/welcomeBtnListarModo3"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/welcomeBtnListarModo3" />
 
 </TableLayout>
