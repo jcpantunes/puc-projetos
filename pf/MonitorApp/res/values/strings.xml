@@ -4,13 +4,20 @@
     <string name="app_name">MonitorApp</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="btnVoltar">Voltar</string>
 
     <!-- Welcome -->
-    <string name="welcomeTxtView">"Bem vindo à aplicação de Monitoracao!\n\nEssa aplicação foi feita durante o trabalho final &apos; do curso de Especializacao em ASD &apos;"</string>
-    <string name="welcomeBtnOk">Continuar</string>
+    <string name="welcomeTxtView">"Bem vindo à aplicação de Monitoracao!\n\nEssa aplicação foi feita durante o trabalho final do curso de Especializacao em ASD"</string>
+    <string name="welcomeBtnListarModo1">Listar Erros 1</string>
+    <string name="welcomeBtnListarModo2">Listar Erros 2</string>
+    <string name="welcomeBtnListarModo3">Listar Erros 3</string>
 
     <!-- Listar Erros -->
     <string name="listarErroBtnVoltar">Voltar</string>
     <string name="listarErroBtnAtualizar">Atualizar</string>
+    
+    <!-- Configuracao -->
+    <string name="configuracaoBtnIniciarServico">Iniciar Servico</string>
+    <string name="configuracaoBtnPararServico">Parar Servico</string>
     
 </resources>
