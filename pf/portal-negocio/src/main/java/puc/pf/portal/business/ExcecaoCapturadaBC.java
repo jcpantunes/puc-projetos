@@ -18,6 +18,10 @@ public class ExcecaoCapturadaBC extends DelegateCrud<ExcecaoCapturada, Long, Exc
 		// inserirObjetos();
 	}
 	
+	public ExcecaoCapturada inserirComFlush(ExcecaoCapturada entity) {
+		return getDelegate().inserirComFlush(entity);
+	}
+	
 	@Transactional
 	public void inserirObjetos() {
 		if (findAll().isEmpty()) {
