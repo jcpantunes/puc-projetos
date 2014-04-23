@@ -10,6 +10,10 @@ import android.util.Log;
 public class WebServiceCall {
 	// String NAMESPACE = "http://localhost:8080/jaxws";
     // String METHOD_NAME = "ConsultarListaExcecao";
+	
+//	StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+//	StrictMode.setThreadPolicy(policy);
+
     
     private static final String URL = "http://localhost:8080/portal-servicos/IServicePortal?wsdl";
 	private static final String NAMESPACE = "http://localhost:8080/jaxws";
