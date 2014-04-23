@@ -17,6 +17,8 @@ import javax.inject.Inject;
 
 import puc.pf.portal.business.ExcecaoCapturadaBC;
 import puc.pf.portal.domain.ExcecaoCapturada;
+import puc.pf.portal.view.IndexMB;
+import puc.pf.portal.view.ManterExcecaoCapturadaMB;
 
 //Inicialmente devemos implementar a classe CustomExceptionHandler que extende a classe ExceptionHandlerWrapper
 public class CustomExceptionHandler extends ExceptionHandlerWrapper {
@@ -80,10 +82,8 @@ public class CustomExceptionHandler extends ExceptionHandlerWrapper {
 				excecao.setTicket(ExcecaoCapturada.gerarTicket());
 				excecao.setDataExcecao();
 				
-				if (excecaoCapturadaBC == null) {
-					excecaoCapturadaBC = new ExcecaoCapturadaBC();
-				}
-				excecaoCapturadaBC.insert(excecao);
+				ExcecaoCapturadaBC excecaoCapturadaBC = new ExcecaoCapturadaBC();
+				excecaoCapturadaBC.inserirComFlush(excecao);
 
 				// Coloca uma mensagem de exceção no mapa da request
 				requestMap.put("exceptionMessage", exception.getMessage());
