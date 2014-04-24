@@ -13,7 +13,7 @@ import android.os.AsyncTask;
 import android.util.Log;
 
 import com.example.monitorapp.dto.ExcecaoCapturadaDTO;
-import com.example.monitorapp.provider.ListarErroDAO;
+import com.example.monitorapp.provider.ExcecaoCapturadaDAO;
 import com.example.monitorapp.util.Constantes;
 import com.example.monitorapp.util.MonitorNotificacao;
 
@@ -55,7 +55,7 @@ public class WebServiceCallAsync extends AsyncTask<String, Integer, Long> {
 	        SoapObject body = (SoapObject) envelope.bodyIn;
 
 	        if (body != null && body.getPropertyCount() > 0) {
-	        	ListarErroDAO dao = new ListarErroDAO();
+	        	ExcecaoCapturadaDAO dao = new ExcecaoCapturadaDAO();
 	        	List<ExcecaoCapturadaDTO> lista = dao.recuperarListaErro(context);
 	        	
 	        	for (int i = 0; i < body.getPropertyCount(); i++) {
@@ -81,7 +81,7 @@ public class WebServiceCallAsync extends AsyncTask<String, Integer, Long> {
     		MonitorNotificacao notificador = new MonitorNotificacao();
     		notificador.gerarNotificacao(context, "Ticket: " + soapDTO.getTicket(), soapDTO.getTipoExcecao());
     		
-    		ListarErroDAO dao = new ListarErroDAO();
+    		ExcecaoCapturadaDAO dao = new ExcecaoCapturadaDAO();
     		dao.inserirErro(context, soapDTO);
     	}
     }

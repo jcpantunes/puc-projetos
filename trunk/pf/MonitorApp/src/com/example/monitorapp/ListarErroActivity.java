@@ -10,7 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
-import com.example.monitorapp.provider.ListarErroDAO;
+import com.example.monitorapp.provider.ExcecaoCapturadaDAO;
 import com.example.monitorapp.service.WebServiceCallAsync;
 
 /**
@@ -47,7 +47,7 @@ public class ListarErroActivity extends ListActivity {
 		WebServiceCallAsync ws = new WebServiceCallAsync(this);
 		ws.execute("");
 		
-		ListarErroDAO adapter = new ListarErroDAO();
+		ExcecaoCapturadaDAO adapter = new ExcecaoCapturadaDAO();
 		setListAdapter(adapter.recuperarListaErroAdapter(this));
 	}
 	

@@ -13,7 +13,7 @@ import com.example.monitorapp.R;
 import com.example.monitorapp.dto.BaseDTO;
 import com.example.monitorapp.dto.ExcecaoCapturadaDTO;
 
-public class ListarErroDAO {
+public class ExcecaoCapturadaDAO {
 	
 	public List<ExcecaoCapturadaDTO> recuperarListaErro(Context context) {
 		List<ExcecaoCapturadaDTO> lista = new ArrayList<ExcecaoCapturadaDTO>();
