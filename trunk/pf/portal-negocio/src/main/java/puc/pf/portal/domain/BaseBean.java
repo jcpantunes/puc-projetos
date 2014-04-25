@@ -3,6 +3,12 @@ package puc.pf.portal.domain;
 import static javax.persistence.GenerationType.SEQUENCE;
 
 import java.io.Serializable;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -24,5 +30,18 @@ public class BaseBean implements Serializable {
 	public void setId(Long id) {
 		this.id = id;
 	}
+	
+	public static String retornaDataString(Date data) {
+        SimpleDateFormat sdf= new SimpleDateFormat("dd/MM/yyyy HH:mm:ss", new Locale("pt", "BR"));
+        return sdf.format(data);
+    }
+    
+    public static Date retornaDataDate(String data) {
+    	try {
+    		return DateFormat.getInstance().parse(data);
+    	} catch (ParseException e) {
+    		return Calendar.getInstance().getTime();
+    	}
+    }
 
 }

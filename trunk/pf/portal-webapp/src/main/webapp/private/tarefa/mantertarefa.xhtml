@@ -1,0 +1,50 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui" xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets" template="/template/main.xhtml">
+
+	<ui:define name="body">
+		<h:form prependId="false">
+			<p:toolbar>
+				<p:toolbarGroup align="left">
+					<p:commandButton value="#{messages['button.save']}" action="#{manterTarefaMB.insert}"
+						rendered="#{!manterTarefaMB.updateMode}" ajax="false" />
+					<p:commandButton value="#{messages['button.save']}" action="#{manterTarefaMB.update}"
+						rendered="#{manterTarefaMB.updateMode}" ajax="false" />
+					<p:commandButton value="#{messages['button.delete']}" onclick="confirmation.show()"
+						rendered="#{manterTarefaMB.updateMode}" type="button" immediate="true" ajax="false" />
+					<p:confirmDialog message="#{messages['label.confirm.delete']}" showEffect="bounce" hideEffect="explode"
+						header="#{messages['label.dialog.delete']}" severity="alert" widgetVar="confirmation">
+						<h:commandButton value="#{messages['button.dialog.yes']}" action="#{manterTarefaMB.delete}" immediate="true"
+							ajax="false" />
+						<h:commandButton value="#{messages['button.dialog.no']}" onclick="confirmation.hide()" type="button" />
+					</p:confirmDialog>
+				</p:toolbarGroup>
+			</p:toolbar>
+
+			<br />
+
+			<p:fieldset legend="#{messages['tarefa.label']}" toggleable="true" toggleSpeed="500">
+				<h:panelGrid id="fields" columns="3">
+					<h:outputLabel value="#{messages['tarefa.label.id']}: " for="id" styleClass="text-input" />
+					<h:outputText id="id" value="#{manterTarefaMB.bean.id}" />
+					<p:message for="id" />
+
+					<h:outputLabel value="#{messages['tarefa.label.nome']}: " for="nome" styleClass="text-input" />
+					<h:inputText id="nome" value="#{manterTarefaMB.bean.nome}"
+						title="#{messages['tarefa.label.nome']}" />
+					<p:message for="nome" />
+
+					<h:outputLabel value="#{messages['tarefa.label.data']}: " for="data" styleClass="text-input" />
+					<p:calendar id="data" value="#{manterTarefaMB.bean.data}" />
+					<p:message for="data" />
+				</h:panelGrid>
+				
+				<h:outputLabel value="#{messages['tarefa.label.funcionario']}: " for="lstFuncionario" styleClass="text-input" />
+				<p:selectOneMenu id="lstFuncionario" value="#{manterTarefaMB.bean.funcionario}" >
+            		<f:selectItems value="#{manterTarefaMB.listaFuncionario}" var="funcionario" itemLabel="#{funcionario.nome}" />
+           		</p:selectOneMenu> 
+
+			</p:fieldset>
+		</h:form>
+	</ui:define>
+</ui:composition>

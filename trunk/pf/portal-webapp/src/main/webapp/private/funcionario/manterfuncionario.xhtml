@@ -1,0 +1,44 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui" xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets" template="/template/main.xhtml">
+
+	<ui:define name="body">
+		<h:form prependId="false">
+			<p:toolbar>
+				<p:toolbarGroup align="left">
+					<p:commandButton value="#{messages['button.save']}" action="#{manterFuncionarioMB.insert}"
+						rendered="#{!manterFuncionarioMB.updateMode}" ajax="false" />
+					<p:commandButton value="#{messages['button.save']}" action="#{manterFuncionarioMB.update}"
+						rendered="#{manterFuncionarioMB.updateMode}" ajax="false" />
+					<p:commandButton value="#{messages['button.delete']}" onclick="confirmation.show()"
+						rendered="#{manterFuncionarioMB.updateMode}" type="button" immediate="true" ajax="false" />
+					<p:confirmDialog message="#{messages['label.confirm.delete']}" showEffect="bounce" hideEffect="explode"
+						header="#{messages['label.dialog.delete']}" severity="alert" widgetVar="confirmation">
+						<h:commandButton value="#{messages['button.dialog.yes']}" action="#{manterFuncionarioMB.delete}" immediate="true"
+							ajax="false" />
+						<h:commandButton value="#{messages['button.dialog.no']}" onclick="confirmation.hide()" type="button" />
+					</p:confirmDialog>
+				</p:toolbarGroup>
+			</p:toolbar>
+
+			<br />
+
+			<p:fieldset legend="#{messages['funcionario.label']}" toggleable="true" toggleSpeed="500">
+				<h:panelGrid id="fields" columns="3">
+					<h:outputLabel value="#{messages['funcionario.label.id']}: " for="id" styleClass="text-input" />
+					<h:outputText id="id" value="#{manterFuncionarioMB.bean.id}" />
+					<p:message for="id" />
+
+					<h:outputLabel value="#{messages['funcionario.label.nome']}: " for="nome" styleClass="text-input" />
+					<h:inputText id="nome" value="#{manterFuncionarioMB.bean.nome}"
+						title="#{messages['funcionario.label.nome']}" />
+					<p:message for="nome" />
+
+					<h:outputLabel value="#{messages['funcionario.label.matricula']}: " for="matricula" styleClass="text-input" />
+					<h:inputText id="matricula" value="#{manterFuncionarioMB.bean.matricula}" title="#{messages['funcionario.label.matricula']}" />
+					<p:message for="matricula" />
+				</h:panelGrid>
+			</p:fieldset>
+		</h:form>
+	</ui:define>
+</ui:composition>

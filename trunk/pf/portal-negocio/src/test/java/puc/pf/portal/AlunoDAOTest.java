@@ -7,22 +7,22 @@ import javax.inject.Inject;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import puc.pf.portal.business.AlunoBC;
-import puc.pf.portal.domain.Aluno;
+import puc.pf.portal.business.FuncionarioBC;
+import puc.pf.portal.domain.Funcionario;
 import br.gov.frameworkdemoiselle.junit.DemoiselleRunner;
 
 @RunWith(DemoiselleRunner.class)
 public class AlunoDAOTest {
 
 	@Inject
-	private AlunoBC bc;
+	private FuncionarioBC bc;
 
 	@Test
 	public void say() {
 		// bc.inserirObjetos();
 		
-		List<Aluno> lista = bc.findAll();
-		for (Aluno obj : lista) {
+		List<Funcionario> lista = bc.findAll();
+		for (Funcionario obj : lista) {
 			System.out.println("====================> " + obj.getNome());
 		}
 	}
