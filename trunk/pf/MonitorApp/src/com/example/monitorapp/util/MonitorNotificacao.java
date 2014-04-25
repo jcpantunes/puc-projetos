@@ -15,7 +15,7 @@ public class MonitorNotificacao {
 	}
 	
 	public void gerarNotificacao(Context context, String titulo, String mensagem) {
-		String msgBarra = "Você recebeu uma mensagem ...";
+		String msgBarra = "MonitorApp: Você recebeu uma mensagem ...";
 		criarNotificacao(context, msgBarra, titulo, mensagem, ListarErroActivity.class);
 	}
 

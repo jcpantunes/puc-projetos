@@ -8,13 +8,13 @@
 
     <!-- Welcome -->
     <string name="welcomeTxtView">"Bem vindo à aplicação de Monitoracao!\n\nEssa aplicação foi feita durante o trabalho final do curso de Especializacao em ASD"</string>
-    <string name="welcomeBtnListarModo1">Listar Erros 1</string>
-    <string name="welcomeBtnListarModo2">Listar Erros 2</string>
-    <string name="welcomeBtnListarModo3">Listar Erros 3</string>
+    <string name="welcomeBtnListarErro">Listar Erros</string>
+    <string name="welcomeBtnConfiguracao">Configuracao</string>
 
     <!-- Listar Erros -->
     <string name="listarErroBtnVoltar">Voltar</string>
     <string name="listarErroBtnAtualizar">Atualizar</string>
+    <string name="listarErroBtnVerStacktrace">" >> "</string>
     
     <!-- Configuracao -->
     <string name="configuracaoBtnIniciarServico">Iniciar Servico</string>

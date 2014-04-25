@@ -10,7 +10,7 @@
     tools:context="com.example.appexemplo.MainActivity$PlaceholderFragment" >
     
 	<Button
-	    android:id="@+id/btnConfiguracaoVoltar"
+	    android:id="@+id/stacktraceBtnVoltar"
 	    android:layout_width="fill_parent"
 	    android:layout_height="wrap_content"
 	    android:text="@string/btnVoltar"
@@ -19,23 +19,7 @@
     	android:paddingRight="2dp"
     	android:paddingTop="2dp" />
     
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal" >
-
-        <Button
-            android:id="@+id/configuracaoBtnIniciarServico"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:text="@string/configuracaoBtnIniciarServico" />
-        
-        <Button
-            android:id="@+id/configuracaoBtnPararServico"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:text="@string/configuracaoBtnPararServico" />
-
-    </LinearLayout>
+	<TextView android:id="@+id/txtStacktrace" android:textSize="10sp" android:textColor="#FF000000" 
+			    android:layout_width="fill_parent" android:layout_height="fill_parent" /> 
 
 </LinearLayout>

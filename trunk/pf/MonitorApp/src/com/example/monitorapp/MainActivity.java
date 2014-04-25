@@ -18,18 +18,18 @@ public class MainActivity extends Activity {
 		
 		// executaThreadListarErro();
 		
-		final Button btnModo1 = (Button) findViewById(R.id.welcomeBtnListarModo1);
+		final Button btnModo1 = (Button) findViewById(R.id.welcomeBtnListarErro);
 		btnModo1.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
-				Log.i("Welcome", "Acessando Listar Erro - Modo 1 ...");
+				Log.i("Welcome", "Acessando Listar Erro ...");
 				iniciarListarErroActivity();
 			}
 		});
 		
-		final Button btnModo2 = (Button) findViewById(R.id.welcomeBtnListarModo2);
+		final Button btnModo2 = (Button) findViewById(R.id.welcomeBtnConfiguracao);
 		btnModo2.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
-				Log.i("Welcome", "Acessando Listar Erro - Modo 2 ...");
+				Log.i("Welcome", "Acessando Configuracao do App ...");
 				iniciarListarErro2Activity();
 			}
 		});
