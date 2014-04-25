@@ -11,21 +11,15 @@
         android:text="@string/welcomeTxtView" />
 
     <Button
-        android:id="@+id/welcomeBtnListarModo1"
+        android:id="@+id/welcomeBtnListarErro"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="@string/welcomeBtnListarModo1" />
+        android:text="@string/welcomeBtnListarErro" />
     
     <Button
-        android:id="@+id/welcomeBtnListarModo2"
+        android:id="@+id/welcomeBtnConfiguracao"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="@string/welcomeBtnListarModo2" />
+        android:text="@string/welcomeBtnConfiguracao" />
     
-    <Button
-        android:id="@+id/welcomeBtnListarModo3"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/welcomeBtnListarModo3" />
-
 </TableLayout>
