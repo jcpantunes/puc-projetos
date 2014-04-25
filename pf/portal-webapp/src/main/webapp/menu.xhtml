@@ -4,14 +4,19 @@
 
 	<h:form>
 		<p:menubar>
-			<p:submenu label="#{messages['menu.bookmark']}">
-				<p:menuitem value="#{messages['menu.menuitem.new']}" url="/private/bookmark/bookmark_edit.jsf" />
-				<p:menuitem value="#{messages['menu.menuitem.list']}" url="/private/bookmark/bookmark_list.jsf" />
+<!-- 			<p:submenu label="#{messages['menu.bookmark']}"> -->
+<!-- 				<p:menuitem value="#{messages['menu.menuitem.new']}" url="/private/bookmark/bookmark_edit.jsf" /> -->
+<!-- 				<p:menuitem value="#{messages['menu.menuitem.list']}" url="/private/bookmark/bookmark_list.jsf" /> -->
+<!-- 			</p:submenu> -->
+			
+			<p:submenu label="#{messages['menu.funcionario']}">
+				<p:menuitem value="#{messages['menu.menuitem.new']}" url="/private/funcionario/manterfuncionario.jsf" />
+				<p:menuitem value="#{messages['menu.menuitem.list']}" url="/private/funcionario/listarfuncionario.jsf" />
 			</p:submenu>
 			
-			<p:submenu label="#{messages['menu.aluno']}">
-				<p:menuitem value="#{messages['menu.menuitem.new']}" url="/private/aluno/manteraluno.jsf" />
-				<p:menuitem value="#{messages['menu.menuitem.list']}" url="/private/aluno/listaraluno.jsf" />
+			<p:submenu label="#{messages['menu.tarefa']}">
+				<p:menuitem value="#{messages['menu.menuitem.new']}" url="/private/tarefa/mantertarefa.jsf" />
+				<p:menuitem value="#{messages['menu.menuitem.list']}" url="/private/tarefa/listartarefa.jsf" />
 			</p:submenu>
 			
 			<p:submenu label="#{messages['menu.excecao']}">

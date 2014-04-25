@@ -5,8 +5,8 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import puc.pf.portal.business.AlunoBC;
-import puc.pf.portal.domain.Aluno;
+import puc.pf.portal.business.TarefaBC;
+import puc.pf.portal.domain.Tarefa;
 import br.gov.frameworkdemoiselle.annotation.NextView;
 import br.gov.frameworkdemoiselle.annotation.PreviousView;
 import br.gov.frameworkdemoiselle.stereotype.ViewController;
@@ -14,17 +14,17 @@ import br.gov.frameworkdemoiselle.template.AbstractListPageBean;
 import br.gov.frameworkdemoiselle.transaction.Transactional;
 
 @ViewController
-@NextView("/private/aluno/manteraluno.xhtml")
-@PreviousView("/private/aluno/listaraluno.xhtml")
-public class ListarAlunoMB extends AbstractListPageBean<Aluno, Long> {
+@NextView("/private/funcionario/manterfuncionario.xhtml")
+@PreviousView("/private/funcionario/listarfuncionario.xhtml")
+public class ListarTarefaMB extends AbstractListPageBean<Tarefa, Long> {
 
 	private static final long serialVersionUID = 1L;
 
 	@Inject
-	private AlunoBC bc;
+	private TarefaBC bc;
 
 	@Override
-	protected List<Aluno> handleResultList() {
+	protected List<Tarefa> handleResultList() {
 		return this.bc.findAll();
 	}
 	

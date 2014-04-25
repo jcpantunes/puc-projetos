@@ -7,7 +7,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-import puc.pf.portal.business.AlunoBC;
+import puc.pf.portal.business.FuncionarioBC;
 import puc.pf.portal.business.ExcecaoCapturadaBC;
 import puc.pf.portal.dto.AlunoDTO;
 import puc.pf.portal.dto.ExcecaoCapturadaDTO;
@@ -33,7 +33,7 @@ public class RestServicePortal {
 	@Path(Constantes.OPERACAO_CONSULTAR_LISTA_ALUNO + "/")
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<AlunoDTO> consultarListaAluno() {
-    	AlunoBC bc = new AlunoBC();
+    	FuncionarioBC bc = new FuncionarioBC();
     	return AlunoDTO.parserFromAluno(bc.findAll());
     }
 	

@@ -9,7 +9,7 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
-import puc.pf.portal.domain.Aluno;
+import puc.pf.portal.domain.Funcionario;
 import puc.pf.portal.util.Constantes;
 
 @XmlRootElement(name=Constantes.ALUNO, namespace=Constantes.NAMESPACE + Constantes.DOMINIO_ALUNO)
@@ -50,7 +50,7 @@ public class AlunoDTO extends BaseBeanDTO {
 		this.matricula = matricula;
 	}
 	
-	public static AlunoDTO parserFromAluno(Aluno objeto) {
+	public static AlunoDTO parserFromAluno(Funcionario objeto) {
 		AlunoDTO dto = new AlunoDTO();
 		dto.setId(objeto.getId());
 		dto.nome = objeto.getNome();
@@ -58,9 +58,9 @@ public class AlunoDTO extends BaseBeanDTO {
 		return dto;
 	}
 	
-	public static List<AlunoDTO> parserFromAluno(List<Aluno> lista) {
+	public static List<AlunoDTO> parserFromAluno(List<Funcionario> lista) {
 		List<AlunoDTO> listaRetorno = new ArrayList<AlunoDTO>();
-		for (Aluno objeto : lista) {
+		for (Funcionario objeto : lista) {
 			listaRetorno.add(parserFromAluno(objeto));
 		}
 		return listaRetorno;

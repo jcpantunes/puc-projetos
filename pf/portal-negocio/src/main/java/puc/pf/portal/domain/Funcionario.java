@@ -1,10 +1,16 @@
 package puc.pf.portal.domain;
 
+import java.util.List;
+
+import javax.persistence.AttributeOverride;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.OneToMany;
 
 @Entity
-public class Aluno extends BaseBean {
+@AttributeOverride(name = "id", column = @Column(name = "id_funcionario", nullable = false))
+public class Funcionario extends BaseBean {
 
 	private static final long serialVersionUID = 1L;
 	
@@ -14,11 +20,14 @@ public class Aluno extends BaseBean {
 	@Column
 	private Long matricula;
 	
-	public Aluno() {
+	@OneToMany(mappedBy = "funcionario", fetch = FetchType.LAZY)
+	private List<Tarefa> listaTarefa;
+	
+	public Funcionario() {
 		super();
 	}
 	
-	public Aluno(String nome, Long matricula) {
+	public Funcionario(String nome, Long matricula) {
 		this.nome = nome;
 		this.matricula = matricula;
 	}

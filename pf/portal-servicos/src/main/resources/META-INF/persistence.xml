@@ -7,7 +7,8 @@
 		<non-jta-data-source>java:jboss/datasources/postgres-ds</non-jta-data-source>
 		
 		<class>puc.pf.portal.domain.Bookmark</class>
-		<class>puc.pf.portal.domain.Aluno</class>
+		<class>puc.pf.portal.domain.Funcionario</class>
+		<class>puc.pf.portal.domain.Tarefa</class>
 		<class>puc.pf.portal.domain.ExcecaoCapturada</class>
 		
 		<properties>

@@ -6,8 +6,8 @@ public class Constantes {
 	
 	public static final String CONTEXTO_REST = "serviceportalrest";
 	
-	// public static final String URI = "http://10.200.108.167:8080";
-	public static final String URI = "http://192.168.0.106:8080";
+	public static final String URI = "http://10.200.108.167:8080";
+	// public static final String URI = "http://192.168.0.106:8080";
 	// public static final String URI = "http://localhost:8080";
 	
 	public static final String URL_WSDL = URI + "/portal-servicos/IServicePortal?wsdl";
