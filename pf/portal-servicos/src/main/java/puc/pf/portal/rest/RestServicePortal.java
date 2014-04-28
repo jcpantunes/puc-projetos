@@ -4,13 +4,15 @@ import java.util.List;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-import puc.pf.portal.business.FuncionarioBC;
 import puc.pf.portal.business.ExcecaoCapturadaBC;
-import puc.pf.portal.dto.AlunoDTO;
+import puc.pf.portal.business.FuncionarioBC;
+import puc.pf.portal.domain.Funcionario;
 import puc.pf.portal.dto.ExcecaoCapturadaDTO;
+import puc.pf.portal.dto.FuncionarioDTO;
 import puc.pf.portal.util.Constantes;
 
 @Path(Constantes.CONTEXTO_REST)
@@ -24,17 +26,29 @@ public class RestServicePortal {
 	public String principal() {
     	return "Web Services desenvolvido para seminario sobre JAX-RS " +
     			"Consultas Disponiveis: " +
-    			Constantes.URI + "/" + Constantes.CONTEXTO + "/" + Constantes.CONTEXTO_REST + "/consultarListaAluno/" +
-    			Constantes.URI + "/" + Constantes.CONTEXTO + "/" + Constantes.CONTEXTO_REST + "/consultarAluno/100" +
+    			Constantes.URI + "/" + Constantes.CONTEXTO + "/" + Constantes.CONTEXTO_REST + "/consultarListaFuncionario/" +
+    			Constantes.URI + "/" + Constantes.CONTEXTO + "/" + Constantes.CONTEXTO_REST + "/consultarFuncionario/100" +
     			Constantes.URI + "/" + Constantes.CONTEXTO + "/" + Constantes.CONTEXTO_REST + "/consultarListaExcecao";
     }
     
 	@GET
-	@Path(Constantes.OPERACAO_CONSULTAR_LISTA_ALUNO + "/")
+	@Path(Constantes.OPERACAO_CONSULTAR_LISTA_FUNCIONARIO + "/")
 	@Produces(MediaType.APPLICATION_JSON)
-	public List<AlunoDTO> consultarListaAluno() {
+	public List<FuncionarioDTO> consultarListaFuncionario() {
     	FuncionarioBC bc = new FuncionarioBC();
-    	return AlunoDTO.parserFromAluno(bc.findAll());
+    	return FuncionarioDTO.parserFromFuncionario(bc.findAll());
+    }
+	
+	 @GET
+	 @Path(Constantes.OPERACAO_CONSULTAR_FUNCIONARIO + "/{codigoFuncionario}")
+	@Produces(MediaType.APPLICATION_JSON)
+    public FuncionarioDTO consultarFuncionario(@PathParam("codigoFuncionario") final Long codigoFuncionario) {
+    	FuncionarioBC dao = new FuncionarioBC();
+    	Funcionario f = dao.load(codigoFuncionario);
+    	if (f != null) {
+    		return FuncionarioDTO.parserFromFuncionario(f);
+    	}
+    	return (new FuncionarioDTO());
     }
 	
 	@GET
