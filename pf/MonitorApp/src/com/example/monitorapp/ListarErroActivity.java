@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.ListView;
 
 import com.example.monitorapp.provider.ExcecaoCapturadaDAO;
 import com.example.monitorapp.service.WebServiceCallAsync;
@@ -44,14 +45,6 @@ public class ListarErroActivity extends ListActivity {
 			}
 		});
 		
-		final Button btnVerStacktrace = (Button) findViewById(R.id.listarErroBtnVerStacktrace);
-		btnVerStacktrace.setOnClickListener(new View.OnClickListener() {
-			public void onClick(View v) {
-				Log.i("ListarErros", "Visualizar Stacktrace ...");
-				chamarStacktraceActivity();
-			}
-		});
-		
 		this.getListView().setOnItemClickListener(new AdapterView.OnItemClickListener() {
 		    @Override
 		    public void onItemClick(AdapterView adapter, View viw, int posicao,long id) {
@@ -62,6 +55,20 @@ public class ListarErroActivity extends ListActivity {
 		    }            
 		});
 
+		
+//		final Button btnVerStacktrace = (Button) findViewById(R.id.listarErroBtnVerStacktrace);
+//		btnVerStacktrace.setOnClickListener(new View.OnClickListener() {
+//			public void onClick(View v) {
+//				Log.i("ListarErros", "Visualizar Stacktrace ...");
+//				chamarStacktraceActivity();
+//			}
+//		});
+		
+//		ListView listView = (ListView) findViewById(R.id.list_item);
+//		listView.setOnItemClickListener(
+//				); 
+
+		
 	}
 	
 	private void bindListaErros() {
@@ -70,6 +77,7 @@ public class ListarErroActivity extends ListActivity {
 		
 		ExcecaoCapturadaDAO adapter = new ExcecaoCapturadaDAO();
 		setListAdapter(adapter.recuperarListaErroAdapter(this));
+		
 	}
 	
 	private void chamarMainActivity() {
