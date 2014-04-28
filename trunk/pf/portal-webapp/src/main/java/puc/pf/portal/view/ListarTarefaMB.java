@@ -14,8 +14,8 @@ import br.gov.frameworkdemoiselle.template.AbstractListPageBean;
 import br.gov.frameworkdemoiselle.transaction.Transactional;
 
 @ViewController
-@NextView("/private/funcionario/manterfuncionario.xhtml")
-@PreviousView("/private/funcionario/listarfuncionario.xhtml")
+@NextView("/private/tarefa/mantertarefa.xhtml")
+@PreviousView("/private/tarefa/listartarefa.xhtml")
 public class ListarTarefaMB extends AbstractListPageBean<Tarefa, Long> {
 
 	private static final long serialVersionUID = 1L;

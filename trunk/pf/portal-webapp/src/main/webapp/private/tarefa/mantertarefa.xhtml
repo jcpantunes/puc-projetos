@@ -40,8 +40,8 @@
 				</h:panelGrid>
 				
 				<h:outputLabel value="#{messages['tarefa.label.funcionario']}: " for="lstFuncionario" styleClass="text-input" />
-				<p:selectOneMenu id="lstFuncionario" value="#{manterTarefaMB.bean.funcionario}" >
-            		<f:selectItems value="#{manterTarefaMB.listaFuncionario}" var="funcionario" itemLabel="#{funcionario.nome}" />
+				<p:selectOneMenu id="lstFuncionario" value="#{manterTarefaMB.bean.funcionario.id}" >
+            		<f:selectItems value="#{manterTarefaMB.listaFuncionario}" var="funcionario" itemLabel="#{funcionario.nome}" itemValue="#{funcionario.id}" />
            		</p:selectOneMenu> 
 
 			</p:fieldset>
