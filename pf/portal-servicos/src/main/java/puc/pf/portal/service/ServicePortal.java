@@ -31,6 +31,11 @@ public class ServicePortal implements IServicePortal {
     	return ExcecaoCapturadaDTO.parserFromExcecao(bc.findAll());
     }
 	
+	public ExcecaoCapturadaDTO consultarExcecao(Long codigoExcecaoCapturada) {
+		ExcecaoCapturadaBC bc = new ExcecaoCapturadaBC();
+    	return ExcecaoCapturadaDTO.parserFromExcecao(bc.load(codigoExcecaoCapturada));
+	}
+	
 //    public AlunoDTO consultarAluno(Integer codigoAluno) {
 //    	AlunoDAO dao = new AlunoDAO();
 //    	Aluno f = dao.listarPorCodigo(codigoAluno);

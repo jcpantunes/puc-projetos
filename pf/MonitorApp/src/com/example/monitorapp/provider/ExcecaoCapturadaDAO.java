@@ -31,6 +31,16 @@ public class ExcecaoCapturadaDAO {
 		return lista;
 	}
 	
+	public ExcecaoCapturadaDTO recuperarErro(Context context, Integer id) {
+		List<ExcecaoCapturadaDTO> lista = recuperarListaErro(context);
+		for (ExcecaoCapturadaDTO dto : lista) {
+			if(dto.getId().intValue() == id) {
+				return dto;
+			}
+		}
+		return null;
+	}
+	
 	public ListAdapter recuperarListaErroAdapter(Context context) {
 		Cursor mCursor = context.getContentResolver().query(
 				MonitorProvider.Excecao.CONTENT_URI, null, null, null, null);

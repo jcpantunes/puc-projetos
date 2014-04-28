@@ -5,13 +5,13 @@ package com.example.monitorapp;
 
 import android.app.ListActivity;
 import android.content.Intent;
-import android.database.sqlite.SQLiteCursor;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.Button;
-import android.widget.ListView;
 
 import com.example.monitorapp.provider.ExcecaoCapturadaDAO;
 import com.example.monitorapp.service.WebServiceCallAsync;
@@ -48,9 +48,9 @@ public class ListarErroActivity extends ListActivity {
 		this.getListView().setOnItemClickListener(new AdapterView.OnItemClickListener() {
 		    @Override
 		    public void onItemClick(AdapterView adapter, View viw, int posicao,long id) {
-			    SQLiteCursor c = (SQLiteCursor)adapter.getAdapter().getItem(posicao);
+				Cursor info = (Cursor) adapter.getAdapter().getItem(posicao);
 			    Intent it = new Intent(getBaseContext(), StacktraceActivity.class);
-			    it.putExtra("id", c.getInt(0));
+			    it.putExtra("id", info.getInt(0));
 			    startActivity(it);
 		    }            
 		});
@@ -77,7 +77,6 @@ public class ListarErroActivity extends ListActivity {
 		
 		ExcecaoCapturadaDAO adapter = new ExcecaoCapturadaDAO();
 		setListAdapter(adapter.recuperarListaErroAdapter(this));
-		
 	}
 	
 	private void chamarMainActivity() {
