@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 
 import puc.pf.portal.business.FuncionarioBC;
@@ -16,7 +18,7 @@ import br.gov.frameworkdemoiselle.template.AbstractEditPageBean;
 import br.gov.frameworkdemoiselle.transaction.Transactional;
 
 @ViewController
-@PreviousView("/private/funcionario/listarfuncionario.xhtml")
+@PreviousView("/private/tarefa/listartarefa.xhtml")
 public class ManterTarefaMB extends AbstractEditPageBean<Tarefa, Long> {
 
 	private static final long serialVersionUID = 1L;
@@ -31,6 +33,7 @@ public class ManterTarefaMB extends AbstractEditPageBean<Tarefa, Long> {
 	
 	@PostConstruct
     public void init() {
+		getBean().setFuncionario(new Funcionario());
 		listaFuncionario = this.funcionarioBC.findAll();
 	}
 	
@@ -44,8 +47,15 @@ public class ManterTarefaMB extends AbstractEditPageBean<Tarefa, Long> {
 	@Override
 	@Transactional
 	public String insert() {
-		this.bc.insert(getBean());
-		return getPreviousView();
+		if (getBean().getFuncionario().getId() != null) {
+			getBean().setFuncionario(this.funcionarioBC.load(getBean().getFuncionario().getId()));
+			this.bc.insert(getBean());
+			return getPreviousView();
+		} else {
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(
+									FacesMessage.SEVERITY_ERROR, "O campo usuario deve ser preenchido.", ""));
+		}
+		return "";
 	}
 
 	@Override

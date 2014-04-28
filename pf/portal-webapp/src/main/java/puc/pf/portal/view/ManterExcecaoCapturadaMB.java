@@ -4,7 +4,6 @@ import javax.inject.Inject;
 
 import puc.pf.portal.business.ExcecaoCapturadaBC;
 import puc.pf.portal.domain.ExcecaoCapturada;
-import br.gov.frameworkdemoiselle.annotation.PreviousView;
 import br.gov.frameworkdemoiselle.stereotype.ViewController;
 import br.gov.frameworkdemoiselle.template.AbstractEditPageBean;
 import br.gov.frameworkdemoiselle.transaction.Transactional;

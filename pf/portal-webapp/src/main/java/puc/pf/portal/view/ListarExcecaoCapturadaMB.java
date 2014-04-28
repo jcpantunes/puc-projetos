@@ -12,8 +12,8 @@ import br.gov.frameworkdemoiselle.stereotype.ViewController;
 import br.gov.frameworkdemoiselle.template.AbstractListPageBean;
 
 @ViewController
-@NextView("/private/aluno/manteraluno.xhtml")
-@PreviousView("/private/aluno/listaraluno.xhtml")
+@NextView("/private/excecaocapturada/manterexcecao.xhtml")
+@PreviousView("/private/excecaocapturada/listarexceceao.xhtml")
 public class ListarExcecaoCapturadaMB extends AbstractListPageBean<ExcecaoCapturada, Long> {
 
 	private static final long serialVersionUID = 1L;
