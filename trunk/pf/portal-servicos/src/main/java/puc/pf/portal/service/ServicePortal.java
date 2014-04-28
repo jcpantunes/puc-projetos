@@ -7,7 +7,7 @@ import javax.jws.WebService;
 import puc.pf.portal.IServicePortal;
 import puc.pf.portal.business.FuncionarioBC;
 import puc.pf.portal.business.ExcecaoCapturadaBC;
-import puc.pf.portal.dto.AlunoDTO;
+import puc.pf.portal.dto.FuncionarioDTO;
 import puc.pf.portal.dto.ExcecaoCapturadaDTO;
 
 import com.sun.xml.ws.developer.SchemaValidation;
@@ -16,11 +16,16 @@ import com.sun.xml.ws.developer.SchemaValidation;
 @WebService(endpointInterface="puc.pf.portal.IServicePortal", portName="IServicePortalPort",  serviceName="IServicePortal")
 public class ServicePortal implements IServicePortal {
 	
-	public List<AlunoDTO> consultarListaAluno() {
+	public List<FuncionarioDTO> consultarListaFuncionario() {
     	FuncionarioBC bc = new FuncionarioBC();
-    	return AlunoDTO.parserFromAluno(bc.findAll());
+    	return FuncionarioDTO.parserFromFuncionario(bc.findAll());
     }
     
+	public FuncionarioDTO consultarFuncionario(Long codigoFuncionario) {
+		FuncionarioBC bc = new FuncionarioBC();
+    	return FuncionarioDTO.parserFromFuncionario(bc.load(codigoFuncionario));
+	}
+	
 	public List<ExcecaoCapturadaDTO> consultarListaExcecao() {
 		ExcecaoCapturadaBC bc = new ExcecaoCapturadaBC();
     	return ExcecaoCapturadaDTO.parserFromExcecao(bc.findAll());

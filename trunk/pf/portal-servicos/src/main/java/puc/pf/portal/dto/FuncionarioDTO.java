@@ -12,10 +12,10 @@ import javax.xml.bind.annotation.XmlType;
 import puc.pf.portal.domain.Funcionario;
 import puc.pf.portal.util.Constantes;
 
-@XmlRootElement(name=Constantes.ALUNO, namespace=Constantes.NAMESPACE + Constantes.DOMINIO_ALUNO)
+@XmlRootElement(name=Constantes.FUNCIONARIO, namespace=Constantes.NAMESPACE + Constantes.DOMINIO_FUNCIONARIO)
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name=Constantes.ALUNO, namespace=Constantes.NAMESPACE + Constantes.DOMINIO_ALUNO)
-public class AlunoDTO extends BaseBeanDTO {
+@XmlType(name=Constantes.FUNCIONARIO, namespace=Constantes.NAMESPACE + Constantes.DOMINIO_FUNCIONARIO)
+public class FuncionarioDTO extends BaseBeanDTO {
 	
 	private static final long serialVersionUID = 1L;
 
@@ -25,10 +25,10 @@ public class AlunoDTO extends BaseBeanDTO {
 	@XmlElement(name="Matricula", required=true, nillable=true)
 	private Long matricula;
 	
-	public AlunoDTO() {
+	public FuncionarioDTO() {
 	}
 	
-	public AlunoDTO(Long id, String nome, Long matricula) {
+	public FuncionarioDTO(Long id, String nome, Long matricula) {
 		this.setId(id);
 		this.nome = nome;
 		this.matricula = matricula;
@@ -50,18 +50,18 @@ public class AlunoDTO extends BaseBeanDTO {
 		this.matricula = matricula;
 	}
 	
-	public static AlunoDTO parserFromAluno(Funcionario objeto) {
-		AlunoDTO dto = new AlunoDTO();
+	public static FuncionarioDTO parserFromFuncionario(Funcionario objeto) {
+		FuncionarioDTO dto = new FuncionarioDTO();
 		dto.setId(objeto.getId());
 		dto.nome = objeto.getNome();
 		dto.matricula = objeto.getMatricula();
 		return dto;
 	}
 	
-	public static List<AlunoDTO> parserFromAluno(List<Funcionario> lista) {
-		List<AlunoDTO> listaRetorno = new ArrayList<AlunoDTO>();
+	public static List<FuncionarioDTO> parserFromFuncionario(List<Funcionario> lista) {
+		List<FuncionarioDTO> listaRetorno = new ArrayList<FuncionarioDTO>();
 		for (Funcionario objeto : lista) {
-			listaRetorno.add(parserFromAluno(objeto));
+			listaRetorno.add(parserFromFuncionario(objeto));
 		}
 		return listaRetorno;
 	}
