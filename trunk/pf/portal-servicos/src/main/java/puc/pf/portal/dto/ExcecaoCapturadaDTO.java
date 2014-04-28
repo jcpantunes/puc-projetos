@@ -82,11 +82,13 @@ public class ExcecaoCapturadaDTO extends BaseBeanDTO {
 	
 	public static ExcecaoCapturadaDTO parserFromExcecao(ExcecaoCapturada objeto) {
 		ExcecaoCapturadaDTO dto = new ExcecaoCapturadaDTO();
-		dto.setId(objeto.getId());
-		dto.tipoExcecao = objeto.getTipoExcecao();
-		dto.stacktrace = objeto.getStacktrace();
-		dto.ticket = objeto.getTicket();
-		dto.dataExcecao = objeto.getDataExcecao();
+		if (objeto != null) {
+			dto.setId(objeto.getId());
+			dto.tipoExcecao = objeto.getTipoExcecao();
+			dto.stacktrace = objeto.getStacktrace();
+			dto.ticket = objeto.getTicket();
+			dto.dataExcecao = objeto.getDataExcecao();
+		}
 		return dto;
 	}
 	

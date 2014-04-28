@@ -37,6 +37,10 @@
         <!--created by 05163217658 at 2014-04-17 15:26:49-->
         <activity android:name=".ConfiguracaoActivity"/>
         
+        <!--created by 05163217658 at 2014-04-17 15:26:49-->
+        <activity android:name=".StacktraceActivity"/>
+        
+        
 		<!--created by 05163217658 at 2014-04-17 15:26:49-->
         <provider android:authorities="com.example.monitorapp.provider.monitorprovider" android:name=".provider.MonitorProvider" />
         

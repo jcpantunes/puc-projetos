@@ -35,13 +35,6 @@ public class WebServiceCallAsync extends AsyncTask<String, Integer, Long> {
     }
 
     protected void onPostExecute(Long result) {
-//    	try {
-//			Thread.sleep(10000);
-//		} catch (InterruptedException e) {
-//			e.printStackTrace();
-//		}
-//    	WebServiceCallAsync taskAsync = new WebServiceCallAsync(context);
-//    	taskAsync.execute("");
     }
 	
     public void recuperarObjetoWS() {
@@ -75,7 +68,7 @@ public class WebServiceCallAsync extends AsyncTask<String, Integer, Long> {
     private void inserirObjeto(SoapObject object, List<ExcecaoCapturadaDTO> lista) {
     	ExcecaoCapturadaDTO soapDTO = ExcecaoCapturadaDTO.parseFromSoapObject(object);
 
-    	if (lista != null && lista.size() > 0 && !verificarTicket(soapDTO.getTicket(), lista)) {
+    	if (!verificarTicket(soapDTO.getTicket(), lista)) {
     		Log.i("AsyncTask", "===========> Novo Ticket: " + soapDTO.getTicket());
     		
     		MonitorNotificacao notificador = new MonitorNotificacao();
@@ -88,11 +81,13 @@ public class WebServiceCallAsync extends AsyncTask<String, Integer, Long> {
     
     @SuppressLint("DefaultLocale")
 	private boolean verificarTicket(String ticket, List<ExcecaoCapturadaDTO> lista) {
-    	for (ExcecaoCapturadaDTO dto : lista) {
-    		if (ticket.toLowerCase().equalsIgnoreCase(dto.getTicket().toLowerCase())) {
-    			return true;
-    		}
-    	}
+    	if (lista != null && lista.size() > 0) {
+	    	for (ExcecaoCapturadaDTO dto : lista) {
+	    		if (ticket.toLowerCase().equalsIgnoreCase(dto.getTicket().toLowerCase())) {
+	    			return true;
+	    		}
+	    	}
+    	}	
     	return false;
     }
     

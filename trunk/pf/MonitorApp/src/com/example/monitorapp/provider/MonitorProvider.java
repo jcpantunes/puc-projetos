@@ -29,7 +29,7 @@ public class MonitorProvider extends ContentProvider {
 
 	// Versao do banco de dados.
 	// Este valor é importante pois é usado em futuros updates do DB.
-	private static final int DATABASE_VERSION = 6;
+	private static final int DATABASE_VERSION = 7;
 
 	// Nome da tabela que irá conter as anotações.
 	private static final String EXCECAO_TABLE = "excecao";
@@ -193,11 +193,11 @@ public class MonitorProvider extends ContentProvider {
 				db.execSQL("DROP TABLE " + EXCECAO_TABLE + ";");
 				onCreate(db);
 				
-				SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
-				String data = sdf.format(Calendar.getInstance().getTime());
-				addExcecao(db, data, "java.lang.IndexOutOfBoundException", data + "12345");
-				data = sdf.format(Calendar.getInstance().getTime());
-				addExcecao(db, data, "java.lang.NullPointerException", data + "12346");
+//				SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
+//				String data = sdf.format(Calendar.getInstance().getTime());
+//				addExcecao(db, data, "java.lang.IndexOutOfBoundException", data + "12345");
+//				data = sdf.format(Calendar.getInstance().getTime());
+//				addExcecao(db, data, "java.lang.NullPointerException", data + "12346");
 			}
 		}
 		

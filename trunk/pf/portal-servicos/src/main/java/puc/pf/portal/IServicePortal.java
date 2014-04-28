@@ -30,11 +30,11 @@ public interface IServicePortal {
 	@WebResult(name="ListaExcecaoCapturada", targetNamespace=Constantes.NAMESPACE + Constantes.DOMINIO_EXCECAO_CAPTURADA)
 	public List<ExcecaoCapturadaDTO> consultarListaExcecao();
 	
-	
-	
-	
-	
-	
+	@WebMethod(operationName=Constantes.OPERACAO_CONSULTAR_EXCECAO, 
+			action=Constantes.NAMESPACE + "/" + Constantes.OPERACAO_CONSULTAR_EXCECAO)
+	@WebResult(name="ExcecaoCapturada", targetNamespace=Constantes.NAMESPACE + Constantes.DOMINIO_EXCECAO_CAPTURADA)
+	public ExcecaoCapturadaDTO consultarExcecao(Long codigoExcecaoCapturada);
+		
 
 //	@WebMethod(operationName="ConsultarListaTarefa", action="http://localhost:8080/jaxws/ConsultarListaTarefa")
 //    @WebResult(name="ListaTarefa", targetNamespace="http://localhost:8080/jaxws/dominio/Tarefa")
