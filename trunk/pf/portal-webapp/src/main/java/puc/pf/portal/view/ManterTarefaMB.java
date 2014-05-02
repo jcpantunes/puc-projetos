@@ -33,7 +33,7 @@ public class ManterTarefaMB extends AbstractEditPageBean<Tarefa, Long> {
 	
 	@PostConstruct
     public void init() {
-		getBean().setFuncionario(new Funcionario());
+		// getBean().setFuncionario(new Funcionario());
 		listaFuncionario = this.funcionarioBC.findAll();
 	}
 	
@@ -61,6 +61,9 @@ public class ManterTarefaMB extends AbstractEditPageBean<Tarefa, Long> {
 	@Override
 	@Transactional
 	public String update() {
+		if (getBean().getFuncionario().getId() != null) {
+			getBean().setFuncionario(this.funcionarioBC.load(getBean().getFuncionario().getId()));
+		}
 		this.bc.update(getBean());
 		return getPreviousView();
 	}

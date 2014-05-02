@@ -9,11 +9,11 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.Button;
 
 import com.example.monitorapp.provider.ExcecaoCapturadaDAO;
+import com.example.monitorapp.provider.MonitorProvider;
 import com.example.monitorapp.service.WebServiceCallAsync;
 
 /**
@@ -22,53 +22,52 @@ import com.example.monitorapp.service.WebServiceCallAsync;
  */
 public class ListarErroActivity extends ListActivity {
 	
+	private final String TAG = "ListarErros";
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.listar_erro);
+		
+		setContentView(R.layout.listar_erro_layout);
 		
 		bindListaErros();
 		
 		final Button btnVoltar = (Button) findViewById(R.id.listarErroBtnVoltar);
 		btnVoltar.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
-				Log.i("ListarErros", "Voltando para Tela Welcome ...");
+				Log.i(TAG, "Voltando para Tela Welcome ...");
 				chamarMainActivity();
-			}
+			}	
 		});
 		
 		final Button btnAtualizar = (Button) findViewById(R.id.listarErroBtnAtualizar);
 		btnAtualizar.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
-				Log.i("ListarErros", "Atualizando Lista ...");
+				Log.i(TAG, "Atualizando Lista ...");
 				bindListaErros();
 			}
 		});
 		
+		final Button btnRemover = (Button) findViewById(R.id.listarErroBtnRemover);
+		btnRemover.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+				Log.i(TAG, "Removendo itens ...");
+				executarAcaoRemover();
+			}
+		});
+		
 		this.getListView().setOnItemClickListener(new AdapterView.OnItemClickListener() {
-		    @Override
+		    @SuppressWarnings("rawtypes")
+			@Override
 		    public void onItemClick(AdapterView adapter, View viw, int posicao,long id) {
 				Cursor info = (Cursor) adapter.getAdapter().getItem(posicao);
 			    Intent it = new Intent(getBaseContext(), StacktraceActivity.class);
-			    it.putExtra("id", info.getInt(0));
+			    it.putExtra(MonitorProvider.Excecao.EXCECAO_ID_EXCECAO,
+			    		info.getInt(info.getColumnIndex(MonitorProvider.Excecao.EXCECAO_ID_EXCECAO)));
 			    startActivity(it);
 		    }            
 		});
 
-		
-//		final Button btnVerStacktrace = (Button) findViewById(R.id.listarErroBtnVerStacktrace);
-//		btnVerStacktrace.setOnClickListener(new View.OnClickListener() {
-//			public void onClick(View v) {
-//				Log.i("ListarErros", "Visualizar Stacktrace ...");
-//				chamarStacktraceActivity();
-//			}
-//		});
-		
-//		ListView listView = (ListView) findViewById(R.id.list_item);
-//		listView.setOnItemClickListener(
-//				); 
-
-		
 	}
 	
 	private void bindListaErros() {
@@ -79,16 +78,14 @@ public class ListarErroActivity extends ListActivity {
 		setListAdapter(adapter.recuperarListaErroAdapter(this));
 	}
 	
+	private void executarAcaoRemover() {
+		ExcecaoCapturadaDAO dao = new ExcecaoCapturadaDAO();
+		dao.delete(this);
+	}
+	
 	private void chamarMainActivity() {
 		Intent i = new Intent(this, MainActivity.class);
 		startActivity(i);
 		finish();
 	}
-	
-	private void chamarStacktraceActivity() {
-		Intent i = new Intent(this, StacktraceActivity.class);
-		startActivity(i);
-		finish();
-	}
-	
 }

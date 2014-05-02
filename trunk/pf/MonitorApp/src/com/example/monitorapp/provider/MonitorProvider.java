@@ -1,7 +1,5 @@
 package com.example.monitorapp.provider;
 
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.HashMap;
 
 import android.content.ContentProvider;
@@ -29,7 +27,7 @@ public class MonitorProvider extends ContentProvider {
 
 	// Versao do banco de dados.
 	// Este valor é importante pois é usado em futuros updates do DB.
-	private static final int DATABASE_VERSION = 7;
+	private static final int DATABASE_VERSION = 9;
 
 	// Nome da tabela que irá conter as anotações.
 	private static final String EXCECAO_TABLE = "excecao";
@@ -46,6 +44,7 @@ public class MonitorProvider extends ContentProvider {
 	static {
 		mProjection = new HashMap<String, String>();
 		mProjection.put(Excecao.EXCECAO_ID, Excecao.EXCECAO_ID);
+		mProjection.put(Excecao.EXCECAO_ID_EXCECAO, Excecao.EXCECAO_ID_EXCECAO);
 		mProjection.put(Excecao.EXCECAO_DATA, Excecao.EXCECAO_DATA);
 		mProjection.put(Excecao.EXCECAO_TIPO, Excecao.EXCECAO_TIPO);
 		mProjection.put(Excecao.EXCECAO_TICKET, Excecao.EXCECAO_TICKET);
@@ -157,6 +156,8 @@ public class MonitorProvider extends ContentProvider {
 
 		public static final String EXCECAO_ID = "_id";
 		
+		public static final String EXCECAO_ID_EXCECAO = "_idExcecao";
+		
 		public static final String EXCECAO_DATA = "_data";
 
 		public static final String EXCECAO_TIPO = "_tipo";
@@ -178,6 +179,7 @@ public class MonitorProvider extends ContentProvider {
 		public void onCreate(SQLiteDatabase db) {
 			db.execSQL("CREATE TABLE " + EXCECAO_TABLE + 
 					" (" + Excecao.EXCECAO_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
+					+ Excecao.EXCECAO_ID_EXCECAO + " INTEGER,"
 					+ Excecao.EXCECAO_DATA	+ " TEXT, "
 					+ Excecao.EXCECAO_TIPO	+ " LONGTEXT, "
 					+ Excecao.EXCECAO_TICKET	+ " LONGTEXT );");
@@ -195,27 +197,22 @@ public class MonitorProvider extends ContentProvider {
 				
 //				SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
 //				String data = sdf.format(Calendar.getInstance().getTime());
-//				addExcecao(db, data, "java.lang.IndexOutOfBoundException", data + "12345");
+//				addExcecao(db, 1, data, "java.lang.IndexOutOfBoundException", data + "12345");
 //				data = sdf.format(Calendar.getInstance().getTime());
-//				addExcecao(db, data, "java.lang.NullPointerException", data + "12346");
+//				addExcecao(db, 2, data, "java.lang.NullPointerException", data + "12346");
 			}
 		}
 		
-		private void addExcecao(SQLiteDatabase db, String data, String tipo, String ticket) {
-//			ContentValues values = new ContentValues();
-//			values.put(MonitorProvider.Excecao.EXCECAO_DATA, data.toString());
-//			values.put(MonitorProvider.Excecao.EXCECAO_TIPO, tipo);
-//			values.put(MonitorProvider.Excecao.EXCECAO_TICKET, ticket);
-//			insert(MonitorProvider.Excecao.CONTENT_URI, values);
-			
-			db.execSQL("INSERT INTO " + EXCECAO_TABLE
-					+ " (" + Excecao.EXCECAO_DATA	+ ", " + Excecao.EXCECAO_TIPO	+ ", "
-					+ Excecao.EXCECAO_TICKET + " )"
-					+ " VALUES ( "
-					+ "'" + data + "', "
-					+ "'" + tipo + "', "
-					+ "'" + ticket + "');");
-		}
+//		private void addExcecao(SQLiteDatabase db, Integer idExcecao, String data, String tipo, String ticket) {
+//			db.execSQL("INSERT INTO " + EXCECAO_TABLE
+//					+ " (" + Excecao.EXCECAO_ID_EXCECAO	+ ", " + Excecao.EXCECAO_DATA	+ ", " 
+//					+ Excecao.EXCECAO_TIPO	+ ", " + Excecao.EXCECAO_TICKET + " )"
+//					+ " VALUES ( "
+//					+  idExcecao + ", "
+//					+ "'" + data + "', "
+//					+ "'" + tipo + "', "
+//					+ "'" + ticket + "');");
+//		}
 		
 	}
 }

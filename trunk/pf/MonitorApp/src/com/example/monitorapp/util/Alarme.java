@@ -1,15 +1,16 @@
 package com.example.monitorapp.util;
 
-import com.example.monitorapp.service.WebServiceCallAsync;
-
+import android.annotation.SuppressLint;
 import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.os.PowerManager;
-import android.widget.Toast;
 
+import com.example.monitorapp.service.WebServiceCallAsync;
+
+@SuppressLint("Wakelock")
 public class Alarme extends BroadcastReceiver {    
     
 	@Override
@@ -27,11 +28,11 @@ public class Alarme extends BroadcastReceiver {
         wl.release();
     }
 
-	public void SetAlarm(Context context) {
+	public void SetAlarm(Context context, int tempo) {
 	    AlarmManager am=(AlarmManager)context.getSystemService(Context.ALARM_SERVICE);
 	    Intent i = new Intent(context, Alarme.class);
 	    PendingIntent pi = PendingIntent.getBroadcast(context, 0, i, 0);
-	    am.setRepeating(AlarmManager.RTC_WAKEUP, System.currentTimeMillis(), 1000 * 20, pi); // Millisec * Second * Minute
+	    am.setRepeating(AlarmManager.RTC_WAKEUP, System.currentTimeMillis(), 1000 * tempo, pi); // Millisec * Second * Minute
 	}
 	
 	public void CancelAlarm(Context context)

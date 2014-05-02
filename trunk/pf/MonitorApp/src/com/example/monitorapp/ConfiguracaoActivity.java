@@ -10,7 +10,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.Spinner;
 
 import com.example.monitorapp.util.Constantes;
 import com.example.monitorapp.util.MonitorService;
@@ -23,18 +25,37 @@ public class ConfiguracaoActivity extends Activity {
 	
 	private Intent intentService;
 	
-	Button btnIniciarServico;
+	private Button btnIniciarServico;
 	
-	Button btnPararServico;
+	private Button btnPararServico;
+	
+	private final String TAG = "ConfiguracaoActivity";
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.configuracao);
+		setContentView(R.layout.configuracao_layout);
 		
-		 intentService = new Intent(this, MonitorService.class);
+		intentService = new Intent(this, MonitorService.class);
+		 
+		Integer[] array_spinner = new Integer[9];
+		array_spinner[0]=10;
+		array_spinner[1]=20;
+		array_spinner[2]=30;
+		array_spinner[3]=60;
+		array_spinner[4]=120;
+		array_spinner[5]=300;
+		array_spinner[6]=600;
+		array_spinner[7]=1800;
+		array_spinner[8]=3600;
+		
+		Spinner s = (Spinner) findViewById(R.id.configuracaoLstTempo);
+		
+		@SuppressWarnings({ "unchecked", "rawtypes" })
+		ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, array_spinner);
+		s.setAdapter(adapter);
 
-		 configurarEventos();
+		configurarEventos();
 	}
 	
 	private void configurarEventos() {
@@ -42,7 +63,6 @@ public class ConfiguracaoActivity extends Activity {
 		final Button btnVoltar = (Button) findViewById(R.id.btnConfiguracaoVoltar);
 		btnVoltar.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
-				// Log.i("ListarErros", "Voltando para Tela Welcome ...");
 				chamarMainActivity();
 			}
 		});
@@ -50,7 +70,7 @@ public class ConfiguracaoActivity extends Activity {
 		btnIniciarServico = (Button) findViewById(R.id.configuracaoBtnIniciarServico);
 		btnIniciarServico.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
-				Log.i("Configuracao", "Iniciando Servico de Notificacao ...");
+				Log.i(TAG, "Iniciando Servico de Notificacao ...");
 				iniciarServico();
 			}
 		});
@@ -58,7 +78,7 @@ public class ConfiguracaoActivity extends Activity {
 		btnPararServico = (Button) findViewById(R.id.configuracaoBtnPararServico);
 		btnPararServico.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
-				Log.i("Configuracao", "Finalizando Servico de Notificacao ...");
+				Log.i(TAG, "Finalizando Servico de Notificacao ...");
 				pararServico();
 			}
 		});
@@ -76,11 +96,18 @@ public class ConfiguracaoActivity extends Activity {
 	
 	private void iniciarServico() {
 		if (!isServiceRunning(Constantes.MONITOR_SERVICE_PATH)) {
+			Spinner s = (Spinner) findViewById(R.id.configuracaoLstTempo);
+			Integer tempo = (Integer) s.getSelectedItem();
+			if (tempo == null || tempo == 0) {
+				tempo = 10;
+			}
+			intentService.putExtra(MonitorService.TEMPO, tempo);
 			startService(intentService);
+			
 			setVisibilidade(View.INVISIBLE, View.VISIBLE);
 			
 		} else {
-			Log.i("ListarErros2", "Servico ja esta rodando ...");
+			Log.i(TAG, "Servico ja esta rodando ...");
 		}
 	}
 	
@@ -90,7 +117,7 @@ public class ConfiguracaoActivity extends Activity {
 			setVisibilidade(View.VISIBLE, View.INVISIBLE);
 			
 		} else {
-			Log.i("ListarErros2", "Servico nao esta rodando ...");
+			Log.i(TAG, "Servico nao esta rodando ...");
 		}
 	}
 	
