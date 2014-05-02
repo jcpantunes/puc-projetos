@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+
+    <persistence-unit name="postgres-ds" transaction-type="RESOURCE_LOCAL">
+
+	    <!-- JBOSS -->
+		<non-jta-data-source>java:jboss/datasources/postgres-ds</non-jta-data-source>
+		
+		<class>puc.pf.portal.domain.Bookmark</class>
+		<class>puc.pf.portal.domain.Funcionario</class>
+		<class>puc.pf.portal.domain.Tarefa</class>
+		<class>puc.pf.portal.domain.ExcecaoCapturada</class>
+		
+		<properties>
+
+				<!-- JBOSS - Postgres -->
+				<property name="hibernate.transaction.jta.platform" value="org.hibernate.service.jta.platform.internal.JBossAppServerJtaPlatform" />
+	    		<property name="hibernate.connection.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/>
+				<property name="hibernate.connection.driver_class" value="org.postgresql.Driver"/>
+	    		<property name="hibernate.connection.url" value="jdbc:postgresql://localhost:5432/pucdb" />
+				<property name="hibernate.connection.username" value="puc"/>
+				<property name="hibernate.connection.password" value="puc"/>
+
+			<!-- TOMCAT - Postgres -->
+<!-- 			<property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect" /> -->
+<!-- 		    <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver" />  -->
+<!-- 		    <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/pucdb" /> -->
+<!--       		<property name="javax.persistence.jdbc.user" value="puc"/> -->
+<!--             <property name="javax.persistence.jdbc.password" value="puc"/> -->
+
+<!--            <property name="eclipselink.logging.level" value="FINE" /> -->
+<!-- 			<property name="eclipselink.ddl-generation" value="drop-and-create-tables" /> -->
+<!-- 			<property name="eclipselink.ddl-generation.output-mode" value="database" /> -->
+			
+            <!-- PADRAO -->
+			<property name="hibernate.show_sql" value="true" />
+			<property name="hibernate.format_sql" value="false" />
+			<property name="hibernate.hbm2ddl.auto" value="create-drop" />
+
+			<!-- JDBC connection pool (use the built-in) -->
+			<property name="connection.pool_size" value="5" />
+			
+		</properties>
+	</persistence-unit>
+
+
+</persistence>
