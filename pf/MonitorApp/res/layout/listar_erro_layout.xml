@@ -26,6 +26,11 @@
             android:layout_height="wrap_content"
             android:text="@string/listarErroBtnAtualizar" />
 
+        <Button
+            android:id="@+id/listarErroBtnRemover"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/listarErroBtnRemover" />
     </LinearLayout>
     
     <ListView

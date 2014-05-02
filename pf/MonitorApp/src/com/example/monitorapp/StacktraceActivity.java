@@ -9,7 +9,6 @@ import org.ksoap2.serialization.SoapSerializationEnvelope;
 import org.ksoap2.transport.HttpTransportSE;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -20,6 +19,7 @@ import android.widget.TextView;
 
 import com.example.monitorapp.dto.ExcecaoCapturadaDTO;
 import com.example.monitorapp.provider.ExcecaoCapturadaDAO;
+import com.example.monitorapp.provider.MonitorProvider;
 import com.example.monitorapp.util.Constantes;
 
 /**
@@ -28,25 +28,35 @@ import com.example.monitorapp.util.Constantes;
  */
 public class StacktraceActivity extends Activity {
 	
+	protected String stacktrace = "";
+	
+	private final String TAG = "StacktraceActivity";
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.stacktrace);
+		setContentView(R.layout.stacktrace_layout);
 		
 		final Button btnVoltar = (Button) findViewById(R.id.stacktraceBtnVoltar);
 		btnVoltar.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
-				Log.i("ListarErros", "Voltando para Tela Welcome ...");
+				Log.i(TAG, "Voltando para Tela Welcome ...");
 				chamarListarErroActivity();
 			}
 		});
 		
-		Integer id = getIntent().getIntExtra("id", 0);
+		Integer id = getIntent().getIntExtra(MonitorProvider.Excecao.EXCECAO_ID_EXCECAO, 0);
 		ExcecaoCapturadaDAO dao = new ExcecaoCapturadaDAO();
 		ExcecaoCapturadaDTO dto = dao.recuperarErro(this, id);
 		
-		WebServiceRecuperaDTOAsync ws = new WebServiceRecuperaDTOAsync(this, dto);
-		ws.execute("");
+		if (dto != null) {
+			WebServiceRecuperaDTOAsync ws = new WebServiceRecuperaDTOAsync(dto);
+			ws.execute("");
+		}
+		
+		final TextView txtStacktrace = (TextView) findViewById(R.id.stacktraceTxt);
+		txtStacktrace.setText(getStacktrace());
+
 	}
 	
 	private void chamarListarErroActivity() {
@@ -54,17 +64,21 @@ public class StacktraceActivity extends Activity {
 		startActivity(i);
 		finish();
 	}
+	
+	public String getStacktrace() {
+		return stacktrace;
+	}
 
+	public void setStacktrace(String stacktrace) {
+		this.stacktrace = stacktrace;
+	}
 
 	private class WebServiceRecuperaDTOAsync extends AsyncTask<String, Integer, Long> {
 		
-		private Context context;
-		
 		private ExcecaoCapturadaDTO dto;
 		
-		public WebServiceRecuperaDTOAsync(Context context, ExcecaoCapturadaDTO dto) {
+		public WebServiceRecuperaDTOAsync(ExcecaoCapturadaDTO dto) {
 			super();
-			this.context = context;
 			this.dto = dto;
 		}
 	    
@@ -77,42 +91,40 @@ public class StacktraceActivity extends Activity {
 	    }
 	
 	    protected void onPostExecute(Long result) {
+	    	final TextView txtStacktrace = (TextView) findViewById(R.id.stacktraceTxt);
+			txtStacktrace.setText(stacktrace);
 	    }
 		
 	    public void recuperarObjetoWS() {
 	        SoapObject request = new SoapObject(Constantes.NAMESPACE, Constantes.OPERACAO_CONSULTAR_EXCECAO);
-		    request.addProperty("arg0", this.dto.getId());
+		    request.addProperty("arg0", this.dto.getIdExcecao());
 	        
 	        SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
 		    envelope.dotNet = false;
 		    envelope.setOutputSoapObject(request);
 		    
 		    HttpTransportSE androidHttpTransport = new HttpTransportSE(Constantes.URL_WSDL);
+		    
+		    String txt = "Excecao Nao Encontrada. Verifique se o WS esta rodando.";
 		    try {
 		        androidHttpTransport.call(Constantes.NAMESPACE + "/" + Constantes.OPERACAO_CONSULTAR_EXCECAO, envelope);
 		        SoapObject body = (SoapObject) envelope.bodyIn;
-	
+		        
 		        if (body != null && body.getPropertyCount() > 0) {
 		        	SoapObject object = (SoapObject) body.getProperty(0);
 		        	if (object != null) {
 		        		ExcecaoCapturadaDTO soapDTO = ExcecaoCapturadaDTO.parseFromSoapObject(object);
-		        		final TextView txt = (TextView) findViewById(R.id.stacktraceTxt);
-			    		txt.setText(soapDTO.getStacktrace());
-		        	} else {
-			        	final TextView txt = (TextView) findViewById(R.id.stacktraceTxt);
-			    		txt.setText("Excecao Nao Encontrada!");
-			        }
-		        	
-		        } else {
-		        	final TextView txt = (TextView) findViewById(R.id.stacktraceTxt);
-		    		txt.setText("Excecao Nao Encontrada!");
+		        		txt = soapDTO.getStacktrace();
+		        	}
 		        }
-		    }
-		    catch(Exception e)
-		    {
+
+		    } catch (Exception e) {
 		    	if (e != null) {
-		    		Log.e("WS", "Exception Info: " + e.getCause());
+		    		Log.e(TAG, "Exception Info: " + e.getCause());
 		    	}
+
+		    } finally {
+		    	setStacktrace(txt);
 		    }
 	    }
 	}

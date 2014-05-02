@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.os.IBinder;
 
 public class MonitorService extends Service {
+	
+	public static final String TEMPO = "tempo";
 
 	Alarme alarm = new Alarme();
 
@@ -14,7 +16,9 @@ public class MonitorService extends Service {
 
 	@Override
 	public int onStartCommand(Intent intent, int flags, int startId) {
-		alarm.SetAlarm(MonitorService.this);
+		Integer tempo = intent.getIntExtra(TEMPO, 0);
+		
+		alarm.SetAlarm(MonitorService.this, tempo);
 		return START_STICKY;
 	}
 
