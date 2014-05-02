@@ -1,7 +1,5 @@
 package puc.pf.portal.domain;
 
-import static javax.persistence.GenerationType.SEQUENCE;
-
 import java.io.Serializable;
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -11,6 +9,7 @@ import java.util.Date;
 import java.util.Locale;
 
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 
@@ -20,7 +19,8 @@ public class BaseBean implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@GeneratedValue(strategy = SEQUENCE)
+	// @GeneratedValue(strategy = SEQUENCE) // Oracle, Postgres
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
 	public Long getId() {
