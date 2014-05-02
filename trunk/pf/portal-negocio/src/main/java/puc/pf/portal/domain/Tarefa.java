@@ -8,6 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 @AttributeOverride(name = "id", column = @Column(name = "id_tarefa", nullable = false))
@@ -19,6 +21,7 @@ public class Tarefa extends BaseBean {
 	private String nome;
 
 	@Column(name = "Data")
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date data;
 
 	@ManyToOne(fetch = FetchType.LAZY)
