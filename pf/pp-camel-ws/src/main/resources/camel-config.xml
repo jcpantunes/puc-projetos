@@ -14,9 +14,11 @@
   <bean id="myRoutes" class="org.apache.camel.example.cxf.CamelRoute"/>
   
   <bean id="obterResposta" class="org.apache.camel.example.cxf.ObterResposta" />
+  <bean id="obterExcecaoIn" class="org.apache.camel.example.cxf.ObterExcecaoIn" />
+  <bean id="obterExcecaoOut" class="org.apache.camel.example.cxf.ObterExcecaoOut" />
   <bean id="obterListaExcecaoIn" class="org.apache.camel.example.cxf.ObterListaExcecaoIn" />
   <bean id="obterListaExcecaoOut" class="org.apache.camel.example.cxf.ObterListaExcecaoOut" />
-
+  
   <camelContext xmlns="http://camel.apache.org/schema/spring">
     <routeBuilder ref="myRoutes"/>
     
@@ -27,10 +29,18 @@
 		<to uri="mock:result" />
 	</route>
 	
+    <route streamCache="false">
+		<from uri="direct:consultarExcecao" />
+		<process ref="obterExcecaoIn" />
+		<log message="(2) Obtendo Excecao" />
+		<to uri="spring-ws:http://192.168.0.106:8080/portal-servicos/IServicePortal?soapAction=http://192.168.0.106:8080/jaxws/consultarExcecao" />
+		<process ref="obterExcecaoOut" />
+	</route>
+	
     <route streamCache="true">
 		<from uri="direct:consultarListaExcecao" />
 		<process ref="obterListaExcecaoIn" />
-		<log message="(2) Obtendo Lista Excecao" />
+		<log message="(3) Obtendo Lista Excecao" />
 		<to uri="spring-ws:http://192.168.0.106:8080/portal-servicos/IServicePortal?soapAction=http://192.168.0.106:8080/jaxws/consultarListaExcecao" />
 		<process ref="obterListaExcecaoOut" />
 	</route>
