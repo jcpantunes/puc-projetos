@@ -40,6 +40,8 @@ public interface CamelService {
     
     String recuperarRespostaTeste();
     
-    String consultarListaExcecao();
+    String consultarExcecao(Long codigoExcecaoCapturada);
 
+    String consultarListaExcecao();
+    
 }

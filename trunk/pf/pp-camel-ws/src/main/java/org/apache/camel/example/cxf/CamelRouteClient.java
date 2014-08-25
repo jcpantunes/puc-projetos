@@ -54,7 +54,9 @@ public class CamelRouteClient {
 //		String teste = client.recuperarRespostaTeste();
 //		System.out.println("==> " + teste);
 		
-		client.consultarListaExcecao();
+		client.consultarExcecao(16l);
+		
+		// client.consultarListaExcecao();
 	}
 
 //	protected void runTesteConsultarNotas() throws Exception {
