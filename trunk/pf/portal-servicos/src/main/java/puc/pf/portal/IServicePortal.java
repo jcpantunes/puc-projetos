@@ -9,6 +9,7 @@ import javax.jws.soap.SOAPBinding;
 
 import puc.pf.portal.dto.ExcecaoCapturadaDTO;
 import puc.pf.portal.dto.FuncionarioDTO;
+import puc.pf.portal.dto.ListaExcecaoCapturadaDTO;
 import puc.pf.portal.util.Constantes;
 
 @WebService(name="iserviceportal", targetNamespace=Constantes.NAMESPACE)
@@ -27,8 +28,8 @@ public interface IServicePortal {
 	
 	@WebMethod(operationName=Constantes.OPERACAO_CONSULTAR_LISTA_EXCECAO, 
 			action=Constantes.NAMESPACE + "/" + Constantes.OPERACAO_CONSULTAR_LISTA_EXCECAO)
-	@WebResult(name="ListaExcecaoCapturada", targetNamespace=Constantes.NAMESPACE + Constantes.DOMINIO_EXCECAO_CAPTURADA)
-	public List<ExcecaoCapturadaDTO> consultarListaExcecao();
+	@WebResult(name="ListaExcecaoCapturada", targetNamespace=Constantes.NAMESPACE + Constantes.DOMINIO_LISTA_EXCECAO_CAPTURADA)
+	public ListaExcecaoCapturadaDTO consultarListaExcecao();
 	
 	@WebMethod(operationName=Constantes.OPERACAO_CONSULTAR_EXCECAO, 
 			action=Constantes.NAMESPACE + "/" + Constantes.OPERACAO_CONSULTAR_EXCECAO)
