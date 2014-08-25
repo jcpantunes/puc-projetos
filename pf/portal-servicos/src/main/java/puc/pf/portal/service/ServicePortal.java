@@ -9,6 +9,7 @@ import puc.pf.portal.business.FuncionarioBC;
 import puc.pf.portal.business.ExcecaoCapturadaBC;
 import puc.pf.portal.dto.FuncionarioDTO;
 import puc.pf.portal.dto.ExcecaoCapturadaDTO;
+import puc.pf.portal.dto.ListaExcecaoCapturadaDTO;
 
 import com.sun.xml.ws.developer.SchemaValidation;
 
@@ -26,9 +27,9 @@ public class ServicePortal implements IServicePortal {
     	return FuncionarioDTO.parserFromFuncionario(bc.load(codigoFuncionario));
 	}
 	
-	public List<ExcecaoCapturadaDTO> consultarListaExcecao() {
+	public ListaExcecaoCapturadaDTO consultarListaExcecao() {
 		ExcecaoCapturadaBC bc = new ExcecaoCapturadaBC();
-    	return ExcecaoCapturadaDTO.parserFromExcecao(bc.findAll());
+    	return ListaExcecaoCapturadaDTO.parserFromExcecao(bc.findAll());
     }
 	
 	public ExcecaoCapturadaDTO consultarExcecao(Long codigoExcecaoCapturada) {
