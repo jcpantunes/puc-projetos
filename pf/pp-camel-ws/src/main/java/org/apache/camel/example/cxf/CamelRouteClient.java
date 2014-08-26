@@ -21,14 +21,14 @@ import org.apache.cxf.frontend.ClientProxyFactoryBean;
 
 public class CamelRouteClient {
 
-	private static final String URL = "http://192.168.0.106:8080/pp-camel-ws/webservices/camel";
+	// private static final String URL = "http://192.168.0.106:8080/pp-camel-ws/webservices/camel";
 
 	public static CamelService createCXFClient() {
 		// we use CXF to create a client for us as its easier than JAXWS and
 		// works
 		ClientProxyFactoryBean factory = new ClientProxyFactoryBean();
 		factory.setServiceClass(CamelService.class);
-		factory.setAddress(URL);
+		factory.setAddress(CamelConstantes.URL);
 		return (CamelService) factory.create();
 	}
 

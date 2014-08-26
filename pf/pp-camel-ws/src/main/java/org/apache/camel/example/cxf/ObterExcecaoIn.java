@@ -20,16 +20,23 @@ public class ObterExcecaoIn implements Processor {
 		//e.getOut().setBody(source);
 		
 		String matricula = e.getIn().getBody(String.class).toString();
-        String xml = "<consultarExcecao><arg0>" + matricula + "</arg0></consultarExcecao>";
-//        xml = "<jax:consultarExcecao><arg0>16</arg0></jax:consultarExcecao>";
-     
-//        xml = "<arg0>" + matricula + "</arg0>";
-      	
+		String xml = "<consultarExcecao><arg0>" + matricula + "</arg0></consultarExcecao>";
+//        xml = "<body><consultarExcecao><arg0>16</arg0></consultarExcecao></body>";
+
+		xml = "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:jax=\"http://10.32.49.26:8080/jaxws\">"
+		+ "<soapenv:Header/>"
+		+ "<soapenv:Body>"
+		+ "   <jax:consultarExcecao>"
+		+ "      <arg0>16</arg0>"
+		+ "   </jax:consultarExcecao>"
+		+ "</soapenv:Body>"
+		+ "</soapenv:Envelope>";
+		
       	DocumentBuilder parser = DocumentBuilderFactory.newInstance().newDocumentBuilder();
   	    Document document = parser.parse( new InputSource(new StringReader(xml)) );
   	    Source source = new DOMSource( document );
-
-  	    e.getOut().setBody(source);
+  	    
+  	    e.getIn().setBody(source);
 	
 	}
 
