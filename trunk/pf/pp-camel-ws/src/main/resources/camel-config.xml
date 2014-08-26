@@ -33,7 +33,8 @@
 		<from uri="direct:consultarExcecao" />
 		<process ref="obterExcecaoIn" />
 		<log message="(2) Obtendo Excecao" />
-		<to uri="spring-ws:http://192.168.0.106:8080/portal-servicos/IServicePortal?soapAction=http://192.168.0.106:8080/jaxws/consultarExcecao" />
+<!-- 		<to uri="spring-ws:http://192.168.0.106:8080/portal-servicos/IServicePortal?soapAction=http://192.168.0.106:8080/jaxws/consultarExcecao" /> -->
+		<to uri="spring-ws:http://10.32.49.26:8080/portal-servicos/IServicePortal?soapAction=http://10.32.49.26:8080/jaxws/consultarExcecao" />
 		<process ref="obterExcecaoOut" />
 	</route>
 	
@@ -41,7 +42,8 @@
 		<from uri="direct:consultarListaExcecao" />
 		<process ref="obterListaExcecaoIn" />
 		<log message="(3) Obtendo Lista Excecao" />
-		<to uri="spring-ws:http://192.168.0.106:8080/portal-servicos/IServicePortal?soapAction=http://192.168.0.106:8080/jaxws/consultarListaExcecao" />
+<!-- 		<to uri="spring-ws:http://192.16.0.106:8080/portal-servicos/IServicePortal?soapAction=http://192.168.0.106:8080/jaxws/consultarListaExcecao" /> -->
+		<to uri="spring-ws:http://10.32.49.26:8080/portal-servicos/IServicePortal?soapAction=http://10.32.49.26:8080/jaxws/consultarListaExcecao" />
 		<process ref="obterListaExcecaoOut" />
 	</route>
 		
