@@ -1,6 +1,6 @@
 package puc.pf.portal.util;
 
-public class Constantes {
+public class PortalConstantes {
 
 	public static final String CONTEXTO = "portal-servicos";
 	

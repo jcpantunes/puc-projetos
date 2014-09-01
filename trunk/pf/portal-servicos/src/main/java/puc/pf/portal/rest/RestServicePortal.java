@@ -13,9 +13,9 @@ import puc.pf.portal.business.FuncionarioBC;
 import puc.pf.portal.domain.Funcionario;
 import puc.pf.portal.dto.ExcecaoCapturadaDTO;
 import puc.pf.portal.dto.FuncionarioDTO;
-import puc.pf.portal.util.Constantes;
+import puc.pf.portal.util.PortalConstantes;
 
-@Path(Constantes.CONTEXTO_REST)
+@Path(PortalConstantes.CONTEXTO_REST)
 @Produces(MediaType.APPLICATION_XML)
 public class RestServicePortal {
 	//http://localhost:8080/portal-servicos/serviceportalrest/
@@ -26,13 +26,13 @@ public class RestServicePortal {
 	public String principal() {
     	return "Web Services desenvolvido para seminario sobre JAX-RS " +
     			"Consultas Disponiveis: " +
-    			Constantes.URI + "/" + Constantes.CONTEXTO + "/" + Constantes.CONTEXTO_REST + "/consultarListaFuncionario/" +
-    			Constantes.URI + "/" + Constantes.CONTEXTO + "/" + Constantes.CONTEXTO_REST + "/consultarFuncionario/100" +
-    			Constantes.URI + "/" + Constantes.CONTEXTO + "/" + Constantes.CONTEXTO_REST + "/consultarListaExcecao";
+    			PortalConstantes.URI + "/" + PortalConstantes.CONTEXTO + "/" + PortalConstantes.CONTEXTO_REST + "/consultarListaFuncionario/" +
+    			PortalConstantes.URI + "/" + PortalConstantes.CONTEXTO + "/" + PortalConstantes.CONTEXTO_REST + "/consultarFuncionario/100" +
+    			PortalConstantes.URI + "/" + PortalConstantes.CONTEXTO + "/" + PortalConstantes.CONTEXTO_REST + "/consultarListaExcecao";
     }
     
 	@GET
-	@Path(Constantes.OPERACAO_CONSULTAR_LISTA_FUNCIONARIO + "/")
+	@Path(PortalConstantes.OPERACAO_CONSULTAR_LISTA_FUNCIONARIO + "/")
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<FuncionarioDTO> consultarListaFuncionario() {
     	FuncionarioBC bc = new FuncionarioBC();
@@ -40,7 +40,7 @@ public class RestServicePortal {
     }
 	
 	 @GET
-	 @Path(Constantes.OPERACAO_CONSULTAR_FUNCIONARIO + "/{codigoFuncionario}")
+	 @Path(PortalConstantes.OPERACAO_CONSULTAR_FUNCIONARIO + "/{codigoFuncionario}")
 	@Produces(MediaType.APPLICATION_JSON)
     public FuncionarioDTO consultarFuncionario(@PathParam("codigoFuncionario") final Long codigoFuncionario) {
     	FuncionarioBC dao = new FuncionarioBC();
@@ -52,7 +52,7 @@ public class RestServicePortal {
     }
 	
 	@GET
-	@Path(Constantes.OPERACAO_CONSULTAR_LISTA_EXCECAO + "/")
+	@Path(PortalConstantes.OPERACAO_CONSULTAR_LISTA_EXCECAO + "/")
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<ExcecaoCapturadaDTO> consultarListaExcecao() {
 		ExcecaoCapturadaBC bc = new ExcecaoCapturadaBC();

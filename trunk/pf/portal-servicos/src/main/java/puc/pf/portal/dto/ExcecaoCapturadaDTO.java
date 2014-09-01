@@ -11,12 +11,12 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
 import puc.pf.portal.domain.ExcecaoCapturada;
-import puc.pf.portal.util.Constantes;
+import puc.pf.portal.util.PortalConstantes;
 
 // @XmlRootElement(name = "ExcecaoCapturada", namespace = "http://localhost:8080/jaxws/dominio/ExcecaoCapturada")
-@XmlRootElement(name=Constantes.EXCECAO_CAPTURADA, namespace=Constantes.NAMESPACE + Constantes.DOMINIO_EXCECAO_CAPTURADA)
+@XmlRootElement(name=PortalConstantes.EXCECAO_CAPTURADA, namespace=PortalConstantes.NAMESPACE + PortalConstantes.DOMINIO_EXCECAO_CAPTURADA)
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name=Constantes.EXCECAO_CAPTURADA, namespace=Constantes.NAMESPACE + Constantes.DOMINIO_EXCECAO_CAPTURADA)
+@XmlType(name=PortalConstantes.EXCECAO_CAPTURADA, namespace=PortalConstantes.NAMESPACE + PortalConstantes.DOMINIO_EXCECAO_CAPTURADA)
 public class ExcecaoCapturadaDTO extends BaseBeanDTO {
 
 	private static final long serialVersionUID = 1L;
