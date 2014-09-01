@@ -14,7 +14,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 
-import com.example.monitorapp.util.Constantes;
+import com.example.monitorapp.util.AppConstantes;
 import com.example.monitorapp.util.MonitorService;
 
 /**
@@ -84,7 +84,7 @@ public class ConfiguracaoActivity extends Activity {
 		});
 		
 		
-		if (isServiceRunning(Constantes.MONITOR_SERVICE_PATH)) {
+		if (isServiceRunning(AppConstantes.MONITOR_SERVICE_PATH)) {
 			setVisibilidade(View.INVISIBLE, View.VISIBLE);
 
 		} else {
@@ -95,7 +95,7 @@ public class ConfiguracaoActivity extends Activity {
 	}
 	
 	private void iniciarServico() {
-		if (!isServiceRunning(Constantes.MONITOR_SERVICE_PATH)) {
+		if (!isServiceRunning(AppConstantes.MONITOR_SERVICE_PATH)) {
 			Spinner s = (Spinner) findViewById(R.id.configuracaoLstTempo);
 			Integer tempo = (Integer) s.getSelectedItem();
 			if (tempo == null || tempo == 0) {
@@ -112,7 +112,7 @@ public class ConfiguracaoActivity extends Activity {
 	}
 	
 	private void pararServico() {
-		if (isServiceRunning(Constantes.MONITOR_SERVICE_PATH)) {
+		if (isServiceRunning(AppConstantes.MONITOR_SERVICE_PATH)) {
 			stopService(intentService);
 			setVisibilidade(View.VISIBLE, View.INVISIBLE);
 			

@@ -14,7 +14,7 @@ import android.util.Log;
 
 import com.example.monitorapp.dto.ExcecaoCapturadaDTO;
 import com.example.monitorapp.provider.ExcecaoCapturadaDAO;
-import com.example.monitorapp.util.Constantes;
+import com.example.monitorapp.util.AppConstantes;
 import com.example.monitorapp.util.MonitorNotificacao;
 
 public class WebServiceCallAsync extends AsyncTask<String, Integer, Long> {
@@ -38,21 +38,25 @@ public class WebServiceCallAsync extends AsyncTask<String, Integer, Long> {
     }
 	
     public void recuperarObjetoWS() {
-        SoapObject Request = new SoapObject(Constantes.NAMESPACE, Constantes.OPERACAO_CONSULTAR_LISTA_EXCECAO);
+        SoapObject Request = new SoapObject(AppConstantes.NAMESPACE, AppConstantes.OPERACAO_CONSULTAR_LISTA_EXCECAO);
 	    SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
 	    envelope.dotNet = false;
 	    envelope.setOutputSoapObject(Request);
-	    HttpTransportSE androidHttpTransport = new HttpTransportSE(Constantes.URL_WSDL);
+	    HttpTransportSE androidHttpTransport = new HttpTransportSE(AppConstantes.URL_WSDL);
 	    try {
-	        androidHttpTransport.call(Constantes.NAMESPACE + "/" + Constantes.OPERACAO_CONSULTAR_LISTA_EXCECAO, envelope);
+	    	String namespaceOperacao = AppConstantes.NAMESPACE + "/" + AppConstantes.OPERACAO_CONSULTAR_LISTA_EXCECAO;
+	        androidHttpTransport.call(namespaceOperacao, envelope);
 	        SoapObject body = (SoapObject) envelope.bodyIn;
+	        // ConsultarListaExcecaoResponse body = (ConsultarListaExcecaoResponse) envelope.bodyIn;
 
 	        if (body != null && body.getPropertyCount() > 0) {
+	        	SoapObject listaWS = (SoapObject) body.getProperty(0);
+	        	
 	        	ExcecaoCapturadaDAO dao = new ExcecaoCapturadaDAO();
 	        	List<ExcecaoCapturadaDTO> lista = dao.recuperarListaErro(context);
-	        	
-	        	for (int i = 0; i < body.getPropertyCount(); i++) {
-        			SoapObject obj = (SoapObject) body.getProperty(i);
+	        
+	        	for (int i = 0; i < listaWS.getPropertyCount(); i++) {
+        			SoapObject obj = (SoapObject) listaWS.getProperty(i);
         			inserirObjeto(obj, lista);
 	        	}
 	        }

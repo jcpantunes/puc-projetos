@@ -82,11 +82,13 @@ public class ExcecaoCapturadaDTO extends BaseDTO {
 	
 	public static ExcecaoCapturadaDTO parseFromSoapObject(SoapObject object) {
 		ExcecaoCapturadaDTO dto = new ExcecaoCapturadaDTO();
+		
 		dto.setId(Integer.parseInt(object.getProperty(0).toString()));
     	dto.setTipoExcecao(object.getProperty(1).toString());
     	dto.setStacktrace(object.getProperty(2).toString());
     	dto.setTicket(object.getProperty(3).toString());
     	dto.setDataExcecao(object.getProperty(4).toString());
+    	
     	return dto;
 	}
 	
