@@ -20,7 +20,7 @@ import android.widget.TextView;
 import com.example.monitorapp.dto.ExcecaoCapturadaDTO;
 import com.example.monitorapp.provider.ExcecaoCapturadaDAO;
 import com.example.monitorapp.provider.MonitorProvider;
-import com.example.monitorapp.util.Constantes;
+import com.example.monitorapp.util.AppConstantes;
 
 /**
  * @author 05163217658
@@ -96,22 +96,23 @@ public class StacktraceActivity extends Activity {
 	    }
 		
 	    public void recuperarObjetoWS() {
-	        SoapObject request = new SoapObject(Constantes.NAMESPACE, Constantes.OPERACAO_CONSULTAR_EXCECAO);
+	        SoapObject request = new SoapObject(AppConstantes.NAMESPACE, AppConstantes.OPERACAO_CONSULTAR_EXCECAO);
 		    request.addProperty("arg0", this.dto.getIdExcecao());
 	        
 	        SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
 		    envelope.dotNet = false;
 		    envelope.setOutputSoapObject(request);
 		    
-		    HttpTransportSE androidHttpTransport = new HttpTransportSE(Constantes.URL_WSDL);
+		    HttpTransportSE androidHttpTransport = new HttpTransportSE(AppConstantes.URL_WSDL);
 		    
 		    String txt = "Excecao Nao Encontrada. Verifique se o WS esta rodando.";
 		    try {
-		        androidHttpTransport.call(Constantes.NAMESPACE + "/" + Constantes.OPERACAO_CONSULTAR_EXCECAO, envelope);
+		        androidHttpTransport.call(AppConstantes.NAMESPACE + "/" + AppConstantes.OPERACAO_CONSULTAR_EXCECAO, envelope);
 		        SoapObject body = (SoapObject) envelope.bodyIn;
 		        
-		        if (body != null && body.getPropertyCount() > 0) {
-		        	SoapObject object = (SoapObject) body.getProperty(0);
+		        if (body != null && body.getPropertyCount() > 0 
+		        		&& body.getProperty(0) != null && ((SoapObject)body.getProperty(0)).getPropertyCount() > 0) {
+		        	SoapObject object = (SoapObject) ((SoapObject) body.getProperty(0)).getProperty(0);
 		        	if (object != null) {
 		        		ExcecaoCapturadaDTO soapDTO = ExcecaoCapturadaDTO.parseFromSoapObject(object);
 		        		txt = soapDTO.getStacktrace();
