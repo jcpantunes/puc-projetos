@@ -10,11 +10,11 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
 import puc.pf.portal.domain.Funcionario;
-import puc.pf.portal.util.Constantes;
+import puc.pf.portal.util.PortalConstantes;
 
-@XmlRootElement(name=Constantes.FUNCIONARIO, namespace=Constantes.NAMESPACE + Constantes.DOMINIO_FUNCIONARIO)
+@XmlRootElement(name=PortalConstantes.FUNCIONARIO, namespace=PortalConstantes.NAMESPACE + PortalConstantes.DOMINIO_FUNCIONARIO)
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name=Constantes.FUNCIONARIO, namespace=Constantes.NAMESPACE + Constantes.DOMINIO_FUNCIONARIO)
+@XmlType(name=PortalConstantes.FUNCIONARIO, namespace=PortalConstantes.NAMESPACE + PortalConstantes.DOMINIO_FUNCIONARIO)
 public class FuncionarioDTO extends BaseBeanDTO {
 	
 	private static final long serialVersionUID = 1L;

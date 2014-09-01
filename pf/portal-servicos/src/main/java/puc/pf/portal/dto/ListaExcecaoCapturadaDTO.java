@@ -10,11 +10,11 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
 import puc.pf.portal.domain.ExcecaoCapturada;
-import puc.pf.portal.util.Constantes;
+import puc.pf.portal.util.PortalConstantes;
 
-@XmlRootElement(name=Constantes.LISTA_EXCECAO_CAPTURADA, namespace=Constantes.NAMESPACE + Constantes.DOMINIO_LISTA_EXCECAO_CAPTURADA)
+@XmlRootElement(name=PortalConstantes.LISTA_EXCECAO_CAPTURADA, namespace=PortalConstantes.NAMESPACE + PortalConstantes.DOMINIO_LISTA_EXCECAO_CAPTURADA)
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name=Constantes.LISTA_EXCECAO_CAPTURADA, namespace=Constantes.NAMESPACE + Constantes.DOMINIO_LISTA_EXCECAO_CAPTURADA)
+@XmlType(name=PortalConstantes.LISTA_EXCECAO_CAPTURADA, namespace=PortalConstantes.NAMESPACE + PortalConstantes.DOMINIO_LISTA_EXCECAO_CAPTURADA)
 public class ListaExcecaoCapturadaDTO extends BaseBeanDTO {
 
 	private static final long serialVersionUID = 1L;
