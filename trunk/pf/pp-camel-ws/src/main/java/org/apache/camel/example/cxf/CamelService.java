@@ -16,9 +16,11 @@
  */
 package org.apache.camel.example.cxf;
 
-import org.apache.camel.example.cxf.aluno.AlunoWSDTO;
+import javax.jws.WebMethod;
+import javax.jws.WebService;
 
-
+import _106._0._168._192._8080.jaxws.ConsultarExcecaoResponse;
+import _106._0._168._192._8080.jaxws.ConsultarListaExcecaoResponse;
 
 
 /**
@@ -29,19 +31,17 @@ import org.apache.camel.example.cxf.aluno.AlunoWSDTO;
  * @version 
  */
 // START SNIPPET: e1
+@WebService(name="camelservice", targetNamespace=CamelConstantes.NAMESPACE)
 public interface CamelService {
 
-	/**
-	 * Rercuperar um aluno dada sua matricula.
-	 * @param aluno matricula do aluno que deseja recuperar
-	 * @return informações do aluno
-	 */
-    AlunoWSDTO recuperarAlunoPorMatricula(String matricula);
-    
-    String recuperarRespostaTeste();
-    
-    String consultarExcecao(Long codigoExcecaoCapturada);
+	@WebMethod(action=CamelConstantes.NAMESPACE + "/" + CamelConstantes.OPERACAO_CONSULTAR_EXCECAO)
+	ConsultarExcecaoResponse consultarExcecao(Long codigoExcecaoCapturada);
 
-    String consultarListaExcecao();
+    // ConsultarExcecaoResponse consultarExcecao2(Long codigoExcecaoCapturada);
+
+	@WebMethod(action=CamelConstantes.NAMESPACE + "/" + CamelConstantes.OPERACAO_CONSULTAR_LISTA_EXCECAO)
+	ConsultarListaExcecaoResponse consultarListaExcecao();
+    
+    // ConsultarListaExcecaoResponse consultarListaExcecao2();
     
 }

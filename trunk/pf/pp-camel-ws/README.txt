@@ -1,3 +1,9 @@
+
+Criar classes do WS
+wsimport -keep -d ./ http://192.168.0.106:8080/portal-servicos/IServicePortal?wsdl
+
+
+
 Camel CXF (code first) and Apache Tomcat example
 ================================================
 An example which uses code-first to expose a web service in Camel running on Apache Tomcat.

@@ -16,15 +16,18 @@
  */
 package org.apache.camel.example.cxf;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.camel.Exchange;
 import org.apache.camel.Processor;
 import org.apache.camel.builder.RouteBuilder;
-import org.apache.camel.example.cxf.aluno.AlunoWSDTO;
 
-// this static import is needed for older versions of Camel than 2.5
-// import static org.apache.camel.language.simple.SimpleLanguage.simple;
+import puc.pf.portal.service.IServicePortal;
+import puc.pf.portal.service.Iserviceportal;
+import _106._0._168._192._8080.jaxws.ConsultarExcecaoResponse;
+import _106._0._168._192._8080.jaxws.ConsultarListaExcecaoResponse;
+import _106._0._168._192._8080.jaxws.dominio.excecaocapturada.ExcecaoCapturada;
 
 /**
  * The Camel route
@@ -45,32 +48,82 @@ public class CamelRoute extends RouteBuilder {
             // the name of the operation is in that header
             .recipientList(simple("direct:${header.operationName}"));
 
-        // recuperar aluno
-        from("direct:recuperarAlunoPorMatricula")
+        // recuperar excecao
+        from("direct:consultarExcecaoActiveMQ")
             .process(new Processor() {
                 public void process(Exchange exchange) throws Exception {
-                    String matricula = exchange.getIn().getBody(String.class).toString();
-                    String xml = "<recuperarAlunoPorMatricula>" +
-                			"<arg0>" + matricula + "</arg0>" +
-                	"</recuperarAlunoPorMatricula>";
-                    exchange.getOut().setBody(xml);
+                    String id = exchange.getIn().getBody(String.class).toString();
+                    IServicePortal service = new IServicePortal();
+        			Iserviceportal port = service.getIServicePortalPort();
+        			ExcecaoCapturada dto = port.consultarExcecao(Long.parseLong(id));
+        			if (dto.getID() == null) {
+        				dto = new ExcecaoCapturada();
+        			}
+        			exchange.getOut().setBody(dto);
                 }
             })
-        	.to("spring-ws:http://localhost:8080/pp-cobol-mock-ws/myService?soapAction=http://pp.puc.org/recuperarAlunoPorMatricula")
+            .to("activemq:listaConsultarExcecaoActiveMQ");
+        
+        from("activemq:listaConsultarExcecaoActiveMQ")
+        	.to("direct:resultadoListaConsultarExcecaoActiveMQ")
         	.process(new Processor() {
+        		public void process(Exchange exchange) throws Exception {
+        			ExcecaoCapturada resultado = exchange.getIn().getBody(ExcecaoCapturada.class);
+        			exchange.getOut().setBody(resultado);
+        		}
+        	})
+        	.convertBodyTo(ConsultarExcecaoResponse.class);
+        
+        // recuperar excecao
+        from("direct:consultarExcecao2")
+            .process(new Processor() {
                 public void process(Exchange exchange) throws Exception {
-                    String resultado = exchange.getIn().getBody(String.class).toString();
-                    List<String[]> valores = XmlUtil.recuperarValor(resultado);
-                    for (String[] valor : valores) {
-                    	AlunoWSDTO dto = new AlunoWSDTO(valor[1], valor[2], valor[0]);
-                    	exchange.getOut().setBody(dto);
-                    }
-                    if(valores.size() == 0) {
-                    	exchange.getOut().setBody(new AlunoWSDTO("", "", ""));
-                    }
+                    String id = exchange.getIn().getBody(String.class).toString();
+                    IServicePortal service = new IServicePortal();
+        			Iserviceportal port = service.getIServicePortalPort();
+        			ExcecaoCapturada dto = port.consultarExcecao(Long.parseLong(id));
+        			if (dto.getID() == null) {
+        				dto = new ExcecaoCapturada();
+        			}
+        			exchange.getOut().setBody(dto);
                 }
             })
-        	.convertBodyTo(AlunoWSDTO.class);
+        	.to("mock:resultadoConsultarExcecao2")
+        	.process(new Processor() {
+        		public void process(Exchange exchange) throws Exception {
+        			ExcecaoCapturada dto = exchange.getIn().getBody(ExcecaoCapturada.class);
+        			ConsultarExcecaoResponse resposta = new ConsultarExcecaoResponse();
+        			resposta.setExcecaoCapturada(dto);
+        			exchange.getOut().setBody(resposta);
+        		}
+        	})
+        	.convertBodyTo(ConsultarExcecaoResponse.class);
+        
+     // recuperar excecao
+        from("direct:consultarListaExcecao2")
+            .process(new Processor() {
+                public void process(Exchange exchange) throws Exception {
+                    IServicePortal service = new IServicePortal();
+        			Iserviceportal port = service.getIServicePortalPort();
+        			List<ExcecaoCapturada> lista = port.consultarListaExcecao();
+        			if (lista == null) {
+        				lista = new ArrayList<ExcecaoCapturada>();
+        			}
+        			exchange.getOut().setBody(lista);
+                }
+            })
+        	.to("mock:resultadoConsultarListaExcecao2")
+        	.process(new Processor() {
+        		public void process(Exchange exchange) throws Exception {
+        			@SuppressWarnings("unchecked")
+					List<ExcecaoCapturada> lista = exchange.getIn().getBody(List.class);
+        			ConsultarListaExcecaoResponse resposta = new ConsultarListaExcecaoResponse();
+        			resposta.getListaExcecaoCapturada().addAll(lista);
+        			exchange.getOut().setBody(resposta);
+        		}
+        	})
+        	.convertBodyTo(ConsultarListaExcecaoResponse.class);
+
     }
 }
 
