@@ -1,5 +1,5 @@
 
-package _106._0._168._192._8080.jaxws;
+package puc.pf.portal.service;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,7 +7,6 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
-import _106._0._168._192._8080.jaxws.dominio.excecaocapturada.ExcecaoCapturada;
 
 
 /**

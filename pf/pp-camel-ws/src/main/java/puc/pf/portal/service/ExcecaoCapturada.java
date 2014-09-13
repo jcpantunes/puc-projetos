@@ -1,5 +1,5 @@
 
-package _106._0._168._192._8080.jaxws.dominio.excecaocapturada;
+package puc.pf.portal.service;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -7,7 +7,6 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.datatype.XMLGregorianCalendar;
-import _106._0._168._192._8080.jaxws.BaseBeanDTO;
 
 
 /**
@@ -33,7 +32,7 @@ import _106._0._168._192._8080.jaxws.BaseBeanDTO;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "ExcecaoCapturada", propOrder = {
+@XmlType(name = "ExcecaoCapturada", namespace = "http://192.168.0.106:8080/jaxws/dominio/excecaocapturada", propOrder = {
     "tipoExcecao",
     "stacktrace",
     "ticket",

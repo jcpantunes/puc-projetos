@@ -19,8 +19,8 @@ package org.apache.camel.example.cxf;
 import javax.jws.WebMethod;
 import javax.jws.WebService;
 
-import _106._0._168._192._8080.jaxws.ConsultarExcecaoResponse;
-import _106._0._168._192._8080.jaxws.ConsultarListaExcecaoResponse;
+import puc.pf.portal.service.ConsultarExcecaoResponse;
+import puc.pf.portal.service.ConsultarListaExcecaoResponse;
 
 
 /**

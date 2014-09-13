@@ -9,8 +9,6 @@ import javax.jws.WebService;
 import javax.xml.bind.annotation.XmlSeeAlso;
 import javax.xml.ws.RequestWrapper;
 import javax.xml.ws.ResponseWrapper;
-import _106._0._168._192._8080.jaxws.dominio.excecaocapturada.ExcecaoCapturada;
-import _106._0._168._192._8080.jaxws.dominio.funcionario.Funcionario;
 
 
 /**
@@ -21,10 +19,7 @@ import _106._0._168._192._8080.jaxws.dominio.funcionario.Funcionario;
  */
 @WebService(name = "iserviceportal", targetNamespace = "http://192.168.0.106:8080/jaxws")
 @XmlSeeAlso({
-    _106._0._168._192._8080.jaxws.dominio.funcionario.ObjectFactory.class,
-    _106._0._168._192._8080.jaxws.dominio.excecaocapturada.ObjectFactory.class,
-    _106._0._168._192._8080.jaxws.dominio.basebean.ObjectFactory.class,
-    _106._0._168._192._8080.jaxws.ObjectFactory.class
+    ObjectFactory.class
 })
 public interface Iserviceportal {
 
@@ -33,12 +28,12 @@ public interface Iserviceportal {
      * 
      * @param arg0
      * @return
-     *     returns _106._0._168._192._8080.jaxws.dominio.excecaocapturada.ExcecaoCapturada
+     *     returns puc.pf.portal.service.ExcecaoCapturada
      */
     @WebMethod(action = "http://192.168.0.106:8080/jaxws/consultarExcecao")
     @WebResult(name = "ExcecaoCapturada", targetNamespace = "http://192.168.0.106:8080/jaxws/dominio/excecaocapturada")
-    @RequestWrapper(localName = "consultarExcecao", targetNamespace = "http://192.168.0.106:8080/jaxws", className = "_106._0._168._192._8080.jaxws.ConsultarExcecao")
-    @ResponseWrapper(localName = "consultarExcecaoResponse", targetNamespace = "http://192.168.0.106:8080/jaxws", className = "_106._0._168._192._8080.jaxws.ConsultarExcecaoResponse")
+    @RequestWrapper(localName = "consultarExcecao", targetNamespace = "http://192.168.0.106:8080/jaxws", className = "puc.pf.portal.service.ConsultarExcecao")
+    @ResponseWrapper(localName = "consultarExcecaoResponse", targetNamespace = "http://192.168.0.106:8080/jaxws", className = "puc.pf.portal.service.ConsultarExcecaoResponse")
     public ExcecaoCapturada consultarExcecao(
         @WebParam(name = "arg0", targetNamespace = "")
         Long arg0);
@@ -46,24 +41,24 @@ public interface Iserviceportal {
     /**
      * 
      * @return
-     *     returns java.util.List<_106._0._168._192._8080.jaxws.dominio.excecaocapturada.ExcecaoCapturada>
+     *     returns java.util.List<puc.pf.portal.service.ExcecaoCapturada>
      */
     @WebMethod(action = "http://192.168.0.106:8080/jaxws/consultarListaExcecao")
     @WebResult(name = "ListaExcecaoCapturada", targetNamespace = "http://192.168.0.106:8080/jaxws/dominio/excecaocapturada")
-    @RequestWrapper(localName = "consultarListaExcecao", targetNamespace = "http://192.168.0.106:8080/jaxws", className = "_106._0._168._192._8080.jaxws.ConsultarListaExcecao")
-    @ResponseWrapper(localName = "consultarListaExcecaoResponse", targetNamespace = "http://192.168.0.106:8080/jaxws", className = "_106._0._168._192._8080.jaxws.ConsultarListaExcecaoResponse")
+    @RequestWrapper(localName = "consultarListaExcecao", targetNamespace = "http://192.168.0.106:8080/jaxws", className = "puc.pf.portal.service.ConsultarListaExcecao")
+    @ResponseWrapper(localName = "consultarListaExcecaoResponse", targetNamespace = "http://192.168.0.106:8080/jaxws", className = "puc.pf.portal.service.ConsultarListaExcecaoResponse")
     public List<ExcecaoCapturada> consultarListaExcecao();
 
     /**
      * 
      * @param arg0
      * @return
-     *     returns _106._0._168._192._8080.jaxws.dominio.funcionario.Funcionario
+     *     returns puc.pf.portal.service.Funcionario
      */
     @WebMethod(action = "http://192.168.0.106:8080/jaxws/consultarFuncionario")
     @WebResult(name = "Funcionario", targetNamespace = "http://192.168.0.106:8080/jaxws/dominio/funcionario")
-    @RequestWrapper(localName = "consultarFuncionario", targetNamespace = "http://192.168.0.106:8080/jaxws", className = "_106._0._168._192._8080.jaxws.ConsultarFuncionario")
-    @ResponseWrapper(localName = "consultarFuncionarioResponse", targetNamespace = "http://192.168.0.106:8080/jaxws", className = "_106._0._168._192._8080.jaxws.ConsultarFuncionarioResponse")
+    @RequestWrapper(localName = "consultarFuncionario", targetNamespace = "http://192.168.0.106:8080/jaxws", className = "puc.pf.portal.service.ConsultarFuncionario")
+    @ResponseWrapper(localName = "consultarFuncionarioResponse", targetNamespace = "http://192.168.0.106:8080/jaxws", className = "puc.pf.portal.service.ConsultarFuncionarioResponse")
     public Funcionario consultarFuncionario(
         @WebParam(name = "arg0", targetNamespace = "")
         Long arg0);
@@ -71,12 +66,12 @@ public interface Iserviceportal {
     /**
      * 
      * @return
-     *     returns java.util.List<_106._0._168._192._8080.jaxws.dominio.funcionario.Funcionario>
+     *     returns java.util.List<puc.pf.portal.service.Funcionario>
      */
     @WebMethod(action = "http://192.168.0.106:8080/jaxws/consultarListaFuncionario")
     @WebResult(name = "ListaFuncionario", targetNamespace = "http://192.168.0.106:8080/jaxws/dominio/funcionario")
-    @RequestWrapper(localName = "consultarListaFuncionario", targetNamespace = "http://192.168.0.106:8080/jaxws", className = "_106._0._168._192._8080.jaxws.ConsultarListaFuncionario")
-    @ResponseWrapper(localName = "consultarListaFuncionarioResponse", targetNamespace = "http://192.168.0.106:8080/jaxws", className = "_106._0._168._192._8080.jaxws.ConsultarListaFuncionarioResponse")
+    @RequestWrapper(localName = "consultarListaFuncionario", targetNamespace = "http://192.168.0.106:8080/jaxws", className = "puc.pf.portal.service.ConsultarListaFuncionario")
+    @ResponseWrapper(localName = "consultarListaFuncionarioResponse", targetNamespace = "http://192.168.0.106:8080/jaxws", className = "puc.pf.portal.service.ConsultarListaFuncionarioResponse")
     public List<Funcionario> consultarListaFuncionario();
 
 }

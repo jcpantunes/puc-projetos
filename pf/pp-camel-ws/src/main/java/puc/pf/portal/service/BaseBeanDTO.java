@@ -1,22 +1,24 @@
 
-package _106._0._168._192._8080.jaxws;
+package puc.pf.portal.service;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlSeeAlso;
 import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for consultarFuncionario complex type.
+ * <p>Java class for baseBeanDTO complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="consultarFuncionario">
+ * &lt;complexType name="baseBeanDTO">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="arg0" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
+ *         &lt;element name="ID" type="{http://www.w3.org/2001/XMLSchema}long"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -26,35 +28,40 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "consultarFuncionario", propOrder = {
-    "arg0"
+@XmlType(name = "baseBeanDTO", propOrder = {
+    "id"
 })
-public class ConsultarFuncionario {
+@XmlSeeAlso({
+    ExcecaoCapturada.class,
+    Funcionario.class
+})
+public class BaseBeanDTO {
 
-    protected Long arg0;
+    @XmlElement(name = "ID", required = true, type = Long.class, nillable = true)
+    protected Long id;
 
     /**
-     * Gets the value of the arg0 property.
+     * Gets the value of the id property.
      * 
      * @return
      *     possible object is
      *     {@link Long }
      *     
      */
-    public Long getArg0() {
-        return arg0;
+    public Long getID() {
+        return id;
     }
 
     /**
-     * Sets the value of the arg0 property.
+     * Sets the value of the id property.
      * 
      * @param value
      *     allowed object is
      *     {@link Long }
      *     
      */
-    public void setArg0(Long value) {
-        this.arg0 = value;
+    public void setID(Long value) {
+        this.id = value;
     }
 
 }
