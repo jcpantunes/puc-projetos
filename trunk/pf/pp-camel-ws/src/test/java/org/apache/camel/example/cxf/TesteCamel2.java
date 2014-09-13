@@ -10,7 +10,7 @@ import org.apache.camel.impl.DefaultCamelContext;
 import org.apache.camel.test.junit4.CamelTestSupport;
 import org.junit.Test;
 
-import _106._0._168._192._8080.jaxws.dominio.excecaocapturada.ExcecaoCapturada;
+import puc.pf.portal.service.ExcecaoCapturada;
 
 public class TesteCamel2 extends CamelTestSupport {
 	

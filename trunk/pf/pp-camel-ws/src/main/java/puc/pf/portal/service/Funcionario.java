@@ -1,11 +1,10 @@
 
-package _106._0._168._192._8080.jaxws.dominio.funcionario;
+package puc.pf.portal.service;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
-import _106._0._168._192._8080.jaxws.BaseBeanDTO;
 
 
 /**
@@ -29,7 +28,7 @@ import _106._0._168._192._8080.jaxws.BaseBeanDTO;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "Funcionario", propOrder = {
+@XmlType(name = "Funcionario", namespace = "http://192.168.0.106:8080/jaxws/dominio/funcionario", propOrder = {
     "nome",
     "matricula"
 })

@@ -6,10 +6,10 @@ import java.util.List;
 import org.apache.camel.Exchange;
 import org.apache.camel.Processor;
 
+import puc.pf.portal.service.ConsultarListaExcecaoResponse;
+import puc.pf.portal.service.ExcecaoCapturada;
 import puc.pf.portal.service.IServicePortal;
 import puc.pf.portal.service.Iserviceportal;
-import _106._0._168._192._8080.jaxws.ConsultarListaExcecaoResponse;
-import _106._0._168._192._8080.jaxws.dominio.excecaocapturada.ExcecaoCapturada;
 
 public class ObterListaExcecaoIn implements Processor {
 

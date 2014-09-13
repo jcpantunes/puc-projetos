@@ -1,7 +1,8 @@
 
 Criar classes do WS
-wsimport -keep -d ./ http://192.168.0.106:8080/portal-servicos/IServicePortal?wsdl
 
+wsimport -keep -d ./ -p puc.pf.portal.service http://192.168.0.106:8080/portal-servicos/IServicePortal?wsdl
+rm /puc/pf/portal/service/*.class
 
 
 Camel CXF (code first) and Apache Tomcat example
