@@ -27,6 +27,7 @@
   
   <bean id="obterExcecaoIn" class="org.apache.camel.example.cxf.ObterExcecaoIn" />
   <bean id="obterListaExcecaoIn" class="org.apache.camel.example.cxf.ObterListaExcecaoIn" />
+  <bean id="obterListaExcecaoMaiorIdIn" class="org.apache.camel.example.cxf.ObterListaExcecaoMaiorIdIn" />
   
   <camelContext xmlns="http://camel.apache.org/schema/spring">
 	<!-- <to uri="spring-ws:http://10.32.49.26:8080/portal-servicos/IServicePortal?soapAction=http://10.32.49.26:8080/jaxws/consultarListaExcecao" /> -->
@@ -41,11 +42,18 @@
 
 	<route streamCache="true">
 	    <from uri="direct:consultarListaExcecao" />
-		<log message="(2) Solicitando consulta au uma lista de Excecao" />
+		<log message="(2) Solicitando consulta a uma lista de Excecao" />
 		<process ref="obterListaExcecaoIn" />
 		<to uri="mock:resultadoListaExcecao" />
 	</route>
 
+	<route streamCache="true">
+	    <from uri="direct:consultarListaExcecaoMaiorId" />
+		<log message="(3) Solicitando consulta a uma lista de Excecao com id maior que o parametro" />
+		<process ref="obterListaExcecaoMaiorIdIn" />
+		<to uri="mock:resultadoListaExcecaoMaiorId" />
+	</route>
+	
 </camelContext>
   
  </beans>

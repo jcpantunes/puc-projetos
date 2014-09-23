@@ -20,6 +20,7 @@ import javax.jws.WebMethod;
 import javax.jws.WebService;
 
 import puc.pf.portal.service.ConsultarExcecaoResponse;
+import puc.pf.portal.service.ConsultarListaExcecaoMaiorIdResponse;
 import puc.pf.portal.service.ConsultarListaExcecaoResponse;
 
 
@@ -35,13 +36,16 @@ import puc.pf.portal.service.ConsultarListaExcecaoResponse;
 public interface CamelService {
 
 	@WebMethod(action=CamelConstantes.NAMESPACE + "/" + CamelConstantes.OPERACAO_CONSULTAR_EXCECAO)
-	ConsultarExcecaoResponse consultarExcecao(Long codigoExcecaoCapturada);
+	ConsultarExcecaoResponse consultarExcecao(Long codigoExcecao);
 
     // ConsultarExcecaoResponse consultarExcecao2(Long codigoExcecaoCapturada);
 
 	@WebMethod(action=CamelConstantes.NAMESPACE + "/" + CamelConstantes.OPERACAO_CONSULTAR_LISTA_EXCECAO)
 	ConsultarListaExcecaoResponse consultarListaExcecao();
     
-    // ConsultarListaExcecaoResponse consultarListaExcecao2();
+	@WebMethod(action=CamelConstantes.NAMESPACE + "/" + CamelConstantes.OPERACAO_CONSULTAR_LISTA_EXCECAO_MAIOR_ID)
+	ConsultarListaExcecaoMaiorIdResponse consultarListaExcecaoMaiorId(Long codigoExcecao);
+	
+	// ConsultarListaExcecaoResponse consultarListaExcecao2();
     
 }

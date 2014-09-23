@@ -10,7 +10,7 @@ import org.apache.camel.impl.DefaultCamelContext;
 import org.apache.camel.test.junit4.CamelTestSupport;
 import org.junit.Test;
 
-import puc.pf.portal.service.ExcecaoCapturada;
+import puc.pf.portal.service.Excecao;
 
 public class TesteCamel2 extends CamelTestSupport {
 	
@@ -42,7 +42,7 @@ public class TesteCamel2 extends CamelTestSupport {
 		// final String WS_URI = "spring-ws:http://192.168.0.106:8080/portal-servicos/IServicePortal?soapAction={http://192.168.0.106:8080/jaxws}consultarExcecao";
 		final String WS_URI = "spring-ws:rootqname:{{http://192.168.0.106:8080/jaxws}consultarExcecao?endpointMapping=#endpointMapping";
 		
-		final JaxbDataFormat jaxb = new JaxbDataFormat(ExcecaoCapturada.class.getPackage().getName());
+		final JaxbDataFormat jaxb = new JaxbDataFormat(Excecao.class.getPackage().getName());
 		
 //		final String WS_URI = "cxf:http://192.168.0.106:8080/portal-servicos/IServicePortal?"
 //				+ "serviceClass=puc.pf.portal.service.IServicePortal"

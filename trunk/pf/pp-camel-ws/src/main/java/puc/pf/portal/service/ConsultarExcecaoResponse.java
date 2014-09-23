@@ -17,7 +17,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element ref="{http://192.168.0.106:8080/jaxws/dominio/excecaocapturada}ExcecaoCapturada" minOccurs="0"/>
+ *         &lt;element ref="{http://192.168.0.106:8080/jaxws/dominio/excecao}ExcecaoCapturada" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -32,18 +32,18 @@ import javax.xml.bind.annotation.XmlType;
 })
 public class ConsultarExcecaoResponse {
 
-    @XmlElement(name = "ExcecaoCapturada", namespace = "http://192.168.0.106:8080/jaxws/dominio/excecaocapturada")
-    protected ExcecaoCapturada excecaoCapturada;
+    @XmlElement(name = "ExcecaoCapturada", namespace = "http://192.168.0.106:8080/jaxws/dominio/excecao")
+    protected Excecao excecaoCapturada;
 
     /**
      * Gets the value of the excecaoCapturada property.
      * 
      * @return
      *     possible object is
-     *     {@link ExcecaoCapturada }
+     *     {@link Excecao }
      *     
      */
-    public ExcecaoCapturada getExcecaoCapturada() {
+    public Excecao getExcecaoCapturada() {
         return excecaoCapturada;
     }
 
@@ -52,10 +52,10 @@ public class ConsultarExcecaoResponse {
      * 
      * @param value
      *     allowed object is
-     *     {@link ExcecaoCapturada }
+     *     {@link Excecao }
      *     
      */
-    public void setExcecaoCapturada(ExcecaoCapturada value) {
+    public void setExcecaoCapturada(Excecao value) {
         this.excecaoCapturada = value;
     }
 

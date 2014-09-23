@@ -10,16 +10,16 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for consultarListaExcecaoResponse complex type.
+ * <p>Java class for consultarListaExcecaoMaiorIdResponse complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="consultarListaExcecaoResponse">
+ * &lt;complexType name="consultarListaExcecaoMaiorIdResponse">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element ref="{http://192.168.0.106:8080/jaxws/dominio/excecao}ListaExcecaoCapturada" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element ref="{http://192.168.0.106:8080/jaxws/dominio/excecao}ListaExcecaoCapturadaMaiorId" maxOccurs="unbounded" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -29,27 +29,27 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "consultarListaExcecaoResponse", propOrder = {
-    "listaExcecaoCapturada"
+@XmlType(name = "consultarListaExcecaoMaiorIdResponse", propOrder = {
+    "listaExcecaoCapturadaMaiorId"
 })
-public class ConsultarListaExcecaoResponse {
+public class ConsultarListaExcecaoMaiorIdResponse {
 
-    @XmlElement(name = "ListaExcecaoCapturada", namespace = "http://192.168.0.106:8080/jaxws/dominio/excecao")
-    protected List<Excecao> listaExcecaoCapturada;
+    @XmlElement(name = "ListaExcecaoCapturadaMaiorId", namespace = "http://192.168.0.106:8080/jaxws/dominio/excecao")
+    protected List<Excecao> listaExcecaoCapturadaMaiorId;
 
     /**
-     * Gets the value of the listaExcecaoCapturada property.
+     * Gets the value of the listaExcecaoCapturadaMaiorId property.
      * 
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the listaExcecaoCapturada property.
+     * This is why there is not a <CODE>set</CODE> method for the listaExcecaoCapturadaMaiorId property.
      * 
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
-     *    getListaExcecaoCapturada().add(newItem);
+     *    getListaExcecaoCapturadaMaiorId().add(newItem);
      * </pre>
      * 
      * 
@@ -59,11 +59,11 @@ public class ConsultarListaExcecaoResponse {
      * 
      * 
      */
-    public List<Excecao> getListaExcecaoCapturada() {
-        if (listaExcecaoCapturada == null) {
-            listaExcecaoCapturada = new ArrayList<Excecao>();
+    public List<Excecao> getListaExcecaoCapturadaMaiorId() {
+        if (listaExcecaoCapturadaMaiorId == null) {
+            listaExcecaoCapturadaMaiorId = new ArrayList<Excecao>();
         }
-        return this.listaExcecaoCapturada;
+        return this.listaExcecaoCapturadaMaiorId;
     }
 
 }
