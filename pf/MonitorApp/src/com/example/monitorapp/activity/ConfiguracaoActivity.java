@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.example.monitorapp;
+package com.example.monitorapp.activity;
 
 import android.app.Activity;
 import android.app.ActivityManager;
@@ -14,6 +14,10 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 
+import com.example.monitorapp.MainActivity;
+import com.example.monitorapp.R;
+import com.example.monitorapp.provider.ExcecaoDAO;
+import com.example.monitorapp.provider.ExcecaoHistoricoDAO;
 import com.example.monitorapp.util.AppConstantes;
 import com.example.monitorapp.util.MonitorService;
 
@@ -28,6 +32,8 @@ public class ConfiguracaoActivity extends Activity {
 	private Button btnIniciarServico;
 	
 	private Button btnPararServico;
+	
+	private Button btnLimparHistorico;
 	
 	private final String TAG = "ConfiguracaoActivity";
 
@@ -83,13 +89,22 @@ public class ConfiguracaoActivity extends Activity {
 			}
 		});
 		
+		btnLimparHistorico = (Button) findViewById(R.id.configuracaoBtnLimparHistorico);
+		btnLimparHistorico.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+				Log.i(TAG, "Limpando historico de Excecao ...");
+				limparHistorico();
+			}
+		});
+		
 		
 		if (isServiceRunning(AppConstantes.MONITOR_SERVICE_PATH)) {
-			setVisibilidade(View.INVISIBLE, View.VISIBLE);
+			// setVisibilidade(View.INVISIBLE, View.VISIBLE);
+			setHabilitado(false, true);
 
 		} else {
-			setVisibilidade(View.VISIBLE, View.INVISIBLE);
-			
+			//setVisibilidade(View.VISIBLE, View.INVISIBLE);
+			setHabilitado(true, false);
 		}
 		
 	}
@@ -104,7 +119,8 @@ public class ConfiguracaoActivity extends Activity {
 			intentService.putExtra(MonitorService.TEMPO, tempo);
 			startService(intentService);
 			
-			setVisibilidade(View.INVISIBLE, View.VISIBLE);
+			// setVisibilidade(View.INVISIBLE, View.VISIBLE);
+			setHabilitado(false, true);
 			
 		} else {
 			Log.i(TAG, "Servico ja esta rodando ...");
@@ -114,7 +130,8 @@ public class ConfiguracaoActivity extends Activity {
 	private void pararServico() {
 		if (isServiceRunning(AppConstantes.MONITOR_SERVICE_PATH)) {
 			stopService(intentService);
-			setVisibilidade(View.VISIBLE, View.INVISIBLE);
+			// setVisibilidade(View.VISIBLE, View.INVISIBLE);
+			setHabilitado(true, false);
 			
 		} else {
 			Log.i(TAG, "Servico nao esta rodando ...");
@@ -137,9 +154,22 @@ public class ConfiguracaoActivity extends Activity {
         return false;
     }
     
-    private void setVisibilidade(int iniciar, int parar) {
-    	btnIniciarServico.setVisibility(iniciar);
-		btnPararServico.setVisibility(parar);
+    private void setHabilitado(boolean iniciar, boolean parar) {
+    	btnIniciarServico.setEnabled(iniciar);
+		btnPararServico.setEnabled(parar);
+    }
+    	
+//    private void setVisibilidade(int iniciar, int parar) {
+//    	btnIniciarServico.setVisibility(iniciar);
+//		btnPararServico.setVisibility(parar);
+//    }
+    
+    private void limparHistorico() {
+		ExcecaoDAO excecaoDao = new ExcecaoDAO();
+		excecaoDao.delete(this);
+
+		ExcecaoHistoricoDAO excecaoHistoricoDao = new ExcecaoHistoricoDAO();
+    	excecaoHistoricoDao.delete(this);
     }
 	
 }

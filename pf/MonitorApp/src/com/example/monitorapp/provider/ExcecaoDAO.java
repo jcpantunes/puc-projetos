@@ -11,28 +11,28 @@ import android.widget.SimpleCursorAdapter;
 
 import com.example.monitorapp.R;
 import com.example.monitorapp.dto.BaseDTO;
-import com.example.monitorapp.dto.ExcecaoCapturadaDTO;
+import com.example.monitorapp.dto.ExcecaoDTO;
 
-public class ExcecaoCapturadaDAO {
+public class ExcecaoDAO {
 	
-	public List<ExcecaoCapturadaDTO> recuperarListaErro(Context context) {
-		List<ExcecaoCapturadaDTO> lista = new ArrayList<ExcecaoCapturadaDTO>();
+	public List<ExcecaoDTO> recuperarListaErro(Context context) {
+		List<ExcecaoDTO> lista = new ArrayList<ExcecaoDTO>();
 		
 		Cursor mCursor = context.getContentResolver().query(
 				MonitorProvider.Excecao.CONTENT_URI, null, null, null, MonitorProvider.Excecao.EXCECAO_TICKET + " DESC ");
 		
 		if (mCursor != null) {
     		while (mCursor.moveToNext()) {
-    			ExcecaoCapturadaDTO erro = ExcecaoCapturadaDTO.parseFromCursor(mCursor);
+    			ExcecaoDTO erro = ExcecaoDTO.parseFromCursor(mCursor);
     			lista.add(erro);
     		}
     	}
 		return lista;
 	}
 	
-	public ExcecaoCapturadaDTO recuperarErro(Context context, Integer id) {
-		List<ExcecaoCapturadaDTO> lista = recuperarListaErro(context);
-		for (ExcecaoCapturadaDTO dto : lista) {
+	public ExcecaoDTO recuperarErro(Context context, Integer id) {
+		List<ExcecaoDTO> lista = recuperarListaErro(context);
+		for (ExcecaoDTO dto : lista) {
 			if(dto.getIdExcecao() == id) {
 				return dto;
 			}
@@ -52,9 +52,9 @@ public class ExcecaoCapturadaDAO {
 		return adapter;	
 	}
 	
-	public void inserirErro(Context context, ExcecaoCapturadaDTO erro) {
+	public void inserirErro(Context context, ExcecaoDTO erro) {
 		ContentValues values = new ContentValues();
-		values.put(MonitorProvider.Excecao.EXCECAO_ID_EXCECAO, erro.getId().intValue());
+		values.put(MonitorProvider.Excecao.EXCECAO_ID_EXCECAO, erro.getIdExcecao().intValue());
 		values.put(MonitorProvider.Excecao.EXCECAO_DATA, BaseDTO.retornaDataString(erro.getDataExcecao()));
 		values.put(MonitorProvider.Excecao.EXCECAO_TIPO, erro.getTipoExcecao());
 		values.put(MonitorProvider.Excecao.EXCECAO_TICKET, erro.getTicket());
@@ -65,7 +65,7 @@ public class ExcecaoCapturadaDAO {
 		context.getContentResolver().delete(MonitorProvider.Excecao.CONTENT_URI, null, null);
 	}
 	
-	public void delete(List<ExcecaoCapturadaDTO> lista) {
+	public void delete(List<ExcecaoDTO> lista) {
 		
 	}
 

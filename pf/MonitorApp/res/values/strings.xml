@@ -20,5 +20,6 @@
     <!-- Configuracao -->
     <string name="configuracaoBtnIniciarServico">Iniciar Servico</string>
     <string name="configuracaoBtnPararServico">Parar Servico</string>
+    <string name="configuracaoBtnLimparHistorico">Limpar Historico</string>
     
 </resources>

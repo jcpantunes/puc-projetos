@@ -8,7 +8,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.PowerManager;
 
-import com.example.monitorapp.service.WebServiceCallAsync;
+import com.example.monitorapp.service.ConsultarListaExcecaoWS;
 
 @SuppressLint("Wakelock")
 public class Alarme extends BroadcastReceiver {    
@@ -22,8 +22,8 @@ public class Alarme extends BroadcastReceiver {
         // Put here YOUR code.
         // Toast.makeText(context, "Alarm !!!!!!!!!!", Toast.LENGTH_LONG).show();
         
-        WebServiceCallAsync ws = new WebServiceCallAsync(context);
-		ws.execute("");
+        ConsultarListaExcecaoWS consultarLista = new ConsultarListaExcecaoWS();
+		consultarLista.executar(context);
 
         wl.release();
     }

@@ -22,6 +22,8 @@ public class AppConstantes {
 	
 	public static final String OPERACAO_CONSULTAR_LISTA_EXCECAO = "consultarListaExcecao";
 	
+	public static final String OPERACAO_CONSULTAR_LISTA_EXCECAO_MAIOR_ID = "consultarListaExcecaoMaiorId";
+	
 	public static final String OPERACAO_CONSULTAR_EXCECAO = "consultarExcecao";
 
 //	public static final String BASEBEAN = "BaseBean";
