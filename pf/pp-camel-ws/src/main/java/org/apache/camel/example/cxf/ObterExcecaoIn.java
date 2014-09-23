@@ -4,7 +4,7 @@ import org.apache.camel.Exchange;
 import org.apache.camel.Processor;
 
 import puc.pf.portal.service.ConsultarExcecaoResponse;
-import puc.pf.portal.service.ExcecaoCapturada;
+import puc.pf.portal.service.Excecao;
 import puc.pf.portal.service.IServicePortal;
 import puc.pf.portal.service.Iserviceportal;
 
@@ -28,8 +28,8 @@ public class ObterExcecaoIn implements Processor {
 
         IServicePortal service = new IServicePortal();
 		Iserviceportal port = service.getIServicePortalPort();
-		ExcecaoCapturada dto = port.consultarExcecao(Long.parseLong(id));
-		dto = dto.getID() == null ? dto = new ExcecaoCapturada() : dto;
+		Excecao dto = port.consultarExcecao(Long.parseLong(id));
+		dto = dto.getID() == null ? dto = new Excecao() : dto;
 
 		ConsultarExcecaoResponse resposta = new ConsultarExcecaoResponse();
 		resposta.setExcecaoCapturada(dto);

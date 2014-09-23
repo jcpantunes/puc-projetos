@@ -11,9 +11,10 @@ public interface CamelConstantes {
 	
 	public static final String URL = URI + "/" + CONTEXTO;
 	
-	public static final String OPERACAO_CONSULTAR_LISTA_EXCECAO = "consultarListaExcecao";
-	
 	public static final String OPERACAO_CONSULTAR_EXCECAO = "consultarExcecao";
 
-
+	public static final String OPERACAO_CONSULTAR_LISTA_EXCECAO = "consultarListaExcecao";
+	
+	public static final String OPERACAO_CONSULTAR_LISTA_EXCECAO_MAIOR_ID = "consultarListaExcecaoMaiorId";
+	
 }

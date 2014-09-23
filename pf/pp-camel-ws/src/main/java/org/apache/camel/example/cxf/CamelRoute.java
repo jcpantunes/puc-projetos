@@ -25,7 +25,7 @@ import org.apache.camel.builder.RouteBuilder;
 
 import puc.pf.portal.service.ConsultarExcecaoResponse;
 import puc.pf.portal.service.ConsultarListaExcecaoResponse;
-import puc.pf.portal.service.ExcecaoCapturada;
+import puc.pf.portal.service.Excecao;
 import puc.pf.portal.service.IServicePortal;
 import puc.pf.portal.service.Iserviceportal;
 
@@ -55,9 +55,9 @@ public class CamelRoute extends RouteBuilder {
                     String id = exchange.getIn().getBody(String.class).toString();
                     IServicePortal service = new IServicePortal();
         			Iserviceportal port = service.getIServicePortalPort();
-        			ExcecaoCapturada dto = port.consultarExcecao(Long.parseLong(id));
+        			Excecao dto = port.consultarExcecao(Long.parseLong(id));
         			if (dto.getID() == null) {
-        				dto = new ExcecaoCapturada();
+        				dto = new Excecao();
         			}
         			exchange.getOut().setBody(dto);
                 }
@@ -68,7 +68,7 @@ public class CamelRoute extends RouteBuilder {
         	.to("direct:resultadoListaConsultarExcecaoActiveMQ")
         	.process(new Processor() {
         		public void process(Exchange exchange) throws Exception {
-        			ExcecaoCapturada resultado = exchange.getIn().getBody(ExcecaoCapturada.class);
+        			Excecao resultado = exchange.getIn().getBody(Excecao.class);
         			exchange.getOut().setBody(resultado);
         		}
         	})
@@ -81,9 +81,9 @@ public class CamelRoute extends RouteBuilder {
                     String id = exchange.getIn().getBody(String.class).toString();
                     IServicePortal service = new IServicePortal();
         			Iserviceportal port = service.getIServicePortalPort();
-        			ExcecaoCapturada dto = port.consultarExcecao(Long.parseLong(id));
+        			Excecao dto = port.consultarExcecao(Long.parseLong(id));
         			if (dto.getID() == null) {
-        				dto = new ExcecaoCapturada();
+        				dto = new Excecao();
         			}
         			exchange.getOut().setBody(dto);
                 }
@@ -91,7 +91,7 @@ public class CamelRoute extends RouteBuilder {
         	.to("mock:resultadoConsultarExcecao2")
         	.process(new Processor() {
         		public void process(Exchange exchange) throws Exception {
-        			ExcecaoCapturada dto = exchange.getIn().getBody(ExcecaoCapturada.class);
+        			Excecao dto = exchange.getIn().getBody(Excecao.class);
         			ConsultarExcecaoResponse resposta = new ConsultarExcecaoResponse();
         			resposta.setExcecaoCapturada(dto);
         			exchange.getOut().setBody(resposta);
@@ -105,9 +105,9 @@ public class CamelRoute extends RouteBuilder {
                 public void process(Exchange exchange) throws Exception {
                     IServicePortal service = new IServicePortal();
         			Iserviceportal port = service.getIServicePortalPort();
-        			List<ExcecaoCapturada> lista = port.consultarListaExcecao();
+        			List<Excecao> lista = port.consultarListaExcecao();
         			if (lista == null) {
-        				lista = new ArrayList<ExcecaoCapturada>();
+        				lista = new ArrayList<Excecao>();
         			}
         			exchange.getOut().setBody(lista);
                 }
@@ -116,7 +116,7 @@ public class CamelRoute extends RouteBuilder {
         	.process(new Processor() {
         		public void process(Exchange exchange) throws Exception {
         			@SuppressWarnings("unchecked")
-					List<ExcecaoCapturada> lista = exchange.getIn().getBody(List.class);
+					List<Excecao> lista = exchange.getIn().getBody(List.class);
         			ConsultarListaExcecaoResponse resposta = new ConsultarListaExcecaoResponse();
         			resposta.getListaExcecaoCapturada().addAll(lista);
         			exchange.getOut().setBody(resposta);

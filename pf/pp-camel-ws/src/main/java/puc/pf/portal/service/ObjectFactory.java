@@ -24,18 +24,22 @@ import javax.xml.namespace.QName;
 @XmlRegistry
 public class ObjectFactory {
 
-    private final static QName _ListaExcecaoCapturada_QNAME = new QName("http://192.168.0.106:8080/jaxws/dominio/excecaocapturada", "ListaExcecaoCapturada");
+    private final static QName _ExcecaoCapturada_QNAME = new QName("http://192.168.0.106:8080/jaxws/dominio/excecao", "ExcecaoCapturada");
+    private final static QName _ConsultarListaExcecaoMaiorIdResponse_QNAME = new QName("http://192.168.0.106:8080/jaxws", "consultarListaExcecaoMaiorIdResponse");
+    private final static QName _ListaExcecaoCapturadaMaiorId_QNAME = new QName("http://192.168.0.106:8080/jaxws/dominio/excecao", "ListaExcecaoCapturadaMaiorId");
     private final static QName _BaseBean_QNAME = new QName("http://192.168.0.106:8080/jaxws/dominio/basebean", "BaseBean");
     private final static QName _ConsultarExcecaoResponse_QNAME = new QName("http://192.168.0.106:8080/jaxws", "consultarExcecaoResponse");
     private final static QName _ConsultarFuncionario_QNAME = new QName("http://192.168.0.106:8080/jaxws", "consultarFuncionario");
     private final static QName _ConsultarFuncionarioResponse_QNAME = new QName("http://192.168.0.106:8080/jaxws", "consultarFuncionarioResponse");
+    private final static QName _ConsultarListaExcecaoMaiorId_QNAME = new QName("http://192.168.0.106:8080/jaxws", "consultarListaExcecaoMaiorId");
     private final static QName _ConsultarExcecao_QNAME = new QName("http://192.168.0.106:8080/jaxws", "consultarExcecao");
     private final static QName _ConsultarListaFuncionarioResponse_QNAME = new QName("http://192.168.0.106:8080/jaxws", "consultarListaFuncionarioResponse");
     private final static QName _Funcionario_QNAME = new QName("http://192.168.0.106:8080/jaxws/dominio/funcionario", "Funcionario");
-    private final static QName _ExcecaoCapturada_QNAME = new QName("http://192.168.0.106:8080/jaxws/dominio/excecaocapturada", "ExcecaoCapturada");
+    private final static QName _ListaExcecaoCapturada_QNAME = new QName("http://192.168.0.106:8080/jaxws/dominio/excecao", "ListaExcecaoCapturada");
     private final static QName _ConsultarListaExcecaoResponse_QNAME = new QName("http://192.168.0.106:8080/jaxws", "consultarListaExcecaoResponse");
     private final static QName _ConsultarListaExcecao_QNAME = new QName("http://192.168.0.106:8080/jaxws", "consultarListaExcecao");
     private final static QName _ConsultarListaFuncionario_QNAME = new QName("http://192.168.0.106:8080/jaxws", "consultarListaFuncionario");
+    private final static QName _Excecao_QNAME = new QName("http://192.168.0.106:8080/jaxws/dominio/excecao", "Excecao");
     private final static QName _ListaFuncionario_QNAME = new QName("http://192.168.0.106:8080/jaxws/dominio/funcionario", "ListaFuncionario");
 
     /**
@@ -43,30 +47,6 @@ public class ObjectFactory {
      * 
      */
     public ObjectFactory() {
-    }
-
-    /**
-     * Create an instance of {@link Funcionario }
-     * 
-     */
-    public Funcionario createFuncionario() {
-        return new Funcionario();
-    }
-
-    /**
-     * Create an instance of {@link ConsultarListaFuncionarioResponse }
-     * 
-     */
-    public ConsultarListaFuncionarioResponse createConsultarListaFuncionarioResponse() {
-        return new ConsultarListaFuncionarioResponse();
-    }
-
-    /**
-     * Create an instance of {@link ConsultarListaExcecao }
-     * 
-     */
-    public ConsultarListaExcecao createConsultarListaExcecao() {
-        return new ConsultarListaExcecao();
     }
 
     /**
@@ -78,19 +58,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ConsultarExcecaoResponse }
+     * Create an instance of {@link Excecao }
      * 
      */
-    public ConsultarExcecaoResponse createConsultarExcecaoResponse() {
-        return new ConsultarExcecaoResponse();
-    }
-
-    /**
-     * Create an instance of {@link ExcecaoCapturada }
-     * 
-     */
-    public ExcecaoCapturada createExcecaoCapturada() {
-        return new ExcecaoCapturada();
+    public Excecao createExcecao() {
+        return new Excecao();
     }
 
     /**
@@ -102,11 +74,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ConsultarListaFuncionario }
+     * Create an instance of {@link ConsultarFuncionario }
      * 
      */
-    public ConsultarListaFuncionario createConsultarListaFuncionario() {
-        return new ConsultarListaFuncionario();
+    public ConsultarFuncionario createConsultarFuncionario() {
+        return new ConsultarFuncionario();
+    }
+
+    /**
+     * Create an instance of {@link ConsultarExcecaoResponse }
+     * 
+     */
+    public ConsultarExcecaoResponse createConsultarExcecaoResponse() {
+        return new ConsultarExcecaoResponse();
     }
 
     /**
@@ -126,20 +106,78 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ConsultarFuncionario }
+     * Create an instance of {@link ConsultarListaExcecaoMaiorIdResponse }
      * 
      */
-    public ConsultarFuncionario createConsultarFuncionario() {
-        return new ConsultarFuncionario();
+    public ConsultarListaExcecaoMaiorIdResponse createConsultarListaExcecaoMaiorIdResponse() {
+        return new ConsultarListaExcecaoMaiorIdResponse();
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ExcecaoCapturada }{@code >}}
+     * Create an instance of {@link ConsultarListaExcecao }
      * 
      */
-    @XmlElementDecl(namespace = "http://192.168.0.106:8080/jaxws/dominio/excecaocapturada", name = "ListaExcecaoCapturada")
-    public JAXBElement<ExcecaoCapturada> createListaExcecaoCapturada(ExcecaoCapturada value) {
-        return new JAXBElement<ExcecaoCapturada>(_ListaExcecaoCapturada_QNAME, ExcecaoCapturada.class, null, value);
+    public ConsultarListaExcecao createConsultarListaExcecao() {
+        return new ConsultarListaExcecao();
+    }
+
+    /**
+     * Create an instance of {@link ConsultarListaFuncionario }
+     * 
+     */
+    public ConsultarListaFuncionario createConsultarListaFuncionario() {
+        return new ConsultarListaFuncionario();
+    }
+
+    /**
+     * Create an instance of {@link Funcionario }
+     * 
+     */
+    public Funcionario createFuncionario() {
+        return new Funcionario();
+    }
+
+    /**
+     * Create an instance of {@link ConsultarListaExcecaoMaiorId }
+     * 
+     */
+    public ConsultarListaExcecaoMaiorId createConsultarListaExcecaoMaiorId() {
+        return new ConsultarListaExcecaoMaiorId();
+    }
+
+    /**
+     * Create an instance of {@link ConsultarListaFuncionarioResponse }
+     * 
+     */
+    public ConsultarListaFuncionarioResponse createConsultarListaFuncionarioResponse() {
+        return new ConsultarListaFuncionarioResponse();
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Excecao }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://192.168.0.106:8080/jaxws/dominio/excecao", name = "ExcecaoCapturada")
+    public JAXBElement<Excecao> createExcecaoCapturada(Excecao value) {
+        return new JAXBElement<Excecao>(_ExcecaoCapturada_QNAME, Excecao.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ConsultarListaExcecaoMaiorIdResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://192.168.0.106:8080/jaxws", name = "consultarListaExcecaoMaiorIdResponse")
+    public JAXBElement<ConsultarListaExcecaoMaiorIdResponse> createConsultarListaExcecaoMaiorIdResponse(ConsultarListaExcecaoMaiorIdResponse value) {
+        return new JAXBElement<ConsultarListaExcecaoMaiorIdResponse>(_ConsultarListaExcecaoMaiorIdResponse_QNAME, ConsultarListaExcecaoMaiorIdResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Excecao }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://192.168.0.106:8080/jaxws/dominio/excecao", name = "ListaExcecaoCapturadaMaiorId")
+    public JAXBElement<Excecao> createListaExcecaoCapturadaMaiorId(Excecao value) {
+        return new JAXBElement<Excecao>(_ListaExcecaoCapturadaMaiorId_QNAME, Excecao.class, null, value);
     }
 
     /**
@@ -179,6 +217,15 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ConsultarListaExcecaoMaiorId }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://192.168.0.106:8080/jaxws", name = "consultarListaExcecaoMaiorId")
+    public JAXBElement<ConsultarListaExcecaoMaiorId> createConsultarListaExcecaoMaiorId(ConsultarListaExcecaoMaiorId value) {
+        return new JAXBElement<ConsultarListaExcecaoMaiorId>(_ConsultarListaExcecaoMaiorId_QNAME, ConsultarListaExcecaoMaiorId.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link ConsultarExcecao }{@code >}}
      * 
      */
@@ -206,12 +253,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ExcecaoCapturada }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link Excecao }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://192.168.0.106:8080/jaxws/dominio/excecaocapturada", name = "ExcecaoCapturada")
-    public JAXBElement<ExcecaoCapturada> createExcecaoCapturada(ExcecaoCapturada value) {
-        return new JAXBElement<ExcecaoCapturada>(_ExcecaoCapturada_QNAME, ExcecaoCapturada.class, null, value);
+    @XmlElementDecl(namespace = "http://192.168.0.106:8080/jaxws/dominio/excecao", name = "ListaExcecaoCapturada")
+    public JAXBElement<Excecao> createListaExcecaoCapturada(Excecao value) {
+        return new JAXBElement<Excecao>(_ListaExcecaoCapturada_QNAME, Excecao.class, null, value);
     }
 
     /**
@@ -239,6 +286,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://192.168.0.106:8080/jaxws", name = "consultarListaFuncionario")
     public JAXBElement<ConsultarListaFuncionario> createConsultarListaFuncionario(ConsultarListaFuncionario value) {
         return new JAXBElement<ConsultarListaFuncionario>(_ConsultarListaFuncionario_QNAME, ConsultarListaFuncionario.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Excecao }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://192.168.0.106:8080/jaxws/dominio/excecao", name = "Excecao")
+    public JAXBElement<Excecao> createExcecao(Excecao value) {
+        return new JAXBElement<Excecao>(_Excecao_QNAME, Excecao.class, null, value);
     }
 
     /**
