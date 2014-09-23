@@ -1,5 +1,7 @@
 package puc.pf.portal.business;
 
+import java.util.List;
+
 import puc.pf.portal.domain.ExcecaoCapturada;
 import puc.pf.portal.persistence.ExcecaoCapturadaDAO;
 import br.gov.frameworkdemoiselle.lifecycle.Startup;
@@ -20,6 +22,10 @@ public class ExcecaoCapturadaBC extends DelegateCrud<ExcecaoCapturada, Long, Exc
 	
 	public ExcecaoCapturada inserirComFlush(ExcecaoCapturada entity) {
 		return getDelegate().inserirComFlush(entity);
+	}
+	
+	public List<ExcecaoCapturada> listarMaiorId(Long id) {
+		return getDelegate().listarMaiorId(id);
 	}
 	
 	@Transactional
