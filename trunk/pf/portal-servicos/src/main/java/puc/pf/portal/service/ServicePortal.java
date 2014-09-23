@@ -7,7 +7,7 @@ import javax.jws.WebService;
 import puc.pf.portal.IServicePortal;
 import puc.pf.portal.business.ExcecaoCapturadaBC;
 import puc.pf.portal.business.FuncionarioBC;
-import puc.pf.portal.dto.ExcecaoCapturadaDTO;
+import puc.pf.portal.dto.ExcecaoDTO;
 import puc.pf.portal.dto.FuncionarioDTO;
 
 import com.sun.xml.ws.developer.SchemaValidation;
@@ -26,14 +26,19 @@ public class ServicePortal implements IServicePortal {
     	return FuncionarioDTO.parserFromFuncionario(bc.load(codigoFuncionario));
 	}
 	
-	public List<ExcecaoCapturadaDTO> consultarListaExcecao() {
+	public List<ExcecaoDTO> consultarListaExcecao() {
 		ExcecaoCapturadaBC bc = new ExcecaoCapturadaBC();
-    	return ExcecaoCapturadaDTO.parserFromExcecao(bc.findAll());
+    	return ExcecaoDTO.parserFromExcecao(bc.findAll());
     }
 	
-	public ExcecaoCapturadaDTO consultarExcecao(Long codigoExcecaoCapturada) {
+	public List<ExcecaoDTO> consultarListaExcecaoMaiorId(Long codigoExcecao) {
 		ExcecaoCapturadaBC bc = new ExcecaoCapturadaBC();
-    	return ExcecaoCapturadaDTO.parserFromExcecao(bc.load(codigoExcecaoCapturada));
+    	return ExcecaoDTO.parserFromExcecao(bc.listarMaiorId(codigoExcecao));
+    }
+	
+	public ExcecaoDTO consultarExcecao(Long codigoExcecaoCapturada) {
+		ExcecaoCapturadaBC bc = new ExcecaoCapturadaBC();
+    	return ExcecaoDTO.parserFromExcecao(bc.load(codigoExcecaoCapturada));
 	}
 	
 //    public AlunoDTO consultarAluno(Integer codigoAluno) {

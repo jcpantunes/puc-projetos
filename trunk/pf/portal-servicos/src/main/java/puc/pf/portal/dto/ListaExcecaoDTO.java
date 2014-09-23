@@ -12,37 +12,37 @@ import javax.xml.bind.annotation.XmlType;
 import puc.pf.portal.domain.ExcecaoCapturada;
 import puc.pf.portal.util.PortalConstantes;
 
-@XmlRootElement(name=PortalConstantes.LISTA_EXCECAO_CAPTURADA, namespace=PortalConstantes.NAMESPACE + PortalConstantes.DOMINIO_LISTA_EXCECAO_CAPTURADA)
+@XmlRootElement(name=PortalConstantes.LISTA_EXCECAO, namespace=PortalConstantes.NAMESPACE + PortalConstantes.DOMINIO_LISTA_EXCECAO)
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name=PortalConstantes.LISTA_EXCECAO_CAPTURADA, namespace=PortalConstantes.NAMESPACE + PortalConstantes.DOMINIO_LISTA_EXCECAO_CAPTURADA)
-public class ListaExcecaoCapturadaDTO extends BaseBeanDTO {
+@XmlType(name=PortalConstantes.LISTA_EXCECAO, namespace=PortalConstantes.NAMESPACE + PortalConstantes.DOMINIO_LISTA_EXCECAO)
+public class ListaExcecaoDTO extends BaseBeanDTO {
 
 	private static final long serialVersionUID = 1L;
 	
 	@XmlElement(name="ListaExcecao", required=true, nillable=true)
-	private List<ExcecaoCapturadaDTO> listaExcecaoDTO;
+	private List<ExcecaoDTO> listaExcecaoDTO;
 	
-	public ListaExcecaoCapturadaDTO() {
+	public ListaExcecaoDTO() {
 		super();
 	}
 	
-	public ListaExcecaoCapturadaDTO(List<ExcecaoCapturadaDTO> listaExcecaoDTO) {
+	public ListaExcecaoDTO(List<ExcecaoDTO> listaExcecaoDTO) {
 		this.listaExcecaoDTO = listaExcecaoDTO;
 	}
 	
-	public List<ExcecaoCapturadaDTO> getListaExcecaoDTO() {
+	public List<ExcecaoDTO> getListaExcecaoDTO() {
 		return listaExcecaoDTO;
 	}
 	
-	public void setListaExcecaoDTO(List<ExcecaoCapturadaDTO> listaExcecaoDTO) {
+	public void setListaExcecaoDTO(List<ExcecaoDTO> listaExcecaoDTO) {
 		this.listaExcecaoDTO = listaExcecaoDTO;
 	}
 	
-	public static ListaExcecaoCapturadaDTO parserFromExcecao(List<ExcecaoCapturada> lista) {
-		List<ExcecaoCapturadaDTO> listaExcecaoDTO = new ArrayList<ExcecaoCapturadaDTO>();
+	public static ListaExcecaoDTO parserFromExcecao(List<ExcecaoCapturada> lista) {
+		List<ExcecaoDTO> listaExcecaoDTO = new ArrayList<ExcecaoDTO>();
 		if (lista != null && lista.size() > 0) {
 			for (ExcecaoCapturada objeto : lista) {
-				ExcecaoCapturadaDTO dto = new ExcecaoCapturadaDTO();
+				ExcecaoDTO dto = new ExcecaoDTO();
 				dto.setId(objeto.getId());
 				dto.setTipoExcecao(objeto.getTipoExcecao());
 				dto.setStacktrace(objeto.getStacktrace());
@@ -52,7 +52,7 @@ public class ListaExcecaoCapturadaDTO extends BaseBeanDTO {
 				listaExcecaoDTO.add(dto);
 			}
 		}
-		ListaExcecaoCapturadaDTO listaDTO = new ListaExcecaoCapturadaDTO(listaExcecaoDTO);
+		ListaExcecaoDTO listaDTO = new ListaExcecaoDTO(listaExcecaoDTO);
 		return listaDTO;
 	}
 	

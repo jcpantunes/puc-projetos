@@ -22,6 +22,8 @@ public class PortalConstantes {
 	
 	public static final String OPERACAO_CONSULTAR_LISTA_EXCECAO = "consultarListaExcecao";
 	
+	public static final String OPERACAO_CONSULTAR_LISTA_EXCECAO_MAIOR_ID = "consultarListaExcecaoMaiorId";
+	
 	public static final String OPERACAO_CONSULTAR_EXCECAO = "consultarExcecao";
 
 	public static final String BASEBEAN = "BaseBean";
@@ -32,12 +34,12 @@ public class PortalConstantes {
 	
 	public static final String DOMINIO_FUNCIONARIO = "/dominio/funcionario";
 	
-	public static final String EXCECAO_CAPTURADA = "ExcecaoCapturada";
+	public static final String EXCECAO = "Excecao";
 	
-	public static final String LISTA_EXCECAO_CAPTURADA = "ListaExcecaoCapturada";
+	public static final String LISTA_EXCECAO = "ListaExcecao";
 	
-	public static final String DOMINIO_EXCECAO_CAPTURADA ="/dominio/excecaocapturada";
+	public static final String DOMINIO_EXCECAO ="/dominio/excecao";
 	
-	public static final String DOMINIO_LISTA_EXCECAO_CAPTURADA ="/dominio/listaexcecaocapturada";
+	public static final String DOMINIO_LISTA_EXCECAO ="/dominio/listaexcecao";
 
 }
