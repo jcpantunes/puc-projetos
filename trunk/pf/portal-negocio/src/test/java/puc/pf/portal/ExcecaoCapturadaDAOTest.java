@@ -12,7 +12,7 @@ import puc.pf.portal.domain.Funcionario;
 import br.gov.frameworkdemoiselle.junit.DemoiselleRunner;
 
 @RunWith(DemoiselleRunner.class)
-public class AlunoDAOTest {
+public class ExcecaoCapturadaDAOTest {
 
 	@Inject
 	private FuncionarioBC bc;
