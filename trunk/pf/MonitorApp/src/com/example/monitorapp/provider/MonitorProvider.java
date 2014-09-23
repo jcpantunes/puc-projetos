@@ -27,27 +27,39 @@ public class MonitorProvider extends ContentProvider {
 
 	// Versao do banco de dados.
 	// Este valor é importante pois é usado em futuros updates do DB.
-	private static final int DATABASE_VERSION = 9;
+	private static final int DATABASE_VERSION = 10;
 
 	// Nome da tabela que irá conter as anotações.
 	private static final String EXCECAO_TABLE = "excecao";
+	
+	private static final String EXCECAO_HISTORICO_TABLE = "excecao_historico";
 
 	// 'Id' da Uri referente às notas do usuário.
 	private static final int EXCECAO = 1;
+	
+	private static final int EXCECAO_HISTORICO = 2;
 
 	// Tag usada para imprimir os logs.
 	public static final String TAG = MODULO + "Provider";
 
 	private SQLiteOpenHelper mHelper;
 
-	private static HashMap<String, String> mProjection;
+	private static HashMap<String, String> mProjectionExcecao;
 	static {
-		mProjection = new HashMap<String, String>();
-		mProjection.put(Excecao.EXCECAO_ID, Excecao.EXCECAO_ID);
-		mProjection.put(Excecao.EXCECAO_ID_EXCECAO, Excecao.EXCECAO_ID_EXCECAO);
-		mProjection.put(Excecao.EXCECAO_DATA, Excecao.EXCECAO_DATA);
-		mProjection.put(Excecao.EXCECAO_TIPO, Excecao.EXCECAO_TIPO);
-		mProjection.put(Excecao.EXCECAO_TICKET, Excecao.EXCECAO_TICKET);
+		mProjectionExcecao = new HashMap<String, String>();
+		mProjectionExcecao.put(Excecao.EXCECAO_ID, Excecao.EXCECAO_ID);
+		mProjectionExcecao.put(Excecao.EXCECAO_ID_EXCECAO, Excecao.EXCECAO_ID_EXCECAO);
+		mProjectionExcecao.put(Excecao.EXCECAO_DATA, Excecao.EXCECAO_DATA);
+		mProjectionExcecao.put(Excecao.EXCECAO_TIPO, Excecao.EXCECAO_TIPO);
+		mProjectionExcecao.put(Excecao.EXCECAO_TICKET, Excecao.EXCECAO_TICKET);
+	}
+	
+	private static HashMap<String, String> mProjectionExcecaoHistorico;
+	static {
+		mProjectionExcecaoHistorico = new HashMap<String, String>();
+		mProjectionExcecaoHistorico.put(ExcecaoHistorico.EXCECAO_HISTORICO_ID, ExcecaoHistorico.EXCECAO_HISTORICO_ID);
+		mProjectionExcecaoHistorico.put(ExcecaoHistorico.EXCECAO_HISTORICO_ID_EXCECAO, ExcecaoHistorico.EXCECAO_HISTORICO_ID_EXCECAO);
+		mProjectionExcecaoHistorico.put(ExcecaoHistorico.EXCECAO_HISTORICO_TICKET, ExcecaoHistorico.EXCECAO_HISTORICO_TICKET);
 	}
 
 	// Uri matcher - usado para extrair informações das Uris
@@ -55,48 +67,7 @@ public class MonitorProvider extends ContentProvider {
 	static {
 		mMatcher = new UriMatcher(UriMatcher.NO_MATCH);
 		mMatcher.addURI(AUTHORITY, EXCECAO_TABLE, EXCECAO);
-	}
-
-	@Override
-	public int delete(Uri uri, String selection, String[] selectionArgs) {
-		SQLiteDatabase db = mHelper.getWritableDatabase();
-		int count;
-		switch (mMatcher.match(uri)) {
-		case EXCECAO:
-			count = db.delete(EXCECAO_TABLE, selection, selectionArgs);
-			break;
-		default:
-			throw new IllegalArgumentException("URI desconhecida " + uri);
-		}
-
-		getContext().getContentResolver().notifyChange(uri, null);
-		return count;
-	}
-
-	@Override
-	public String getType(Uri uri) {
-		switch (mMatcher.match(uri)) {
-		case EXCECAO:
-			return Excecao.CONTENT_TYPE;
-		default:
-			throw new IllegalArgumentException("URI desconhecida " + uri);
-		}
-	}
-
-	@Override
-	public Uri insert(Uri uri, ContentValues values) {
-		switch (mMatcher.match(uri)) {
-		case EXCECAO:
-			SQLiteDatabase db = mHelper.getWritableDatabase();
-			long rowId = db.insert(EXCECAO_TABLE, Excecao.EXCECAO_TICKET, values);
-			if (rowId > 0) {
-				Uri noteUri = ContentUris.withAppendedId(Excecao.CONTENT_URI, rowId);
-				getContext().getContentResolver().notifyChange(noteUri, null);
-				return noteUri;
-			}
-		default:
-			throw new IllegalArgumentException("URI desconhecida " + uri);
-		}
+		mMatcher.addURI(AUTHORITY, EXCECAO_HISTORICO_TABLE, EXCECAO_HISTORICO);
 	}
 
 	@Override
@@ -115,7 +86,12 @@ public class MonitorProvider extends ContentProvider {
 		switch (mMatcher.match(uri)) {
 			case EXCECAO:
 				builder.setTables(EXCECAO_TABLE);
-				builder.setProjectionMap(mProjection);
+				builder.setProjectionMap(mProjectionExcecao);
+				break;
+	
+			case EXCECAO_HISTORICO:
+				builder.setTables(EXCECAO_HISTORICO_TABLE);
+				builder.setProjectionMap(mProjectionExcecaoHistorico);
 				break;
 	
 			default:
@@ -128,12 +104,70 @@ public class MonitorProvider extends ContentProvider {
 	}
 
 	@Override
+	public Uri insert(Uri uri, ContentValues values) {
+		SQLiteDatabase db = mHelper.getWritableDatabase();
+		long rowId = 0;
+		switch (mMatcher.match(uri)) {
+		case EXCECAO:
+			rowId = db.insert(EXCECAO_TABLE, Excecao.EXCECAO_TICKET, values);
+			if (rowId > 0) {
+				Uri noteUri = ContentUris.withAppendedId(Excecao.CONTENT_URI, rowId);
+				getContext().getContentResolver().notifyChange(noteUri, null);
+				return noteUri;
+			}
+		case EXCECAO_HISTORICO:
+			rowId = db.insert(EXCECAO_HISTORICO_TABLE, ExcecaoHistorico.EXCECAO_HISTORICO_TICKET, values);
+			if (rowId > 0) {
+				Uri noteUri = ContentUris.withAppendedId(ExcecaoHistorico.CONTENT_URI, rowId);
+				getContext().getContentResolver().notifyChange(noteUri, null);
+				return noteUri;
+			}
+		default:
+			throw new IllegalArgumentException("URI desconhecida " + uri);
+		}
+	}
+
+	@Override
+	public int delete(Uri uri, String selection, String[] selectionArgs) {
+		SQLiteDatabase db = mHelper.getWritableDatabase();
+		int count;
+		switch (mMatcher.match(uri)) {
+		case EXCECAO:
+			count = db.delete(EXCECAO_TABLE, selection, selectionArgs);
+			break;
+		case EXCECAO_HISTORICO:
+			count = db.delete(EXCECAO_HISTORICO_TABLE, selection, selectionArgs);
+			break;
+		default:
+			throw new IllegalArgumentException("URI desconhecida " + uri);
+		}
+
+		getContext().getContentResolver().notifyChange(uri, null);
+		return count;
+	}
+
+	@Override
+	public String getType(Uri uri) {
+		switch (mMatcher.match(uri)) {
+		case EXCECAO:
+			return Excecao.CONTENT_TYPE;
+		case EXCECAO_HISTORICO:
+			return ExcecaoHistorico.CONTENT_TYPE;
+		default:
+			throw new IllegalArgumentException("URI desconhecida " + uri);
+		}
+	}
+
+@Override
 	public int update(Uri uri, ContentValues values, String selection, String[] selectionArgs) {
 		SQLiteDatabase db = mHelper.getWritableDatabase();
 		int count;
 		switch (mMatcher.match(uri)) {
 			case EXCECAO:
 				count = db.update(EXCECAO_TABLE, values, selection, selectionArgs);
+				break;
+			case EXCECAO_HISTORICO:
+				count = db.update(EXCECAO_HISTORICO_TABLE, values, selection, selectionArgs);
 				break;
 			default:
 				throw new IllegalArgumentException("URI desconhecida " + uri);
@@ -152,7 +186,7 @@ public class MonitorProvider extends ContentProvider {
 				+ MonitorProvider.AUTHORITY + "/" + EXCECAO_TABLE);
 
 		public static final String CONTENT_TYPE = "vnd.android.cursor.dir/"
-				+ MonitorProvider.AUTHORITY;
+				+ MonitorProvider.AUTHORITY + "/" + EXCECAO_TABLE;
 
 		public static final String EXCECAO_ID = "_id";
 		
@@ -163,6 +197,20 @@ public class MonitorProvider extends ContentProvider {
 		public static final String EXCECAO_TIPO = "_tipo";
 		
 		public static final String EXCECAO_TICKET = "_ticket";
+	}
+
+	public static final class ExcecaoHistorico implements BaseColumns {
+		public static final Uri CONTENT_URI = Uri.parse("content://"
+				+ MonitorProvider.AUTHORITY + "/" + EXCECAO_HISTORICO_TABLE);
+
+		public static final String CONTENT_TYPE = "vnd.android.cursor.dir/"
+				+ MonitorProvider.AUTHORITY + "/" + EXCECAO_HISTORICO_TABLE;
+
+		public static final String EXCECAO_HISTORICO_ID = "_id_Excecao_Historico";
+		
+		public static final String EXCECAO_HISTORICO_ID_EXCECAO = "_idExcecao";
+		
+		public static final String EXCECAO_HISTORICO_TICKET = "_ticket";
 	}
 
 	private static class DBHelper extends SQLiteOpenHelper {
@@ -183,6 +231,11 @@ public class MonitorProvider extends ContentProvider {
 					+ Excecao.EXCECAO_DATA	+ " TEXT, "
 					+ Excecao.EXCECAO_TIPO	+ " LONGTEXT, "
 					+ Excecao.EXCECAO_TICKET	+ " LONGTEXT );");
+			
+			db.execSQL("CREATE TABLE " + EXCECAO_HISTORICO_TABLE + 
+					" (" + ExcecaoHistorico.EXCECAO_HISTORICO_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
+					+ ExcecaoHistorico.EXCECAO_HISTORICO_ID_EXCECAO + " INTEGER,"
+					+ ExcecaoHistorico.EXCECAO_HISTORICO_TICKET	+ " LONGTEXT );");
 		}
 
 		/*
@@ -215,4 +268,5 @@ public class MonitorProvider extends ContentProvider {
 //		}
 		
 	}
+	
 }

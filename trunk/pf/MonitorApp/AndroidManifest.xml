@@ -32,13 +32,13 @@
         <activity android:name=".WelcomeActivity"/>
         
         <!--created by 05163217658 at 2014-04-17 15:26:49-->
-        <activity android:name=".ListarErroActivity"/>
+        <activity android:name="com.example.monitorapp.activity.ListarErroActivity"/>
 		
         <!--created by 05163217658 at 2014-04-17 15:26:49-->
-        <activity android:name=".ConfiguracaoActivity"/>
+ 		<activity android:name="com.example.monitorapp.activity.ConfiguracaoActivity"/>
         
         <!--created by 05163217658 at 2014-04-17 15:26:49-->
-        <activity android:name=".StacktraceActivity"/>
+ 		<activity android:name="com.example.monitorapp.activity.StacktraceActivity"/>
         
         
 		<!--created by 05163217658 at 2014-04-17 15:26:49-->

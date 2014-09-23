@@ -8,7 +8,7 @@ import android.database.Cursor;
 
 import com.example.monitorapp.provider.MonitorProvider;
 
-public class ExcecaoCapturadaDTO extends BaseDTO {
+public class ExcecaoDTO extends BaseDTO {
 
 	private static final long serialVersionUID = 1L;
 	
@@ -22,11 +22,11 @@ public class ExcecaoCapturadaDTO extends BaseDTO {
 	
     protected Date dataExcecao;
 	
-	public ExcecaoCapturadaDTO() {
+	public ExcecaoDTO() {
 		super();
 	}
 	
-	public ExcecaoCapturadaDTO(Integer id, Integer idExcecao, String tipoExcecao, 
+	public ExcecaoDTO(Integer id, Integer idExcecao, String tipoExcecao, 
 			String stacktrace, String ticket, String dataExcecao) {
 		this.setId(id);
 		this.setIdExcecao(idExcecao);
@@ -80,10 +80,9 @@ public class ExcecaoCapturadaDTO extends BaseDTO {
 		this.dataExcecao = retornaDataDate(data);
 	}
 	
-	public static ExcecaoCapturadaDTO parseFromSoapObject(SoapObject object) {
-		ExcecaoCapturadaDTO dto = new ExcecaoCapturadaDTO();
-		
-		dto.setId(Integer.parseInt(object.getProperty(0).toString()));
+	public static ExcecaoDTO parseFromSoapObject(SoapObject object) {
+		ExcecaoDTO dto = new ExcecaoDTO();
+		dto.setIdExcecao(Integer.parseInt(object.getProperty(0).toString()));
     	dto.setTipoExcecao(object.getProperty(1).toString());
     	dto.setStacktrace(object.getProperty(2).toString());
     	dto.setTicket(object.getProperty(3).toString());
@@ -92,8 +91,8 @@ public class ExcecaoCapturadaDTO extends BaseDTO {
     	return dto;
 	}
 	
-	public static ExcecaoCapturadaDTO parseFromCursor(Cursor mCursor) {
-		ExcecaoCapturadaDTO dto = new ExcecaoCapturadaDTO();
+	public static ExcecaoDTO parseFromCursor(Cursor mCursor) {
+		ExcecaoDTO dto = new ExcecaoDTO();
 		dto.setId(mCursor.getInt(mCursor.getColumnIndex(MonitorProvider.Excecao.EXCECAO_ID)));
 		dto.setIdExcecao(mCursor.getInt(mCursor.getColumnIndex(MonitorProvider.Excecao.EXCECAO_ID_EXCECAO)));
 		dto.setTipoExcecao(mCursor.getString(mCursor.getColumnIndex(MonitorProvider.Excecao.EXCECAO_TIPO)));

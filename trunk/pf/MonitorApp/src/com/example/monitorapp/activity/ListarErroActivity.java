@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.example.monitorapp;
+package com.example.monitorapp.activity;
 
 import android.app.ListActivity;
 import android.content.Intent;
@@ -12,9 +12,11 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 
-import com.example.monitorapp.provider.ExcecaoCapturadaDAO;
+import com.example.monitorapp.MainActivity;
+import com.example.monitorapp.R;
+import com.example.monitorapp.provider.ExcecaoDAO;
 import com.example.monitorapp.provider.MonitorProvider;
-import com.example.monitorapp.service.WebServiceCallAsync;
+import com.example.monitorapp.service.ConsultarListaExcecaoWS;
 
 /**
  * @author 05163217658
@@ -71,15 +73,15 @@ public class ListarErroActivity extends ListActivity {
 	}
 	
 	private void bindListaErros() {
-		WebServiceCallAsync ws = new WebServiceCallAsync(this);
-		ws.execute("");
+		ConsultarListaExcecaoWS consultarLista = new ConsultarListaExcecaoWS();
+		consultarLista.executar(this);
 		
-		ExcecaoCapturadaDAO adapter = new ExcecaoCapturadaDAO();
+		ExcecaoDAO adapter = new ExcecaoDAO();
 		setListAdapter(adapter.recuperarListaErroAdapter(this));
 	}
 	
 	private void executarAcaoRemover() {
-		ExcecaoCapturadaDAO dao = new ExcecaoCapturadaDAO();
+		ExcecaoDAO dao = new ExcecaoDAO();
 		dao.delete(this);
 	}
 	

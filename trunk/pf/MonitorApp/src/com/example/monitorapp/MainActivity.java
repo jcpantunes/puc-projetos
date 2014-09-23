@@ -1,13 +1,14 @@
 package com.example.monitorapp;
 
-import com.example.monitorapp.service.WebServiceCallAsync;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+
+import com.example.monitorapp.activity.ConfiguracaoActivity;
+import com.example.monitorapp.activity.ListarErroActivity;
 
 public class MainActivity extends Activity {
 
@@ -47,8 +48,8 @@ public class MainActivity extends Activity {
 		finish();
 	}
 	
-	private void executaThreadListarErro() {
-		WebServiceCallAsync ws = new WebServiceCallAsync(this);
-		ws.execute("");
-	}
+//	private void executaThreadListarErro() {
+//		ConsultarListaExcecaoWS consultarLista = new ConsultarListaExcecaoWS();
+//		consultarLista.executar(this);
+//	}
 }

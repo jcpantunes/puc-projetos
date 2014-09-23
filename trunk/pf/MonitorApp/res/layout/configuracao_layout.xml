@@ -31,16 +31,23 @@
 
         <Button
             android:id="@+id/configuracaoBtnIniciarServico"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="@string/configuracaoBtnIniciarServico" />
-        
+
         <Button
             android:id="@+id/configuracaoBtnPararServico"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.58"
             android:text="@string/configuracaoBtnPararServico" />
 
     </LinearLayout>
+
+    <Button
+        android:id="@+id/configuracaoBtnLimparHistorico"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/configuracaoBtnLimparHistorico" />
 
 </LinearLayout>
