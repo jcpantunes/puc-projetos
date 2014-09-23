@@ -11,7 +11,7 @@ import javax.ws.rs.core.MediaType;
 import puc.pf.portal.business.ExcecaoCapturadaBC;
 import puc.pf.portal.business.FuncionarioBC;
 import puc.pf.portal.domain.Funcionario;
-import puc.pf.portal.dto.ExcecaoCapturadaDTO;
+import puc.pf.portal.dto.ExcecaoDTO;
 import puc.pf.portal.dto.FuncionarioDTO;
 import puc.pf.portal.util.PortalConstantes;
 
@@ -54,9 +54,9 @@ public class RestServicePortal {
 	@GET
 	@Path(PortalConstantes.OPERACAO_CONSULTAR_LISTA_EXCECAO + "/")
 	@Produces(MediaType.APPLICATION_JSON)
-	public List<ExcecaoCapturadaDTO> consultarListaExcecao() {
+	public List<ExcecaoDTO> consultarListaExcecao() {
 		ExcecaoCapturadaBC bc = new ExcecaoCapturadaBC();
-    	return ExcecaoCapturadaDTO.parserFromExcecao(bc.findAll());
+    	return ExcecaoDTO.parserFromExcecao(bc.findAll());
     }
     
 //    @GET
