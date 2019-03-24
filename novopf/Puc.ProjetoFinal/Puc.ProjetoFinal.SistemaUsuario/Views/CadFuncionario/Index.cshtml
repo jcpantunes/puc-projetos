@@ -1,0 +1,59 @@
+@model FuncionarioModel
+
+@{
+    ViewData["Title"] = "Cadastrar Funcionario";
+    Layout = "~/Views/Shared/_Layout.2.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    <br />
+
+    <h1 class="titulo-pagina">@ViewData["Title"]</h1>
+
+    <div class="div-right">
+        @Html.ActionLink("Incluir", "Incluir", false, new { @class = "btn" })
+    </div>
+
+    if (Model.ListaFuncionario.Count > 0)
+    {
+        <div id="divListaFuncionario">
+            <h2 class="titulo-tabela">Lista de Funcionarios Cadastrados</h2>
+
+            <section class="well">
+                <div class="row">
+                    <table class="table dataTable no-footer" >
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Nome</th>
+                                <th>Matricula</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (@FuncionarioModel funcionario in @Model.ListaFuncionario)
+                            {
+                                <tr>
+                                    <td class="center">
+                                        <label>@funcionario.IdFuncionario</label>
+                                    </td>
+                                    <td class="center">
+                                        <label>@funcionario.Nome</label>
+                                    </td>
+                                    <td class="center">
+                                        <label>@funcionario.Matricula</label>
+                                    </td>
+                                    <td>
+                                        @Html.ActionLink("Editar", "Editar", new { id=@funcionario.IdFuncionario }) |
+                                        @Html.ActionLink("Remover", "Remover", new { id=@funcionario.IdFuncionario })
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </div>
+    }
+}
+<br />

@@ -1,0 +1,11 @@
+/home/julio/Documentos/workspace-github/puc-projetos/novopf/Puc.ProjetoFinal/Puc.ProjetoFinal.Negocio/bin/Debug/netcoreapp2.1/Puc.ProjetoFinal.Negocio.deps.json
+/home/julio/Documentos/workspace-github/puc-projetos/novopf/Puc.ProjetoFinal/Puc.ProjetoFinal.Negocio/bin/Debug/netcoreapp2.1/Puc.ProjetoFinal.Negocio.runtimeconfig.json
+/home/julio/Documentos/workspace-github/puc-projetos/novopf/Puc.ProjetoFinal/Puc.ProjetoFinal.Negocio/bin/Debug/netcoreapp2.1/Puc.ProjetoFinal.Negocio.runtimeconfig.dev.json
+/home/julio/Documentos/workspace-github/puc-projetos/novopf/Puc.ProjetoFinal/Puc.ProjetoFinal.Negocio/bin/Debug/netcoreapp2.1/Puc.ProjetoFinal.Negocio.dll
+/home/julio/Documentos/workspace-github/puc-projetos/novopf/Puc.ProjetoFinal/Puc.ProjetoFinal.Negocio/bin/Debug/netcoreapp2.1/Puc.ProjetoFinal.Negocio.pdb
+/home/julio/Documentos/workspace-github/puc-projetos/novopf/Puc.ProjetoFinal/Puc.ProjetoFinal.Negocio/obj/Debug/netcoreapp2.1/Puc.ProjetoFinal.Negocio.csprojAssemblyReference.cache
+/home/julio/Documentos/workspace-github/puc-projetos/novopf/Puc.ProjetoFinal/Puc.ProjetoFinal.Negocio/obj/Debug/netcoreapp2.1/Puc.ProjetoFinal.Negocio.csproj.CoreCompileInputs.cache
+/home/julio/Documentos/workspace-github/puc-projetos/novopf/Puc.ProjetoFinal/Puc.ProjetoFinal.Negocio/obj/Debug/netcoreapp2.1/Puc.ProjetoFinal.Negocio.AssemblyInfoInputs.cache
+/home/julio/Documentos/workspace-github/puc-projetos/novopf/Puc.ProjetoFinal/Puc.ProjetoFinal.Negocio/obj/Debug/netcoreapp2.1/Puc.ProjetoFinal.Negocio.AssemblyInfo.cs
+/home/julio/Documentos/workspace-github/puc-projetos/novopf/Puc.ProjetoFinal/Puc.ProjetoFinal.Negocio/obj/Debug/netcoreapp2.1/Puc.ProjetoFinal.Negocio.dll
+/home/julio/Documentos/workspace-github/puc-projetos/novopf/Puc.ProjetoFinal/Puc.ProjetoFinal.Negocio/obj/Debug/netcoreapp2.1/Puc.ProjetoFinal.Negocio.pdb

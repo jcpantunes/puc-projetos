@@ -1,0 +1,92 @@
+@model IEnumerable<Puc.ProjetoFinal.SistemaUsuario.Models.TarefaModel>
+
+@{
+    ViewData["Title"] = "Cadastrar Tarefa";
+    Layout = "~/Views/Shared/_Layout.2.cshtml";
+}
+
+@section scripts {
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/lib/jquery-ui/jquery-ui.js"></script>
+    <script>
+        $(function() {
+            $('a[id*=btnRemover]').click(function (e) {
+                debugger;
+                e.preventDefault();
+                var href = $(this).attr('href');
+                $('#confirmDialog').data('id', href).dialog('open');
+            });
+
+            $("#confirmDialog").dialog({
+                autoOpen: false,
+                modal: true,
+                resizable: false,
+                buttons: {
+                    "Ok": function () {
+                        var id = $(this).data("id");
+                        window.location.href = id;
+                    },
+                    "Cancel": function (e) {
+                        $(this).dialog("close");
+                    }
+                }
+            });
+        });
+    </script>
+}
+
+    <br />
+
+    <h1 class="titulo-pagina">@ViewData["Title"]</h1>
+
+    <div class="div-right">
+        <a asp-action="Incluir" class="btn">Incluir</a>
+    </div>
+
+    <div class="well">
+        <table class="table dataTable no-footer">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.IdTarefa)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Titulo)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.DtTarefa)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.IdFuncionario)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+            @foreach (var item in Model) {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IdTarefa)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Titulo)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DtTarefa)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Funcionario.Nome)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Editar", "Editar", new { id=item.IdTarefa }, new { @id="btnEditar" }) |
+                        @Html.ActionLink("Remover", "Remover", new { id=item.IdTarefa }, new { @id="btnRemover" })
+                    </td>
+                </tr>
+        }
+            </tbody>
+        </table>
+    </div>
+
+    <div id="confirmDialog" title="Remover Tarefa" hidden>
+        <p>Você confirmar a exclusão da Tarefa?</p>
+    </div>

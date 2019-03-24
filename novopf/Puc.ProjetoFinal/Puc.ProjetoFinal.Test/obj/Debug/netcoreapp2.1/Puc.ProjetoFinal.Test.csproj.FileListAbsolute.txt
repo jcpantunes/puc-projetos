@@ -1,0 +1,17 @@
+/home/julio/Documentos/workspace-github/puc-projetos/novopf/Puc.ProjetoFinal/Puc.ProjetoFinal.Test/bin/Debug/netcoreapp2.1/xunit.runner.visualstudio.dotnetcore.testadapter.dll
+/home/julio/Documentos/workspace-github/puc-projetos/novopf/Puc.ProjetoFinal/Puc.ProjetoFinal.Test/bin/Debug/netcoreapp2.1/xunit.runner.reporters.netcoreapp10.dll
+/home/julio/Documentos/workspace-github/puc-projetos/novopf/Puc.ProjetoFinal/Puc.ProjetoFinal.Test/bin/Debug/netcoreapp2.1/xunit.runner.utility.netcoreapp10.dll
+/home/julio/Documentos/workspace-github/puc-projetos/novopf/Puc.ProjetoFinal/Puc.ProjetoFinal.Test/bin/Debug/netcoreapp2.1/Puc.ProjetoFinal.Test.deps.json
+/home/julio/Documentos/workspace-github/puc-projetos/novopf/Puc.ProjetoFinal/Puc.ProjetoFinal.Test/bin/Debug/netcoreapp2.1/Puc.ProjetoFinal.Test.runtimeconfig.json
+/home/julio/Documentos/workspace-github/puc-projetos/novopf/Puc.ProjetoFinal/Puc.ProjetoFinal.Test/bin/Debug/netcoreapp2.1/Puc.ProjetoFinal.Test.runtimeconfig.dev.json
+/home/julio/Documentos/workspace-github/puc-projetos/novopf/Puc.ProjetoFinal/Puc.ProjetoFinal.Test/bin/Debug/netcoreapp2.1/Puc.ProjetoFinal.Test.dll
+/home/julio/Documentos/workspace-github/puc-projetos/novopf/Puc.ProjetoFinal/Puc.ProjetoFinal.Test/bin/Debug/netcoreapp2.1/Puc.ProjetoFinal.Test.pdb
+/home/julio/Documentos/workspace-github/puc-projetos/novopf/Puc.ProjetoFinal/Puc.ProjetoFinal.Test/bin/Debug/netcoreapp2.1/Puc.ProjetoFinal.Negocio.dll
+/home/julio/Documentos/workspace-github/puc-projetos/novopf/Puc.ProjetoFinal/Puc.ProjetoFinal.Test/bin/Debug/netcoreapp2.1/Puc.ProjetoFinal.Negocio.pdb
+/home/julio/Documentos/workspace-github/puc-projetos/novopf/Puc.ProjetoFinal/Puc.ProjetoFinal.Test/obj/Debug/netcoreapp2.1/Puc.ProjetoFinal.Test.csprojAssemblyReference.cache
+/home/julio/Documentos/workspace-github/puc-projetos/novopf/Puc.ProjetoFinal/Puc.ProjetoFinal.Test/obj/Debug/netcoreapp2.1/Puc.ProjetoFinal.Test.csproj.CoreCompileInputs.cache
+/home/julio/Documentos/workspace-github/puc-projetos/novopf/Puc.ProjetoFinal/Puc.ProjetoFinal.Test/obj/Debug/netcoreapp2.1/Puc.ProjetoFinal.Test.AssemblyInfoInputs.cache
+/home/julio/Documentos/workspace-github/puc-projetos/novopf/Puc.ProjetoFinal/Puc.ProjetoFinal.Test/obj/Debug/netcoreapp2.1/Puc.ProjetoFinal.Test.AssemblyInfo.cs
+/home/julio/Documentos/workspace-github/puc-projetos/novopf/Puc.ProjetoFinal/Puc.ProjetoFinal.Test/obj/Debug/netcoreapp2.1/Puc.ProjetoFinal.Test.csproj.CopyComplete
+/home/julio/Documentos/workspace-github/puc-projetos/novopf/Puc.ProjetoFinal/Puc.ProjetoFinal.Test/obj/Debug/netcoreapp2.1/Puc.ProjetoFinal.Test.dll
+/home/julio/Documentos/workspace-github/puc-projetos/novopf/Puc.ProjetoFinal/Puc.ProjetoFinal.Test/obj/Debug/netcoreapp2.1/Puc.ProjetoFinal.Test.pdb
