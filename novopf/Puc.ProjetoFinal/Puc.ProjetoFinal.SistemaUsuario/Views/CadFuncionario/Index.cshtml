@@ -1,59 +1,82 @@
-@model FuncionarioModel
+@model IEnumerable<Puc.ProjetoFinal.SistemaUsuario.Models.FuncionarioModel>
 
 @{
     ViewData["Title"] = "Cadastrar Funcionario";
     Layout = "~/Views/Shared/_Layout.2.cshtml";
 }
 
-@using (Html.BeginForm())
-{
-    <br />
+@section scripts {
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/lib/jquery-ui/jquery-ui.js"></script>
+    <script>
+        $(function() {
+            $('a[id*=btnRemover]').click(function (e) {
+                debugger;
+                e.preventDefault();
+                var href = $(this).attr('href');
+                $('#confirmDialog').data('id', href).dialog('open');
+            });
 
-    <h1 class="titulo-pagina">@ViewData["Title"]</h1>
-
+            $("#confirmDialog").dialog({
+                autoOpen: false,
+                modal: true,
+                resizable: false,
+                buttons: {
+                    "Ok": function () {
+                        var id = $(this).data("id");
+                        window.location.href = id;
+                    },
+                    "Cancel": function (e) {
+                        $(this).dialog("close");
+                    }
+                }
+            });
+        });
+    </script>
+}
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
     <div class="div-right">
-        @Html.ActionLink("Incluir", "Incluir", false, new { @class = "btn" })
+        <a asp-action="Incluir" class="btn">Incluir</a>
     </div>
 
-    if (Model.ListaFuncionario.Count > 0)
-    {
-        <div id="divListaFuncionario">
-            <h2 class="titulo-tabela">Lista de Funcionarios Cadastrados</h2>
+    <div class="well">
+        <table class="table dataTable no-footer">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.IdFuncionario)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Nome)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Matricula)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+            @foreach (var item in Model) {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IdFuncionario)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Nome)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Matricula)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Editar", "Editar", new { id=item.IdFuncionario }, new { @id="btnEditar" }) |
+                        @Html.ActionLink("Remover", "Remover", new { id=item.IdFuncionario }, new { @id="btnRemover" })
+                    </td>
+                </tr>
+        }
+            </tbody>
+        </table>
+    </div>
 
-            <section class="well">
-                <div class="row">
-                    <table class="table dataTable no-footer" >
-                        <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>Nome</th>
-                                <th>Matricula</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach (@FuncionarioModel funcionario in @Model.ListaFuncionario)
-                            {
-                                <tr>
-                                    <td class="center">
-                                        <label>@funcionario.IdFuncionario</label>
-                                    </td>
-                                    <td class="center">
-                                        <label>@funcionario.Nome</label>
-                                    </td>
-                                    <td class="center">
-                                        <label>@funcionario.Matricula</label>
-                                    </td>
-                                    <td>
-                                        @Html.ActionLink("Editar", "Editar", new { id=@funcionario.IdFuncionario }) |
-                                        @Html.ActionLink("Remover", "Remover", new { id=@funcionario.IdFuncionario })
-                                    </td>
-                                </tr>
-                            }
-                        </tbody>
-                    </table>
-                </div>
-            </section>
-        </div>
-    }
-}
-<br />
+    <div id="confirmDialog" title="Remover Funcionario" hidden>
+        <p>Você confirmar a exclusão do Funcionario?</p>
+    </div>

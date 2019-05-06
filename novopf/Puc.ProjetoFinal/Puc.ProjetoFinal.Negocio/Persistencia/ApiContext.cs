@@ -24,5 +24,7 @@ namespace Puc.ProjetoFinal.Negocio.Persistencia
 
         public virtual DbSet<Tarefa> TarefaDAO { get; set; }
 
+        public virtual DbSet<Informacao> InformacaoDAO { get; set; }
+
     }
 }

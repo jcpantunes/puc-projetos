@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 
 using Puc.ProjetoFinal.Negocio.Dominio;
 using Puc.ProjetoFinal.Negocio.Persistencia;
+using Puc.ProjetoFinal.Negocio.Exception;
 
 namespace Puc.ProjetoFinal.Negocio.Negocio
 {
@@ -51,6 +52,10 @@ namespace Puc.ProjetoFinal.Negocio.Negocio
 
         public void AtualizarFuncionario (Funcionario funcionario)
         {
+            if (funcionario.Nome.StartsWith(" "))
+            {
+                throw new NegocioException("Erro: Nome não pode iniciar com espaço.");
+            }
             using (var db = new ApiContext())
             {
                 db.Update(funcionario);

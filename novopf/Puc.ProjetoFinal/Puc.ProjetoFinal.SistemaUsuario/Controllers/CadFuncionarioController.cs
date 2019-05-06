@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc;
 using Puc.ProjetoFinal.SistemaUsuario.Models;
 using Puc.ProjetoFinal.Negocio.Dominio;
 using Puc.ProjetoFinal.Negocio.Negocio;
+using Puc.ProjetoFinal.Negocio.Exception;
+using Puc.ProjetoFinal.SistemaUsuario.Util;
 
 namespace Puc.ProjetoFinal.SistemaUsuario.Controllers
 {
@@ -18,24 +20,37 @@ namespace Puc.ProjetoFinal.SistemaUsuario.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-            // ViewData["Message"] = "Preencher os dados abaixo para cadastrar Funcionario";
-
-            model = new FuncionarioModel();
-            model.ListaFuncionario = new List<FuncionarioModel>();
-
-            CadastrarFuncionarioBO funcionarioBO = new CadastrarFuncionarioBO();
-            List<Funcionario> lista = funcionarioBO.RecuperarFuncionario();
-
-            foreach(Funcionario f in lista)
+            try
             {
-                FuncionarioModel f1 = new FuncionarioModel();
-                f1.IdFuncionario = Convert.ToInt32(f.IdFuncionario);
-                f1.Nome = f.Nome;
-                f1.Matricula = f.Matricula;
-                model.ListaFuncionario.Add(f1);
+                model = new FuncionarioModel();
+                model.ListaFuncionario = RecuperarListaFuncionario();
+                return View(model.ListaFuncionario);
             }
+            catch (Exception e)
+            {
+                ViewData["Message"] = TratarInformacao.TratarExcecaoNaoTratada(e);
+            }
+            return View("../Home/Index");
+        }
 
-            return View(model);
+        private List<FuncionarioModel> RecuperarListaFuncionario()
+        {
+            List<FuncionarioModel> listaFuncionarios = new List<FuncionarioModel>();
+            try
+            {
+                CadastrarFuncionarioBO funcionarioBO = new CadastrarFuncionarioBO();
+                List<Funcionario> lista = funcionarioBO.RecuperarFuncionario();
+                foreach(Funcionario f in lista)
+                {
+                    FuncionarioModel f1 = new FuncionarioModel(f);
+                    listaFuncionarios.Add(f1);
+                }
+            }
+            catch (Exception e)
+            {
+                ViewData["Message"] = TratarInformacao.TratarExcecaoNaoTratada(e);
+            }
+            return listaFuncionarios;
         }
 
         [HttpGet]
@@ -52,28 +67,49 @@ namespace Puc.ProjetoFinal.SistemaUsuario.Controllers
             funcionario.IdFuncionario = _model.IdFuncionario;
             funcionario.Nome = _model.Nome;
             funcionario.Matricula = _model.Matricula;
+            _model.ListaFuncionario = new List<FuncionarioModel>();
 
-            CadastrarFuncionarioBO funcionarioBO = new CadastrarFuncionarioBO();
-            if (funcionario.IdFuncionario == 0)
+            try
             {
-                funcionarioBO.IncluirFuncionario(funcionario);
-            }
-            else
-            {
-                funcionarioBO.AtualizarFuncionario(funcionario);
-            }
+                CadastrarFuncionarioBO funcionarioBO = new CadastrarFuncionarioBO();
+                if (funcionario.IdFuncionario == 0)
+                {
+                    funcionarioBO.IncluirFuncionario(funcionario);
+                }
+                else
+                {
+                    funcionario.Matricula = null;
+                    funcionarioBO.AtualizarFuncionario(funcionario);
+                }
 
-            List<Funcionario> lista = funcionarioBO.RecuperarFuncionario();
-            foreach(Funcionario f in lista)
-            {
-                FuncionarioModel f1 = new FuncionarioModel();
-                f1.IdFuncionario = Convert.ToInt32(f.IdFuncionario);
-                f1.Nome = f.Nome;
-                f1.Matricula = f.Matricula;
-                _model.ListaFuncionario.Add(f1);
-            }
+                _model.ListaFuncionario = RecuperarListaFuncionario();
 
-            return View("Index", _model);
+                return View("Index", _model.ListaFuncionario);
+            }
+            catch (NegocioException e)
+            {
+                ViewData["Message"] = TratarInformacao.TratarErroNegocio(e.Message);
+                return View("Cadastrar", _model);
+            }
+            catch (Exception e)
+            {
+                ViewData["Message"] = TratarInformacao.TratarExcecaoNaoTratada(e);
+            }
+            return View("../Home/Index");
+        }
+
+        [HttpGet]
+        public IActionResult Retornar(FuncionarioModel _model)
+        {
+            try
+            {
+                _model.ListaFuncionario = RecuperarListaFuncionario();
+            }
+            catch (Exception e)
+            {
+                ViewData["Message"] = TratarInformacao.TratarExcecaoNaoTratada(e);
+            }
+            return View("../Home/Index");
         }
 
         [HttpGet]
@@ -83,20 +119,26 @@ namespace Puc.ProjetoFinal.SistemaUsuario.Controllers
             {
                 return NotFound();
             }
-
-            CadastrarFuncionarioBO funcionarioBO = new CadastrarFuncionarioBO();
-            Funcionario funcionario = funcionarioBO.RecuperarFuncionario((int) id);
-            model = new FuncionarioModel();
-            model.IdFuncionario = (int) id;
-            model.Nome = funcionario.Nome;
-            model.Matricula = funcionario.Matricula;
-
-            if (funcionario == null)
+            try
             {
-                return NotFound();
+                CadastrarFuncionarioBO funcionarioBO = new CadastrarFuncionarioBO();
+                Funcionario funcionario = funcionarioBO.RecuperarFuncionario((int) id);
+                if (funcionario == null)
+                {
+                    return NotFound();
+                }
+                model = new FuncionarioModel(funcionario);
+                return View("Cadastrar", model);
             }
-
-            return View("Cadastrar", model);
+            catch (NegocioException e)
+            {
+                ViewData["Message"] = TratarInformacao.TratarErroNegocio(e.Message);
+            }
+            catch (Exception e)
+            {
+                ViewData["Message"] = TratarInformacao.TratarExcecaoNaoTratada(e);
+            }
+            return View("../Home/Index");
         }
 
         [HttpGet]
@@ -107,24 +149,24 @@ namespace Puc.ProjetoFinal.SistemaUsuario.Controllers
                 return NotFound();
             }
 
-            CadastrarFuncionarioBO funcionarioBO = new CadastrarFuncionarioBO();
-            Funcionario funcionario = funcionarioBO.RecuperarFuncionario((int) id);
-            funcionarioBO.RemoverFuncionario(funcionario);
-
-            model = new FuncionarioModel();
-
-            List<Funcionario> lista = funcionarioBO.RecuperarFuncionario();
-            foreach(Funcionario f in lista)
+            try
             {
-                FuncionarioModel f1 = new FuncionarioModel();
-                f1.IdFuncionario = Convert.ToInt32(f.IdFuncionario);
-                f1.Nome = f.Nome;
-                f1.Matricula = f.Matricula;
-                model.ListaFuncionario.Add(f1);
+                CadastrarFuncionarioBO funcionarioBO = new CadastrarFuncionarioBO();
+                Funcionario funcionario = funcionarioBO.RecuperarFuncionario((int) id);
+                funcionarioBO.RemoverFuncionario(funcionario);
+                model = new FuncionarioModel();
+                model.ListaFuncionario = RecuperarListaFuncionario();
+                return View("Index", model.ListaFuncionario);
             }
-            return View("Index", model);
+            catch (NegocioException e)
+            {
+                ViewData["Message"] = TratarInformacao.TratarErroNegocio(e.Message);
+            }
+            catch (Exception e)
+            {
+                ViewData["Message"] = TratarInformacao.TratarExcecaoNaoTratada(e);
+            }
+            return View("../Home/Index");
         }
-
-
     }
 }

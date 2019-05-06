@@ -52,6 +52,20 @@
 
                 <div id="page-content" class="container-fluid">
                     <div id="conteudo-pagina">
+
+                        @if (@ViewData["Title"] != null && (@ViewData["Title"]).ToString().Length > 0)
+                        {
+                            <h1 class="titulo-pagina">@ViewData["Title"]</h1>
+                        }
+
+                        @if (@ViewData["Message"] != null && (@ViewData["Message"]).ToString().Length > 0)
+                        {
+                            <div class="alert alert-danger">
+                                <a href="#" class="close" data-dismiss="alert">&times;</a>
+                                @ViewData["Message"]
+                            </div>
+                        }
+
                         @RenderBody()
                     </div>
                 </div>

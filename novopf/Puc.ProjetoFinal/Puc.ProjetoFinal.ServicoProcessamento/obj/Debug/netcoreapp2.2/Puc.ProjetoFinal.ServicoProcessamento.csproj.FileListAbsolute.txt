@@ -1,0 +1,16 @@
+/home/julio/Documentos/workspace-github/puc-projetos/novopf/Puc.ProjetoFinal/Puc.ProjetoFinal.ServicoProcessamento/bin/Debug/netcoreapp2.2/Puc.ProjetoFinal.ServicoProcessamento.deps.json
+/home/julio/Documentos/workspace-github/puc-projetos/novopf/Puc.ProjetoFinal/Puc.ProjetoFinal.ServicoProcessamento/bin/Debug/netcoreapp2.2/Puc.ProjetoFinal.ServicoProcessamento.runtimeconfig.json
+/home/julio/Documentos/workspace-github/puc-projetos/novopf/Puc.ProjetoFinal/Puc.ProjetoFinal.ServicoProcessamento/bin/Debug/netcoreapp2.2/Puc.ProjetoFinal.ServicoProcessamento.runtimeconfig.dev.json
+/home/julio/Documentos/workspace-github/puc-projetos/novopf/Puc.ProjetoFinal/Puc.ProjetoFinal.ServicoProcessamento/bin/Debug/netcoreapp2.2/Puc.ProjetoFinal.ServicoProcessamento.dll
+/home/julio/Documentos/workspace-github/puc-projetos/novopf/Puc.ProjetoFinal/Puc.ProjetoFinal.ServicoProcessamento/bin/Debug/netcoreapp2.2/Puc.ProjetoFinal.ServicoProcessamento.pdb
+/home/julio/Documentos/workspace-github/puc-projetos/novopf/Puc.ProjetoFinal/Puc.ProjetoFinal.ServicoProcessamento/bin/Debug/netcoreapp2.2/Puc.ProjetoFinal.Negocio.dll
+/home/julio/Documentos/workspace-github/puc-projetos/novopf/Puc.ProjetoFinal/Puc.ProjetoFinal.ServicoProcessamento/bin/Debug/netcoreapp2.2/Puc.ProjetoFinal.Negocio.pdb
+/home/julio/Documentos/workspace-github/puc-projetos/novopf/Puc.ProjetoFinal/Puc.ProjetoFinal.ServicoProcessamento/obj/Debug/netcoreapp2.2/Puc.ProjetoFinal.ServicoProcessamento.csprojAssemblyReference.cache
+/home/julio/Documentos/workspace-github/puc-projetos/novopf/Puc.ProjetoFinal/Puc.ProjetoFinal.ServicoProcessamento/obj/Debug/netcoreapp2.2/Puc.ProjetoFinal.ServicoProcessamento.csproj.CoreCompileInputs.cache
+/home/julio/Documentos/workspace-github/puc-projetos/novopf/Puc.ProjetoFinal/Puc.ProjetoFinal.ServicoProcessamento/obj/Debug/netcoreapp2.2/Puc.ProjetoFinal.ServicoProcessamento.AssemblyInfoInputs.cache
+/home/julio/Documentos/workspace-github/puc-projetos/novopf/Puc.ProjetoFinal/Puc.ProjetoFinal.ServicoProcessamento/obj/Debug/netcoreapp2.2/Puc.ProjetoFinal.ServicoProcessamento.AssemblyInfo.cs
+/home/julio/Documentos/workspace-github/puc-projetos/novopf/Puc.ProjetoFinal/Puc.ProjetoFinal.ServicoProcessamento/obj/Debug/netcoreapp2.2/Puc.ProjetoFinal.ServicoProcessamento.csproj.CopyComplete
+/home/julio/Documentos/workspace-github/puc-projetos/novopf/Puc.ProjetoFinal/Puc.ProjetoFinal.ServicoProcessamento/obj/Debug/netcoreapp2.2/Puc.ProjetoFinal.ServicoProcessamento.dll
+/home/julio/Documentos/workspace-github/puc-projetos/novopf/Puc.ProjetoFinal/Puc.ProjetoFinal.ServicoProcessamento/obj/Debug/netcoreapp2.2/Puc.ProjetoFinal.ServicoProcessamento.pdb
+/home/julio/Documentos/workspace-github/puc-projetos/novopf/Puc.ProjetoFinal/Puc.ProjetoFinal.ServicoProcessamento/bin/Debug/netcoreapp2.2/Puc.ProjetoFinal.Mensageria.dll
+/home/julio/Documentos/workspace-github/puc-projetos/novopf/Puc.ProjetoFinal/Puc.ProjetoFinal.ServicoProcessamento/bin/Debug/netcoreapp2.2/Puc.ProjetoFinal.Mensageria.pdb

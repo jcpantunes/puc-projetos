@@ -1,0 +1,475 @@
+TAREFAS
+
+	Configurar log4net
+	Configurar tratamento de excecao nos controllers (try/catch)
+	Tratar as strings de conexao em arquivos de configuracao
+	monitorar a fila do rabbitMQ
+
+
+
+
+
+RabbitMQ (http://www.rabbitmq.com/management.html)
+
+	API
+		http://localhost:15672/api/
+
+	Habilitando plugins
+		sudo rabbitmq-plugins enable rabbitmq_management
+
+
+	Numero de Mensagens na fila
+		sudo rabbitmqctl list_queues | grep 'puc.projetofinal.apimonitoracao'
+		
+	Consultar Fila
+		rabbitmqadmin get queue='puc.projetofinal.apimonitoracao' requeue=true count=10	
+
+	Consultar Filas
+		sudo rabbitmqadmin list queues
+
+
+
+
+
+
+
+
+
+Puc.ProjetoFinal.ApiMonitoracao
+	launchSettings.json
+
+//"applicationUrl": "https://localhost:5001;http://localhost:5000",
+
+
+
+
+- Selecionar Pasta para projeto
+
+- Abrir Terminal Integrado
+
+- Para criar um novo projeto Console, digitar no Terminal Integrado: $> dotnet new console
+
+- Para dar build no programa, digitar no Terminal Integrado:  $> dotnet build
+
+- Para rodar o programa, digitar no Terminal Integrado:  $> dotnet run
+
+- Para debugar, abra a ABA DEBUG (Painel Esquerda), e clique na seta verde; ou
+	- Pressione F5
+
+
+- Comandos básicos
+
+	$> dotnet build
+	
+	$> dotnet restore
+
+
+- .Net Core
+|https://www.microsoft.com/net/download/dotnet-core/2.1
+
+
+- Criando uma Web API .Net Core
+https://docs.microsoft.com/pt-br/aspnet/core/tutorials/web-api-vsc?view=aspnetcore-2.1
+	
+	$> mkdir Puc.ProjetoFinal
+	
+	$> cd Puc.ProjetoFinal
+
+	$> dotnet new sln
+
+
+
+	$> dotnet new classlib -f netcoreapp2.1 -o Puc.ProjetoFinal.Negocio
+	
+	$> dotnet sln Puc.ProjetoFinal.sln add Puc.ProjetoFinal.Negocio/Puc.ProjetoFinal.Negocio.csproj
+	
+	$> cd Puc.ProjetoFinal.Negocio
+	
+	$> dotnet add package System.Data.SqlClient
+
+	$> dotnet add package Microsoft.EntityFrameworkCore.Design
+	
+	$> dotnet add package Microsoft.EntityFrameworkCore.Tools 
+	
+	$> dotnet add package Npgsql.EntityFrameworkCore.PostgreSQL
+	
+	$> dotnet add package Npgsql.EntityFrameworkCore.PostgreSQL.Design
+	
+	$> cd ..
+	
+
+
+	$> dotnet new xunit -f netcoreapp2.1 -o Puc.ProjetoFinal.Test
+	
+	$> dotnet sln Puc.ProjetoFinal.sln add Puc.ProjetoFinal.Test/Puc.ProjetoFinal.Test.csproj
+	
+	$> cd Puc.ProjetoFinal.Test
+	
+	$> dotnet add reference ../Puc.ProjetoFinal.Negocio/Puc.ProjetoFinal.Negocio.csproj
+
+	$> dotnet add package System.Data.SqlClient
+
+	$> dotnet add package Microsoft.EntityFrameworkCore.Design
+	
+	$> dotnet add package Microsoft.EntityFrameworkCore.Tools
+	
+	$> dotnet add package Npgsql.EntityFrameworkCore.PostgreSQL
+	
+	$> dotnet add package Npgsql.EntityFrameworkCore.PostgreSQL.Design
+
+	$> cd ..
+	
+
+
+	$> dotnet new mvc -f netcoreapp2.1 -o Puc.ProjetoFinal.SistemaUsuario
+	
+	$> dotnet sln Puc.ProjetoFinal.sln add Puc.ProjetoFinal.SistemaUsuario/Puc.ProjetoFinal.SistemaUsuario.csproj
+	
+	$> cd Puc.ProjetoFinal.SistemaUsuario
+	
+	$> dotnet add reference ../Puc.ProjetoFinal.Negocio/Puc.ProjetoFinal.Negocio.csproj
+	
+	$> dotnet add package Microsoft.EntityFrameworkCore -v 2.1.8
+
+	$> dotnet add package Npgsql.EntityFrameworkCore.PostgreSQL
+	
+	$> dotnet add package Npgsql.EntityFrameworkCore.PostgreSQL.Design
+	
+	$> dotnet add package System.Runtime.Serialization.Json -v 4.3.0
+
+	$> cd ..
+
+	
+	
+	$> dotnet new mvc -f netcoreapp2.2 -o Puc.ProjetoFinal.ConsultaLog
+	
+	$> dotnet sln Puc.ProjetoFinal.sln add Puc.ProjetoFinal.ConsultaLog/Puc.ProjetoFinal.ConsultaLog.csproj
+	
+	$> cd Puc.ProjetoFinal.ConsultaLog
+	
+	$> dotnet add package System.Runtime.Serialization.Json -v 4.3.0
+
+	$> cd ..
+	
+	
+	
+	$> dotnet new webapi -o Puc.ProjetoFinal.ApiMonitoracao
+	
+	$> dotnet sln Puc.ProjetoFinal.sln add Puc.ProjetoFinal.ApiMonitoracao/Puc.ProjetoFinal.ApiMonitoracao.csproj
+	
+	$> cd Puc.ProjetoFinal.ApiMonitoracao
+	
+	$> dotnet add reference ../Puc.ProjetoFinal.Negocio/Puc.ProjetoFinal.Negocio.csproj
+	
+	$> dotnet add reference ../Puc.ProjetoFinal.Mensageria/Puc.ProjetoFinal.Mensageria.csproj
+
+	$> dotnet add package Npgsql.EntityFrameworkCore.PostgreSQL
+	
+	$> dotnet add package Npgsql.EntityFrameworkCore.PostgreSQL.Design
+	
+	$> dotnet add package log4net
+
+	$> dotnet add package Swashbuckle.AspNetCore7
+	
+	$> dotnet add package Newtonsoft.Json --version 12.0.1
+
+	$> cd ..
+	
+	$> curl https://localhost:5001/api/values
+	
+	
+	
+	$> dotnet new cvonsole -o Puc.ProjetoFinal.ServicoProcessamento
+	
+	$> dotnet sln Puc.ProjetoFinal.sln add Puc.ProjetoFinal.ServicoProcessamento/Puc.ProjetoFinal.ServicoProcessamento.csproj
+	
+	$> cd Puc.ProjetoFinal.ServicoProcessamento
+	
+	$> dotnet add reference ../Puc.ProjetoFinal.Negocio/Puc.ProjetoFinal.Negocio.csproj
+	
+	$> dotnet add reference ../Puc.ProjetoFinal.Mensageria/Puc.ProjetoFinal.Mensageria.csproj
+	
+	$> dotnet add package System.Data.SqlClient
+
+	$> dotnet add package Npgsql.EntityFrameworkCore.PostgreSQL
+	
+	$> dotnet add package Npgsql.EntityFrameworkCore.PostgreSQL.Design
+
+	$> dotnet add package RabbitMQ.Client --version 5.1.0
+	
+	
+	
+	
+	
+	$> dotnet new classlib -f netcoreapp2.2 -o Puc.ProjetoFinal.Mensageria
+	
+	$> dotnet sln Puc.ProjetoFinal.sln add Puc.ProjetoFinal.Mensageria/Puc.ProjetoFinal.Mensageria.csproj
+	
+	$> cd Puc.ProjetoFinal.Mensageria
+	
+	$> dotnet add reference ../Puc.ProjetoFinal.Negocio/Puc.ProjetoFinal.Negocio.csproj
+	
+	$> dotnet add package RabbitMQ.Client --version 5.1.0
+	
+	$> dotnet add package Newtonsoft.Json --version 12.0.1
+	
+	$> cd ..
+	
+	
+
+https://localhost:5001/api/cadinformacao/1
+
+https://localhost:5001/api/cadinformacao/recentes/5
+
+
+https://localhost:5001/swagger/index.html
+
+
+
+{
+  "nomeSistema": "eSocial",
+  "tipoInformacao": "ERRO",
+  "ticket": "20190407193600ABCDEF",
+  "descricao": "Teste Mensagem"
+}
+
+
+{
+  "nomeSistema": "DCTF",
+  "tipoInformacao": "Aviso",
+  "ticket": "201904082216ABCDEF",
+  "descricao": "Informacao Teste 1"
+}
+
+
+{"NomeSistema":"eSocial","TipoInformacao":"ERRO","Ticket":"20190407193600ABCDEF","Descricao":"Teste Mensagem 10"}
+
+
+
+curl -X GET "https://localhost:5001/api/CadInformacao/10" -H "accept: application/json"
+
+curl -X POST "https://localhost:5001/api/CadInformacao" -H "accept: application/json" -H "Content-Type: application/json-patch+json" -d "{ \"nomeSistema\": \"Web\", \"tipoInformacao\": \"Info\", \"ticket\": \"201904072234abcdef\", \"descricao\": \"teste web 30\"}"
+
+
+	
+
+- Entity Framework Core
+	
+	https://www.learnentityframeworkcore.com/configuration/data-annotation-attributes/key-attribute
+
+	- Dependencias Postgresql
+	
+		$> dotnet add package Npgsql.EntityFrameworkCore.PostgreSQL
+	
+		$> dotnet add package Npgsql.EntityFrameworkCore.PostgreSQL.Design
+
+
+- Criando novos projetos 
+	https://docs.microsoft.com/pt-br/dotnet/core/tools/dotnet-new?tabs=netcore21
+
+- Criando uma solution
+	https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-sln
+
+	dotnet sln [<SOLUTION_NAME>] add <PROJECT> <PROJECT> ...
+	dotnet sln todo.sln add todo-app/todo-app.csproj
+
+	dotnet sln [<SOLUTION_NAME>] remove <PROJECT> <PROJECT> ...
+	dotnet sln todo.sln remove todo-app/todo-app.csproj
+
+	dotnet sln [<SOLUTION_NAME>] list
+	dotnet sln [-h|--help]
+
+
+
+
+- Postgresql
+	- Instalando
+		$> sudo apt-get install postgresql postgresql-contrib
+		.....
+		$> sudo apt-get install pgadmin3
+
+	- Alterne para a conta postgres no seu servidor digitando:
+		$> sudo -i -u postgres
+
+	- Agora você pode acessar o prompt do Postgres imediatamente digitando:
+		$> psql
+
+	- Você também pode executar o comando que você gostaria com a conta postgres diretamente com sudo.
+		$> sudo -u postgres psql
+
+	- Alterar senha do usuario postgres
+		$> psql
+		$> postgres=# ALTER USER postgres PASSWORD 'postgres';
+
+
+- Estaleiro
+
+https://console.estaleiro.serpro.gov.br/
+
+https://estaleiro.gitpages.serpro/Documentacao/
+
+https://estaleirotutorial.estaleiro.serpro.gov.br/
+
+https://git.serpro/Estaleiro/Demandas/issues/
+
+- Git
+
+SSH_AUTH_SOCK=0 ssh -T git@git.serpro
+git config --global user.name "Julio Cesar Pereira Antunes"
+git config --global user.email "julio.antunes@serpro.gov.br"
+git init
+git remote add origin git@git.serpro:de607/esocial-estatistica.git
+git add .
+git commit -m "Initial commit"
+SSH_AUTH_SOCK=0 git push -u origin master
+
+
+	- Para criar um novo repositório
+	git init
+
+	- Para baixar o repositorio
+	git clone git@git.serpro:de607/esocial-estatistica.git
+
+	- Conectar o repositorio local com o respoitorio master
+	git remote add origin git@git.serpro:de607/esocial-estatistica.git
+
+	- Adicionar mudanças no workspace (index, stage)
+	git add *
+
+	- Comitar as mudanças no worlspace
+	git commit -m "comentários das alterações"
+
+	- Enviar para o repositorio local
+	SSH_AUTH_SOCK=0 git push -u origin master
+
+	- Atualizando o repositorio
+	git pull
+
+	- Visualizar alterações
+	git diff
+
+	- Historico das alterações
+	git log
+
+
+
+
+
+
+
+
+
+
+- RabbitMQ
+
+[https://medium.com/@renato.groffe/net-core-mensageria-exemplos-utilizando-rabbitmq-e-azure-service-bus-66a81d02a731]
+	
+	- RabbitMQ
+	
+	$> sudo apt-get install rabbitmq-server
+	
+	$> dotnet add package RabbitMQ.Client --version 5.1.0
+	
+	
+	"puc.projetofinal.apimonitoracao"
+	
+	
+
+
+	
+$> sudo rabbitmqctl
+
+$> sudo rabbitmqctl status
+Status of node 'rabbit@julio-VJF155F11X-B2011B'
+[{pid,22082},
+ {running_applications,
+     [{rabbit,"RabbitMQ","3.6.10"},
+      {mnesia,"MNESIA  CXC 138 12","4.15.3"},
+      {ranch,"Socket acceptor pool for TCP protocols.","1.3.0"},
+      {ssl,"Erlang/OTP SSL application","8.2.3"},
+      {public_key,"Public key infrastructure","1.5.2"},
+      {asn1,"The Erlang ASN1 compiler version 5.0.4","5.0.4"},
+      {rabbit_common,
+          "Modules shared by rabbitmq-server and rabbitmq-erlang-client",
+          "3.6.10"},
+      {compiler,"ERTS  CXC 138 10","7.1.4"},
+      {xmerl,"XML parser","1.3.16"},
+      {crypto,"CRYPTO","4.2"},
+      {os_mon,"CPO  CXC 138 46","2.4.4"},
+      {syntax_tools,"Syntax tools","2.1.4"},
+      {sasl,"SASL  CXC 138 11","3.1.1"},
+      {stdlib,"ERTS  CXC 138 10","3.4.3"},
+      {kernel,"ERTS  CXC 138 10","5.4.1"}]},
+ {os,{unix,linux}},
+ {erlang_version,
+     "Erlang/OTP 20 [erts-9.2] [source] [64-bit] [smp:8:8] [ds:8:8:10] [async-threads:128] [kernel-poll:true]\n"},
+ {memory,
+     [{total,53091264},
+      {connection_readers,0},
+      {connection_writers,0},
+      {connection_channels,0},
+      {connection_other,0},
+      {queue_procs,2744},
+      {queue_slave_procs,0},
+      {plugins,0},
+      {other_proc,17825200},
+      {mnesia,62128},
+      {metrics,184664},
+      {mgmt_db,0},
+      {msg_index,43944},
+      {other_ets,1765432},
+      {binary,123376},
+      {code,21401226},
+      {atom,900041},
+      {other_system,10964365}]},
+ {alarms,[]},
+ {listeners,[{clustering,25672,"::"},{amqp,5672,"::"}]},
+ {vm_memory_high_watermark,0.4},
+ {vm_memory_limit,3293280665},
+ {disk_free_limit,50000000},
+ {disk_free,44083904512},
+ {file_descriptors,
+     [{total_limit,65436},
+      {total_used,2},
+      {sockets_limit,58890},
+      {sockets_used,0}]},
+ {processes,[{limit,1048576},{used,161}]},
+ {run_queue,0},
+ {uptime,2214},
+ {kernel,{net_ticktime,60}}]
+ 
+ 
+$> curl --silent -u guest:guest -X GET http://127.0.0.1:25672/api/nodes/rabbit@julio-VJF155F11X-B2011B/memory | jq
+
+$> sudo rabbitmqctl list_queues
+
+
+
+http://127.0.0.1:25672/api/nodes/rabbit@julio-VJF155F11X-B2011B
+
+http://localhost:25672/api/nodes/rabbit@hostname/memory
+
+
+curl --silent -u guest:guest -X GET http://127.0.0.1:25672/api/nodes/rabbit@julio-VJF155F11X-B2011B/memory | jq
+
+rabbitmqctl -n rabbit@target-hostname
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

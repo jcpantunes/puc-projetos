@@ -1,0 +1,12 @@
+/home/julio/Documentos/workspace-github/puc-projetos/novopf/Puc.ProjetoFinal/Puc.ProjetoFinal.Mensageria/bin/Debug/netcoreapp2.2/Puc.ProjetoFinal.Mensageria.deps.json
+/home/julio/Documentos/workspace-github/puc-projetos/novopf/Puc.ProjetoFinal/Puc.ProjetoFinal.Mensageria/bin/Debug/netcoreapp2.2/Puc.ProjetoFinal.Mensageria.dll
+/home/julio/Documentos/workspace-github/puc-projetos/novopf/Puc.ProjetoFinal/Puc.ProjetoFinal.Mensageria/bin/Debug/netcoreapp2.2/Puc.ProjetoFinal.Mensageria.pdb
+/home/julio/Documentos/workspace-github/puc-projetos/novopf/Puc.ProjetoFinal/Puc.ProjetoFinal.Mensageria/bin/Debug/netcoreapp2.2/Puc.ProjetoFinal.Negocio.dll
+/home/julio/Documentos/workspace-github/puc-projetos/novopf/Puc.ProjetoFinal/Puc.ProjetoFinal.Mensageria/bin/Debug/netcoreapp2.2/Puc.ProjetoFinal.Negocio.pdb
+/home/julio/Documentos/workspace-github/puc-projetos/novopf/Puc.ProjetoFinal/Puc.ProjetoFinal.Mensageria/obj/Debug/netcoreapp2.2/Puc.ProjetoFinal.Mensageria.csprojAssemblyReference.cache
+/home/julio/Documentos/workspace-github/puc-projetos/novopf/Puc.ProjetoFinal/Puc.ProjetoFinal.Mensageria/obj/Debug/netcoreapp2.2/Puc.ProjetoFinal.Mensageria.csproj.CoreCompileInputs.cache
+/home/julio/Documentos/workspace-github/puc-projetos/novopf/Puc.ProjetoFinal/Puc.ProjetoFinal.Mensageria/obj/Debug/netcoreapp2.2/Puc.ProjetoFinal.Mensageria.AssemblyInfoInputs.cache
+/home/julio/Documentos/workspace-github/puc-projetos/novopf/Puc.ProjetoFinal/Puc.ProjetoFinal.Mensageria/obj/Debug/netcoreapp2.2/Puc.ProjetoFinal.Mensageria.AssemblyInfo.cs
+/home/julio/Documentos/workspace-github/puc-projetos/novopf/Puc.ProjetoFinal/Puc.ProjetoFinal.Mensageria/obj/Debug/netcoreapp2.2/Puc.ProjetoFinal.Mensageria.csproj.CopyComplete
+/home/julio/Documentos/workspace-github/puc-projetos/novopf/Puc.ProjetoFinal/Puc.ProjetoFinal.Mensageria/obj/Debug/netcoreapp2.2/Puc.ProjetoFinal.Mensageria.dll
+/home/julio/Documentos/workspace-github/puc-projetos/novopf/Puc.ProjetoFinal/Puc.ProjetoFinal.Mensageria/obj/Debug/netcoreapp2.2/Puc.ProjetoFinal.Mensageria.pdb

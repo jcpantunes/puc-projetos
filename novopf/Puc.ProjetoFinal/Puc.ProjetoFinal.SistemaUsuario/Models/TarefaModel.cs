@@ -23,7 +23,7 @@ namespace Puc.ProjetoFinal.SistemaUsuario.Models
             this.IdFuncionario = _tarefa.IdFuncionario;
 
             CadastrarFuncionarioBO funcionarioBO = new CadastrarFuncionarioBO();
-            this.Funcionario = funcionarioBO.RecuperarFuncionario(tarefa.IdFuncionario);
+            this.Funcionario = funcionarioBO.RecuperarFuncionario(_tarefa.IdFuncionario);
         }
 
         [DisplayName("Id")]

@@ -8,6 +8,8 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Puc.ProjetoFinal.SistemaUsuario.Models;
 using Puc.ProjetoFinal.Negocio.Dominio;
 using Puc.ProjetoFinal.Negocio.Negocio;
+using Puc.ProjetoFinal.Negocio.Exception;
+using Puc.ProjetoFinal.SistemaUsuario.Util;
 
 namespace Puc.ProjetoFinal.SistemaUsuario.Controllers
 {
@@ -16,25 +18,38 @@ namespace Puc.ProjetoFinal.SistemaUsuario.Controllers
 
         TarefaModel model;
 
+        [HttpGet]
         public IActionResult Index()
         {
-            // ViewData["Message"] = "Preencher os dados abaixo para cadastrar Tarefa";
-            model = new TarefaModel();
-            model.ListaTarefa = RecuperarListaTarefas();
-            return View(model.ListaTarefa);
+            try
+            {
+                model = new TarefaModel();
+                model.ListaTarefa = RecuperarListaTarefas();
+                return View(model.ListaTarefa);
+            }
+            catch (Exception e)
+            {
+                ViewData["Message"] = TratarInformacao.TratarExcecaoNaoTratada(e);
+            }
+            return View("../Home/Index");
         }
 
         private List<TarefaModel> RecuperarListaTarefas()
         {
             List<TarefaModel> listaTarefas = new List<TarefaModel>();
-
-            CadastrarTarefaBO tarefaBO = new CadastrarTarefaBO();
-            List<Tarefa> lista = tarefaBO.RecuperarTarefa();
-
-            foreach(Tarefa t in lista)
+            try
             {
-                TarefaModel tarefa = new TarefaModel(t);
-                listaTarefas.Add(tarefa);
+                CadastrarTarefaBO tarefaBO = new CadastrarTarefaBO();
+                List<Tarefa> lista = tarefaBO.RecuperarTarefa();
+                foreach(Tarefa t in lista)
+                {
+                    TarefaModel tarefa = new TarefaModel(t);
+                    listaTarefas.Add(tarefa);
+                }
+            }
+            catch (Exception e)
+            {
+                ViewData["Message"] = TratarInformacao.TratarExcecaoNaoTratada(e);
             }
             return listaTarefas;
         }
@@ -43,7 +58,7 @@ namespace Puc.ProjetoFinal.SistemaUsuario.Controllers
         {
             CadastrarFuncionarioBO funcionarioBO = new CadastrarFuncionarioBO();
             return funcionarioBO.RecuperarFuncionario().Select(c => new SelectListItem()
-                                                   { Text= c.Nome, Value=Convert.ToString(c.IdFuncionario)}).ToList();
+                        { Text= c.Nome, Value=Convert.ToString(c.IdFuncionario)}).ToList();
         }
 
         [HttpGet]
@@ -63,25 +78,44 @@ namespace Puc.ProjetoFinal.SistemaUsuario.Controllers
             tarefa.DtTarefa = _model.DtTarefa;
             tarefa.IdFuncionario = _model.IdFuncionario;
 
-            CadastrarTarefaBO tarefaBO = new CadastrarTarefaBO();
-            if (tarefa.IdTarefa == 0)
+            try
             {
-                tarefaBO.IncluirTarefa(tarefa);
+                CadastrarTarefaBO tarefaBO = new CadastrarTarefaBO();
+                if (tarefa.IdTarefa == 0)
+                {
+                    tarefaBO.IncluirTarefa(tarefa);
+                }
+                else
+                {
+                    tarefaBO.AtualizarTarefa(tarefa);
+                }
+                _model.ListaTarefa = RecuperarListaTarefas();
+                return View("Index", _model.ListaTarefa);
             }
-            else
+            catch (NegocioException e)
             {
-                tarefaBO.AtualizarTarefa(tarefa);
+                ViewData["Message"] = TratarInformacao.TratarErroNegocio(e.Message);
+                return View("Cadastrar", _model);
             }
-
-            _model.ListaTarefa = RecuperarListaTarefas();
-            return View("Index", _model.ListaTarefa);
+            catch (Exception e)
+            {
+                ViewData["Message"] = TratarInformacao.TratarExcecaoNaoTratada(e);
+            }
+            return View("../Home/Index");
         }
 
         [HttpGet]
         public IActionResult Retornar(TarefaModel _model)
         {
-            _model.ListaTarefa = RecuperarListaTarefas();
-            return View("Index", _model.ListaTarefa);
+            try
+            {
+                _model.ListaTarefa = RecuperarListaTarefas();
+            }
+            catch (Exception e)
+            {
+                ViewData["Message"] = TratarInformacao.TratarExcecaoNaoTratada(e);
+            }
+            return View("../Home/Index");
         }
 
         [HttpGet]
@@ -91,16 +125,27 @@ namespace Puc.ProjetoFinal.SistemaUsuario.Controllers
             {
                 return NotFound();
             }
-
-            CadastrarTarefaBO tarefaBO = new CadastrarTarefaBO();
-            Tarefa tarefa = tarefaBO.RecuperarTarefa((int) id);
-            if (tarefa == null)
+            try
             {
-                return NotFound();
+                CadastrarTarefaBO tarefaBO = new CadastrarTarefaBO();
+                Tarefa tarefa = tarefaBO.RecuperarTarefa((int) id);
+                if (tarefa == null)
+                {
+                    return NotFound();
+                }
+                model = new TarefaModel(tarefa);
+                ViewBag.ListaFuncionarios = RecuperarViewbagListaFuncionario();
+                return View("Cadastrar", model);
             }
-            model = new TarefaModel(tarefa);
-            ViewBag.ListaFuncionarios = RecuperarViewbagListaFuncionario();
-            return View("Cadastrar", model);
+            catch (NegocioException e)
+            {
+                ViewData["Message"] = TratarInformacao.TratarErroNegocio(e.Message);
+            }
+            catch (Exception e)
+            {
+                ViewData["Message"] = TratarInformacao.TratarExcecaoNaoTratada(e);
+            }
+            return View("../Home/Index");
         }
 
         [HttpGet]
@@ -111,13 +156,25 @@ namespace Puc.ProjetoFinal.SistemaUsuario.Controllers
                 return NotFound();
             }
 
-            CadastrarTarefaBO tarefaBO = new CadastrarTarefaBO();
-            Tarefa tarefa = tarefaBO.RecuperarTarefa((int) id);
-            tarefaBO.RemoverTarefa(tarefa);
+            try
+            {
+                CadastrarTarefaBO tarefaBO = new CadastrarTarefaBO();
+                Tarefa tarefa = tarefaBO.RecuperarTarefa((int) id);
+                tarefaBO.RemoverTarefa(tarefa);
 
-            model = new TarefaModel();
-            model.ListaTarefa = RecuperarListaTarefas();
-            return View("Index", model.ListaTarefa);
+                model = new TarefaModel();
+                model.ListaTarefa = RecuperarListaTarefas();
+                return View("Index", model.ListaTarefa);
+            }
+            catch (NegocioException e)
+            {
+                ViewData["Message"] = TratarInformacao.TratarErroNegocio(e.Message);
+            }
+            catch (Exception e)
+            {
+                ViewData["Message"] = TratarInformacao.TratarExcecaoNaoTratada(e);
+            }
+            return View("../Home/Index");
         }
 
         

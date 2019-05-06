@@ -1,0 +1,97 @@
+@model IEnumerable<Puc.ProjetoFinal.ConsultaLog.Models.LogModel>
+
+@{
+    ViewData["Title"] = "Cadastrar Tarefa";
+    Layout = "~/Views/Shared/_Layout.2.cshtml";
+}
+
+@section scripts {
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/lib/jquery-ui/jquery-ui.js"></script>
+    <script>
+        $(function() {
+            $('a[id*=lnkIdInformacao]').click(function (e) {
+                debugger;
+                e.preventDefault();
+                var href = $(this).attr('href');
+                $('#confirmDialog').data('id', href).dialog('open');
+            });
+
+            $("#confirmDialog").dialog({
+                autoOpen: false,
+                modal: true,
+                resizable: false,
+                buttons: {
+                    "Ok": function () {
+                        var id = $(this).data("id");
+                        window.location.href = id;
+                    },
+                    "Cancel": function (e) {
+                        $(this).dialog("close");
+                    }
+                }
+            });
+        });
+    </script>
+}
+
+    <div class="well">
+        <table class="table dataTable no-footer">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.IdInformacao)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.NomeSistema)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.TipoInformacao)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Ticket)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Descricao)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.DtInformacao)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Hash)
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+            @foreach (var item in Model) {
+                <tr>
+                    <td>
+                        @Html.ActionLink("Id1", "Id2", new { id=item.IdInformacao }, new { @id="lnkIdInformacao" })
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NomeSistema)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TipoInformacao)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Ticket)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Descricao)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DtInformacao)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Hash)
+                    </td>
+                </tr>
+        }
+            </tbody>
+        </table>
+    </div>
+
+    <div id="confirmDialog" title="Remover Tarefa" hidden>
+        <p>Você confirmar a exclusão da Tarefa?</p>
+    </div>
