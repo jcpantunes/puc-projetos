@@ -317,7 +317,7 @@ SSH_AUTH_SOCK=0 git push -u origin master
 	git add *
 
 	- Comitar as mudanças no worlspace
-	git commit -m "comentários das alterações"
+	git commit -m ""
 
 	- Enviar para o repositorio local
 	SSH_AUTH_SOCK=0 git push -u origin master
