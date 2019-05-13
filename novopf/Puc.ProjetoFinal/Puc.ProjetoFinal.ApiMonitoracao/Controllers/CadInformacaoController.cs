@@ -61,6 +61,33 @@ namespace Puc.ProjetoFinal.ApiMonitoracao.Controllers
             return model;
         }
 
+        // GET api/cadinformacao/ticket/201905122311073LNFF7A6
+        [HttpGet("ticket/{ticket}")]
+        public ActionResult<InformacaoModel> ConsultarInformacao(string ticket)
+        {
+            InformacaoModel model = new InformacaoModel();
+            _logger.LogInformation("Consulta Informacao por Id");
+            try
+            {
+                CadastrarInformacaoBO cadinformacaoBO = new CadastrarInformacaoBO();
+                Informacao informacao = cadinformacaoBO.RecuperarInformacaoPorTicket(ticket);
+                if(informacao == null || informacao.IdInformacao == 0)
+                {
+                    model.IdResposta = InformacaoModel.ID_INFORMACAO_NAO_ENCONTRADA;
+                }
+                else
+                {
+                    model.IdResposta = InformacaoModel.ID_SUCESSO;
+                    model.Informacao = informacao;
+                }
+            }
+            catch(Exception e)
+            {
+                ProduzirMensagem(e.StackTrace);
+            }
+            return model;
+        }
+
         // GET api/cadinformacao/consultarrecentes/10
         [HttpGet("ConsultarRecentes/{qtde}")]
         public ActionResult<ListaInformacaoModel> ConsultarInformacaoRecentes(int qtde)

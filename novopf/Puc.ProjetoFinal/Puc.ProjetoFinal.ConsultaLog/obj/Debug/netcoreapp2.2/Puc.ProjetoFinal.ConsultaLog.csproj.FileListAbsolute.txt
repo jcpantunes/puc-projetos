@@ -30,3 +30,5 @@
 /home/julio/Documentos/workspace-github/puc-projetos/novopf/Puc.ProjetoFinal/Puc.ProjetoFinal.ConsultaLog/obj/Debug/netcoreapp2.2/Puc.ProjetoFinal.ConsultaLog.csproj.CopyComplete
 /home/julio/Documentos/workspace-github/puc-projetos/novopf/Puc.ProjetoFinal/Puc.ProjetoFinal.ConsultaLog/obj/Debug/netcoreapp2.2/Razor/Views/Shared/_Layout.2.g.cshtml.cs
 /home/julio/Documentos/workspace-github/puc-projetos/novopf/Puc.ProjetoFinal/Puc.ProjetoFinal.ConsultaLog/obj/Debug/netcoreapp2.2/Razor/Views/Log/Index.g.cshtml.cs
+/home/julio/Documentos/workspace-github/puc-projetos/novopf/Puc.ProjetoFinal/Puc.ProjetoFinal.ConsultaLog/obj/Debug/netcoreapp2.2/Razor/Views/Log/Detalhe.g.cshtml.cs
+/home/julio/Documentos/workspace-github/puc-projetos/novopf/Puc.ProjetoFinal/Puc.ProjetoFinal.ConsultaLog/obj/Debug/netcoreapp2.2/Razor/Views/Shared/_Layout.1.g.cshtml.cs

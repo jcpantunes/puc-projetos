@@ -1,0 +1,25 @@
+@model Puc.ProjetoFinal.ConsultaLog.Models.LogModel
+
+@{
+    Layout = "~/Views/Shared/_Layout.1.cshtml";
+}
+ 
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+            <h4 class="modal-title">Detalhe</h4>
+        </div>
+        <div class="modal-body">
+            <p><strong>@Html.DisplayNameFor(model => model.Informacao.NomeSistema):</strong> @Html.DisplayFor(model => model.Informacao.NomeSistema)</p>
+            <p><strong>@Html.DisplayNameFor(model => model.Informacao.TipoInformacao):</strong> @Html.DisplayFor(model => model.Informacao.TipoInformacao)</p>
+            <p><strong>@Html.DisplayNameFor(model => model.Informacao.Ticket):</strong> @Html.DisplayFor(model => model.Informacao.Ticket)</p>
+            <p><strong>@Html.DisplayNameFor(model => model.Informacao.Hash):</strong> @Html.DisplayFor(model => model.Informacao.Hash)</p>
+            <p><strong>@Html.DisplayNameFor(model => model.Informacao.DataFormatada):</strong> @Html.DisplayFor(model => model.Informacao.DataFormatada)</p>
+            <p><strong>@Html.DisplayNameFor(model => model.Informacao.Descricao):</strong><br/> @Html.DisplayFor(model => model.Informacao.Descricao)</p>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+        </div>
+    </div>
+</div>

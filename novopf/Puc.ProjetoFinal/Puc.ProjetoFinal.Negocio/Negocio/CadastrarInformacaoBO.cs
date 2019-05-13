@@ -31,6 +31,17 @@ namespace Puc.ProjetoFinal.Negocio.Negocio
             }
         }
 
+        public Informacao RecuperarInformacaoPorTicket(string ticket)
+        {
+            using (var db = new ApiContext())
+            {
+                return db.InformacaoDAO
+                    .Where(b => b.Ticket.Equals(ticket))
+                    .FirstOrDefault();
+            }
+        }
+
+
         public List<Informacao> RecuperarUltimasInformacao(int quantidade)
         {
             using (var db = new ApiContext())

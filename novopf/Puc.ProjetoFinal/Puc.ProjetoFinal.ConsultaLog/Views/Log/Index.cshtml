@@ -1,97 +1,102 @@
-@model IEnumerable<Puc.ProjetoFinal.ConsultaLog.Models.LogModel>
+@model Puc.ProjetoFinal.ConsultaLog.Models.LogModel
 
 @{
-    ViewData["Title"] = "Cadastrar Tarefa";
+    ViewData["Title"] = "Consulta Log";
     Layout = "~/Views/Shared/_Layout.2.cshtml";
 }
 
 @section scripts {
     <script src="~/lib/jquery/dist/jquery.js"></script>
-    <script src="~/lib/jquery-ui/jquery-ui.js"></script>
-    <script>
-        $(function() {
-            $('a[id*=lnkIdInformacao]').click(function (e) {
-                debugger;
-                e.preventDefault();
-                var href = $(this).attr('href');
-                $('#confirmDialog').data('id', href).dialog('open');
-            });
 
-            $("#confirmDialog").dialog({
-                autoOpen: false,
-                modal: true,
-                resizable: false,
-                buttons: {
-                    "Ok": function () {
-                        var id = $(this).data("id");
-                        window.location.href = id;
-                    },
-                    "Cancel": function (e) {
-                        $(this).dialog("close");
-                    }
-                }
+    <script src="~/lib/jquery-ui/jquery-ui.js"></script>
+
+    <script>
+        $(function () {
+            $(".details").click(function () {
+                var id = $(this).data("id");
+                $("#modal").load("Detalhe?id=" + id, function () {
+                    $("#modal").modal();
+                })
             });
-        });
+        })
     </script>
 }
 
-    <div class="well">
-        <table class="table dataTable no-footer">
-            <thead>
-                <tr>
-                    <th>
-                        @Html.DisplayNameFor(model => model.IdInformacao)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.NomeSistema)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.TipoInformacao)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Ticket)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Descricao)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.DtInformacao)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Hash)
-                    </th>
-                </tr>
-            </thead>
-            <tbody>
-            @foreach (var item in Model) {
-                <tr>
-                    <td>
-                        @Html.ActionLink("Id1", "Id2", new { id=item.IdInformacao }, new { @id="lnkIdInformacao" })
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.NomeSistema)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.TipoInformacao)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Ticket)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Descricao)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.DtInformacao)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Hash)
-                    </td>
-                </tr>
-        }
-            </tbody>
-        </table>
-    </div>
+    <form asp-controller="Log">
+        <div class="row">
+            <div class="div-right">
+                <input type="submit" value="Listar" name="Listar 10" asp-action="Listar" class="btn" />
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="txtIdInformacao" class="control-label" >Id Informacao</label>
+                    <input id="txtIdInformacao" name="IdInformacao" class="form-control" />
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="txtTicket" class="control-label" >Ticket</label>
+                    <input id="txtTicket" name="Ticket" class="form-control" />
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group">
+                <input type="submit" value="Pesquisar" name="Pesquisar" asp-action="Pesquisar" class="btn" />
+            </div>
+        </div>
+    </form>
 
-    <div id="confirmDialog" title="Remover Tarefa" hidden>
-        <p>Você confirmar a exclusão da Tarefa?</p>
-    </div>
+    @if (@Model.ListaInformacao.Count() > 0)
+    {
+        <div class="well">
+            <table class="table dataTable no-footer">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Informacao.NomeSistema)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Informacao.TipoInformacao)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Informacao.Ticket)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Informacao.DataFormatada)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Informacao.Hash)
+                        </th>
+                        <th />
+                    </tr>
+                </thead>
+                <tbody>
+                @foreach (var item in Model.ListaInformacao) {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.NomeSistema)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TipoInformacao)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Ticket)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DataFormatada)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Hash)
+                        </td>
+                        <td>
+                            <button class="btn btn-default details" data-id="@item.IdInformacao"><i class="glyphicon glyphicon-file">Detalhe</i></button>
+                        </td>
+                    </tr>
+            }
+                </tbody>
+            </table>
+        </div>
+    }
+
+    <div class="modal" id="modal"></div>

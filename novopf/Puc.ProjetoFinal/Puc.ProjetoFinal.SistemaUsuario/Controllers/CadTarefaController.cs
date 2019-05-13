@@ -23,8 +23,10 @@ namespace Puc.ProjetoFinal.SistemaUsuario.Controllers
         {
             try
             {
+                Stopwatch stopWatch = Stopwatch.StartNew();
                 model = new TarefaModel();
                 model.ListaTarefa = RecuperarListaTarefas();
+                TratarInformacao.TratarErroNegocio("ConsultaListaTarefa:" + stopWatch.ElapsedMilliseconds);
                 return View(model.ListaTarefa);
             }
             catch (Exception e)
@@ -80,6 +82,7 @@ namespace Puc.ProjetoFinal.SistemaUsuario.Controllers
 
             try
             {
+                Stopwatch stopWatch = Stopwatch.StartNew();
                 CadastrarTarefaBO tarefaBO = new CadastrarTarefaBO();
                 if (tarefa.IdTarefa == 0)
                 {
@@ -90,6 +93,7 @@ namespace Puc.ProjetoFinal.SistemaUsuario.Controllers
                     tarefaBO.AtualizarTarefa(tarefa);
                 }
                 _model.ListaTarefa = RecuperarListaTarefas();
+                TratarInformacao.TratarErroNegocio("SalvarTarefa:" + stopWatch.ElapsedMilliseconds);
                 return View("Index", _model.ListaTarefa);
             }
             catch (NegocioException e)

@@ -22,8 +22,11 @@ namespace Puc.ProjetoFinal.SistemaUsuario.Controllers
         {
             try
             {
+                Stopwatch stopWatch = Stopwatch.StartNew();
                 model = new FuncionarioModel();
                 model.ListaFuncionario = RecuperarListaFuncionario();
+                stopWatch.Stop();
+                TratarInformacao.TratarErroNegocio("ConsultaListaFuncionario:" + stopWatch.ElapsedMilliseconds);
                 return View(model.ListaFuncionario);
             }
             catch (Exception e)
@@ -71,6 +74,7 @@ namespace Puc.ProjetoFinal.SistemaUsuario.Controllers
 
             try
             {
+                Stopwatch stopWatch = Stopwatch.StartNew();
                 CadastrarFuncionarioBO funcionarioBO = new CadastrarFuncionarioBO();
                 if (funcionario.IdFuncionario == 0)
                 {
@@ -81,9 +85,9 @@ namespace Puc.ProjetoFinal.SistemaUsuario.Controllers
                     funcionario.Matricula = null;
                     funcionarioBO.AtualizarFuncionario(funcionario);
                 }
-
                 _model.ListaFuncionario = RecuperarListaFuncionario();
 
+                TratarInformacao.TratarErroNegocio("SalvarFuncionario:" + stopWatch.ElapsedMilliseconds);
                 return View("Index", _model.ListaFuncionario);
             }
             catch (NegocioException e)

@@ -2789,6 +2789,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "Views/Shared/_Layout.1.cshtml",
+      "TargetPath": "Views/Shared/_Layout.1.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "Views/Log/Index.cshtml",
       "TargetPath": "Views/Log/Index.cshtml",
       "FileKind": "mvc"
@@ -2796,6 +2801,11 @@
     {
       "FilePath": "Views/Shared/Error.cshtml",
       "TargetPath": "Views/Shared/Error.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "Views/Log/Detalhe.cshtml",
+      "TargetPath": "Views/Log/Detalhe.cshtml",
       "FileKind": "mvc"
     },
     {
