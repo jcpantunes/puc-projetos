@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">MonitorApp</string>
+    <string name="action_settings">Settings</string>
+
+    <!-- Padrao -->
+    <string name="btnVoltar">Voltar</string>
+
+    <!-- Listar Erros -->
+    <string name="listarErroBtnVoltar">Voltar</string>
+    <string name="listarErroBtnAtualizar">Atualizar</string>
+    <string name="listarErroBtnVerStacktrace">" >> "</string>
+    <string name="listarErroBtnRemover">Remover</string>
+
+</resources>

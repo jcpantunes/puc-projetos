@@ -400,4 +400,29 @@ $> ionic serve
 
 
 
+===================NPM, NPX, NODE ======================
+
+ sudo apt-get install qemu-kvm
+ ls -la /dev/kvm
+  grep kvm /etc/group
+  sudo adduser julio kvm
+  grep kvm /etc/group
+ 
+ ionic start myAppMenu sidemenu
+ cd myAppMenu/
+ ionic serve
+ 
+ ionic integrations enable capacitor
+ sudo npm install npm@latest -g
+ sudo npm install -g npx
+ npx cap init
+ sudo npx cap add android
+
+ sudo npm install ws@3.3.2 --save-dev --save-exact
+ npx cap open android
+
+ npm install -g ionic@beta
+
+
+
 
