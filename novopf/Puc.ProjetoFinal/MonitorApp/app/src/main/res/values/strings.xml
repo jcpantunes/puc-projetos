@@ -11,4 +11,6 @@
     <string name="listarErroBtnVerStacktrace">" >> "</string>
     <string name="listarErroBtnRemover">Remover</string>
 
+    <string name="title_activity_detalhe">Detalhe</string>
+
 </resources>

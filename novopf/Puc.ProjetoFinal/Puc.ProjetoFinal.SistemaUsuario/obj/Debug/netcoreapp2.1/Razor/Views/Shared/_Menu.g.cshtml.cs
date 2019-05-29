@@ -57,7 +57,7 @@ using Puc.ProjetoFinal.SistemaUsuario.Models;
             WriteLiteral("<ul class=\"nav navbar-nav\">\n    <li class=\"dropdown-menu\">\n\n        ");
             EndContext();
             BeginContext(68, 91, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f3d8fc1e08d74a77983ba8b28ad7f83e", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "5e7599acf36d47869081ccaff9c11950", async() => {
                 BeginContext(134, 21, true);
                 WriteLiteral("Cadastrar Funcionario");
                 EndContext();
@@ -83,7 +83,7 @@ using Puc.ProjetoFinal.SistemaUsuario.Models;
             WriteLiteral("\n        ");
             EndContext();
             BeginContext(168, 81, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "1c7b3a241f804075917d696ea60b2e5b", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "da341a6d1ece4dd197c3e5734d2bc739", async() => {
                 BeginContext(229, 16, true);
                 WriteLiteral("Cadastrar Tarefa");
                 EndContext();

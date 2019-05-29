@@ -34,7 +34,7 @@ namespace Puc.ProjetoFinal.ApiMonitoracao.Controllers
             this._logger = logger;
         }
 
-        // GET api/cadinformacao/5
+        // GET api/cadinformacao/id
         [HttpGet("{id}")]
         public ActionResult<InformacaoModel> ConsultarInformacao(int id)
         {
@@ -88,7 +88,7 @@ namespace Puc.ProjetoFinal.ApiMonitoracao.Controllers
             return model;
         }
 
-        // GET api/cadinformacao/consultarrecentes/10
+        // GET api/cadinformacao/consultarrecentes/qtde
         [HttpGet("ConsultarRecentes/{qtde}")]
         public ActionResult<ListaInformacaoModel> ConsultarInformacaoRecentes(int qtde)
         {
